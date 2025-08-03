@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct7htg5h7a28s"]
+
+[ext_resource type="Script" uid="uid://e3txg6v0dt8q" path="res://scripts/case_intro_scene.gd" id="1_wpm3k"]
+
+[node name="CaseIntroScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_wpm3k")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="CaseLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Introducción al caso"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CaseText" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_vertical = 3
+text = "📁 Caso: Se ha encontrado un equipo sospechoso en la escena de un ciberataque. Tu tarea es preservar las evidencias digitales sin comprometer la integridad de los datos."
+
+[node name="ContinueButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Continuar"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
