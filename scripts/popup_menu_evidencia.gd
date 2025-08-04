@@ -10,7 +10,6 @@ func mostrar_menu(evidencia: Node, global_position: Vector2):
 
 func _on_id_pressed(id: int):
 	var accion = get_item_text(id)
-	print(accion)
 	if evidencia_actual:
 		evidencia_actual.aplicar_accion(accion)
 	hide()
