@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bvijaj7p3u78f"]
+[gd_scene load_steps=16 format=3 uid="uid://bvijaj7p3u78f"]
 
 [ext_resource type="Texture2D" uid="uid://c5nkojvlegd80" path="res://assets/bg_computer_on.png" id="1_8rk4y"]
 [ext_resource type="Script" uid="uid://8agdvscwih2x" path="res://scripts/evidencias/evidence_cpu.gd" id="2_el77p"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://0d0gcgntx8mf" path="res://assets/postit.png" id="4_fubrg"]
 [ext_resource type="Texture2D" uid="uid://cxn71sawvwvta" path="res://assets/usb.png" id="5_ctdx8"]
 [ext_resource type="Script" uid="uid://d3vm3lb7ap0y4" path="res://scripts/popup_menu_evidencia.gd" id="8_o78d7"]
+[ext_resource type="FontFile" uid="uid://rq1i6w444yyd" path="res://assets/fonts/cour.ttf" id="9_efjjv"]
+[ext_resource type="Script" uid="uid://bohuq4vdqxcx8" path="res://Scenes/boton_guardar_bitacora.gd" id="10_d4flg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fubrg"]
 size = Vector2(106, 226)
@@ -17,6 +19,15 @@ size = Vector2(65, 23.5)
 
 [sub_resource type="Theme" id="Theme_o78d7"]
 
+[sub_resource type="Gradient" id="Gradient_fuvdj"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.3, 0.3, 0.3, 1, 1, 1, 1, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mfr2o"]
+gradient = SubResource("Gradient_fuvdj")
+width = 40
+
 [node name="GameScene_ComputerOff" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -24,9 +35,9 @@ mouse_filter = 2
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 40.0
+offset_left = 8.0
 offset_top = -73.0
-offset_right = 1288.0
+offset_right = 1256.0
 offset_bottom = 759.0
 texture = ExtResource("1_8rk4y")
 
@@ -39,11 +50,11 @@ offset_bottom = 40.0
 script = ExtResource("2_el77p")
 
 [node name="Sprite2D" type="Sprite2D" parent="EvidenceCPU"]
-position = Vector2(1019, 521)
+position = Vector2(999, 514)
 texture = ExtResource("3_5tv8x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EvidenceCPU"]
-position = Vector2(1018, 527)
+position = Vector2(995, 505)
 shape = SubResource("RectangleShape2D_fubrg")
 
 [node name="Evidence_USB" type="Area2D" parent="."]
@@ -62,11 +73,11 @@ shape = SubResource("RectangleShape2D_ctdx8")
 script = ExtResource("4_el77p")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Evidence_PostIt"]
-position = Vector2(743, 112)
+position = Vector2(719, 113)
 polygon = PackedVector2Array(-19, 27, 17, 35, 8, 72, 20, 108, 50, 109, 52, 142, 19, 145, 17, 108, 7, 71, -28, 64)
 
 [node name="Sprite2D" type="Sprite2D" parent="Evidence_PostIt"]
-position = Vector2(756, 197)
+position = Vector2(732, 198)
 texture = ExtResource("4_fubrg")
 
 [node name="EvidenciaMenu" type="PopupMenu" parent="."]
@@ -89,17 +100,17 @@ custom_minimum_size = Vector2(40, 40)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -304.0
+offset_left = -316.0
 offset_top = 4.0
-offset_right = -4.0
-offset_bottom = 404.0
+offset_right = -49.0
+offset_bottom = 292.0
 grow_horizontal = 0
 theme = SubResource("Theme_o78d7")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UIX/InfoPanel"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 267.0
+offset_bottom = 288.0
 
 [node name="Puntuacion" type="Label" parent="UIX/InfoPanel/VBoxContainer"]
 layout_mode = 2
@@ -112,13 +123,48 @@ layout_mode = 2
 layout_mode = 2
 text = "📋 Bitácora:"
 
-[node name="LogPanel" type="RichTextLabel" parent="UIX/InfoPanel/VBoxContainer"]
-custom_minimum_size = Vector2(340, 360)
+[node name="ScrollContainer" type="ScrollContainer" parent="UIX/InfoPanel/VBoxContainer"]
+custom_minimum_size = Vector2(260, 200)
 layout_mode = 2
+
+[node name="LogPanel" type="RichTextLabel" parent="UIX/InfoPanel/VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(260, 200)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("9_efjjv")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
 scroll_following = true
-tab_size = 14
+tab_size = 10
+
+[node name="BottomButtonPanel" type="HBoxContainer" parent="UIX"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -534.0
+offset_top = 10.0
+offset_right = -383.0
+offset_bottom = -662.0
+
+[node name="BotonAyuda" type="Button" parent="UIX/BottomButtonPanel"]
+custom_minimum_size = Vector2(40, 10)
+layout_mode = 2
+text = "?"
+
+[node name="BotonGuardar" type="Button" parent="UIX/BottomButtonPanel"]
+custom_minimum_size = Vector2(40, 10)
+layout_mode = 2
+text = "R"
+icon = SubResource("GradientTexture1D_mfr2o")
+script = ExtResource("10_d4flg")
+
+[node name="BotonReiniciar" type="Button" parent="UIX/BottomButtonPanel"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "<-"
 
 [connection signal="input_event" from="EvidenceCPU" to="EvidenceCPU" method="_on_input_event"]
 [connection signal="input_event" from="Evidence_USB" to="Evidence_USB" method="_on_input_event"]
 [connection signal="input_event" from="Evidence_PostIt" to="Evidence_PostIt" method="_on_input_event"]
 [connection signal="id_pressed" from="EvidenciaMenu" to="EvidenciaMenu" method="_on_id_pressed"]
+[connection signal="pressed" from="UIX/BottomButtonPanel/BotonGuardar" to="UIX/BottomButtonPanel/BotonGuardar" method="_on_pressed"]
