@@ -8,7 +8,7 @@ var bitacora_texto := ""
 
 func _ready():
 	var scene_root = get_tree().get_root()
-
+	print("scene_root:", scene_root)
 	score_label = scene_root.get_node_or_null("GameScene_ComputerOff/UIX/InfoPanel/VBoxContainer/ScoreLabel")
 	log_panel = scene_root.get_node_or_null("GameScene_ComputerOff/UIX/InfoPanel/VBoxContainer/ScrollContainer/LogPanel")
 

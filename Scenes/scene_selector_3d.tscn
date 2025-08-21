@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://wewypsorwvlq"]
+
+[ext_resource type="Texture2D" uid="uid://72ogcbryej04" path="res://assets/background_selector.png" id="1_bwtho"]
+[ext_resource type="Script" uid="uid://cese2cbgg11qc" path="res://Scenes/scene_selector_3d.gd" id="1_xq213"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_57xrw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xq213"]
+albedo_texture = ExtResource("1_bwtho")
+
+[node name="SceneSelector3D" type="Node3D"]
+script = ExtResource("1_xq213")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 0, 0, 3.72369)
+mesh = SubResource("PlaneMesh_57xrw")
+surface_material_override/0 = SubResource("StandardMaterial3D_xq213")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="BackgroundPlane" type="MeshInstance3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="Door1_Area" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door1_Area"]
+
+[node name="Marker3D" type="Marker3D" parent="Door1_Area"]
+
+[node name="Door2_Area" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door2_Area"]
+
+[node name="Marker3D" type="Marker3D" parent="Door2_Area"]

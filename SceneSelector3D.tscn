@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://be15bfmrrc8kd"]
+
+[ext_resource type="Script" uid="uid://bl5sp3rea3seq" path="res://rotador_camara.gd" id="1_ha6jo"]
+[ext_resource type="Texture2D" uid="uid://72ogcbryej04" path="res://assets/background_selector.png" id="1_nsrcf"]
+[ext_resource type="Script" uid="uid://nsvr8yoresgk" path="res://scene_selector_3d.gd" id="1_xct72"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ha6jo"]
+albedo_texture = ExtResource("1_nsrcf")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xct72"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j31k0"]
+size = Vector3(0.224869, 0.411194, 1)
+
+[node name="SceneSelector3D" type="Node3D"]
+script = ExtResource("1_xct72")
+
+[node name="Pivot" type="Node3D" parent="."]
+script = ExtResource("1_ha6jo")
+
+[node name="Camera3D" type="Camera3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0316116, 0, 0.000219941)
+material_override = SubResource("StandardMaterial3D_ha6jo")
+mesh = SubResource("PlaneMesh_xct72")
+
+[node name="DoorLeft" type="Node3D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="DoorLeft"]
+transform = Transform3D(0.999706, 0, -0.0242577, 0, 1, 0, 0.0242577, 0, 0.999706, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorLeft/StaticBody3D"]
+transform = Transform3D(1, 0, 3.35276e-08, 0, 0.999826, 0.018639, -5.02914e-08, -0.018639, 0.999831, -0.172343, 0.00165125, 0.000459969)
+shape = SubResource("BoxShape3D_j31k0")
+
+[node name="Visual" type="MeshInstance3D" parent="DoorLeft"]
+
+[node name="DoorRight" type="Node3D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="DoorRight"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorRight/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.999826, 0.018639, 0, -0.018639, 0.999826, 0.455625, -0.0961296, 0.0129164)
+shape = SubResource("BoxShape3D_j31k0")
+
+[node name="Visual" type="MeshInstance3D" parent="DoorRight"]
