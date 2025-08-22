@@ -13,3 +13,7 @@ func _process(delta: float) -> void:
 
 func _on_pressed() -> void:
 	Game_Manager.guardar_bitacora_en_archivo()
+
+
+func _on_ayuda_pressed() -> void:
+	pass # Replace with function body.

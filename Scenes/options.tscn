@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp6bfuo1ycbsx"]
+
+[ext_resource type="Script" uid="uid://co424ekmufsd6" path="res://scripts/options.gd" id="1_4tmxy"]
+[ext_resource type="Script" uid="uid://bohuq4vdqxcx8" path="res://scripts/boton_guardar_bitacora.gd" id="1_prnvy"]
+
+[sub_resource type="Gradient" id="Gradient_fuvdj"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.3, 0.3, 0.3, 1, 1, 1, 1, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4tmxy"]
+gradient = SubResource("Gradient_fuvdj")
+width = 40
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 570.0
+offset_top = 10.0
+offset_right = 570.0
+offset_bottom = 10.0
+script = ExtResource("1_4tmxy")
+
+[node name="BottomButtonPanel" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -534.0
+offset_top = 10.0
+offset_right = -383.0
+offset_bottom = -662.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BotonAyuda" type="Button" parent="BottomButtonPanel"]
+custom_minimum_size = Vector2(40, 10)
+layout_mode = 2
+text = "?"
+
+[node name="BotonGuardar" type="Button" parent="BottomButtonPanel"]
+custom_minimum_size = Vector2(40, 10)
+layout_mode = 2
+text = "R"
+icon = SubResource("GradientTexture1D_4tmxy")
+script = ExtResource("1_prnvy")
+
+[node name="BotonSalir" type="Button" parent="BottomButtonPanel"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "<-"
+
+[connection signal="pressed" from="BottomButtonPanel/BotonGuardar" to="BottomButtonPanel/BotonGuardar" method="_on_ayuda_pressed"]
+[connection signal="pressed" from="BottomButtonPanel/BotonSalir" to="." method="_on_boton_salir_pressed"]

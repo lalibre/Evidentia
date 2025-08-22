@@ -1,11 +1,11 @@
 [gd_scene load_steps=20 format=3 uid="uid://yhwudbbhjkmq"]
 
-[ext_resource type="Script" uid="uid://c58d58otptrx5" path="res://node_3d.gd" id="1_r0pvw"]
-[ext_resource type="Script" uid="uid://0kify7hjiptj" path="res://camera_rig.gd" id="2_biqbe"]
-[ext_resource type="Texture2D" uid="uid://c1wa5j287faau" path="res://assets/puerta1.png" id="3_l7t1d"]
-[ext_resource type="Script" uid="uid://da6820pklws6u" path="res://area_3d_puerta1.gd" id="4_cr4p5"]
-[ext_resource type="Script" uid="uid://cqutsyxpb3aeg" path="res://area_3d_puerta2.gd" id="5_ufvg2"]
-[ext_resource type="Texture2D" uid="uid://d73kgwg4dwi1" path="res://assets/e08e7209-6272-4627-b353-63350996b700.png" id="6_2ume0"]
+[ext_resource type="Script" uid="uid://c58d58otptrx5" path="res://scripts/scene_selector_3d.gd" id="1_1gt5h"]
+[ext_resource type="Script" uid="uid://0kify7hjiptj" path="res://scripts/camera_rig.gd" id="2_lm1wi"]
+[ext_resource type="Texture2D" uid="uid://c1wa5j287faau" path="res://assets/puerta1.png" id="3_6mr2h"]
+[ext_resource type="Script" uid="uid://da6820pklws6u" path="res://scripts/area_3d_puerta1.gd" id="4_5fcfc"]
+[ext_resource type="Script" uid="uid://cqutsyxpb3aeg" path="res://scripts/area_3d_puerta2.gd" id="5_5j1qc"]
+[ext_resource type="Texture2D" uid="uid://d73kgwg4dwi1" path="res://assets/e08e7209-6272-4627-b353-63350996b700.png" id="6_k56gt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
 albedo_color = Color(0.171637, 0.171637, 0.171637, 1)
@@ -17,7 +17,7 @@ albedo_color = Color(0.171637, 0.171637, 0.171637, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_a0tk4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3fl7"]
-albedo_texture = ExtResource("3_l7t1d")
+albedo_texture = ExtResource("3_6mr2h")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a202f"]
 size = Vector3(6.39234, 2.21815, 16.756)
@@ -25,7 +25,7 @@ size = Vector3(6.39234, 2.21815, 16.756)
 [sub_resource type="PlaneMesh" id="PlaneMesh_noarx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
-albedo_texture = ExtResource("3_l7t1d")
+albedo_texture = ExtResource("3_6mr2h")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_noarx"]
 size = Vector3(1.40332, 16.746, 7.2666)
@@ -37,17 +37,17 @@ albedo_color = Color(0.453232, 0.453232, 0.453232, 1)
 albedo_color = Color(0.454902, 0.454902, 0.454902, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jka67"]
-albedo_texture = ExtResource("6_2ume0")
+albedo_texture = ExtResource("6_k56gt")
 
 [sub_resource type="Environment" id="Environment_a202f"]
 ambient_light_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
 ambient_light_energy = 0.1
 
 [node name="SceneSelector3D" type="Node3D"]
-script = ExtResource("1_r0pvw")
+script = ExtResource("1_1gt5h")
 
 [node name="CameraRig" type="Node3D" parent="."]
-script = ExtResource("2_biqbe")
+script = ExtResource("2_lm1wi")
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 16)
@@ -73,7 +73,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_r3fl7")
 
 [node name="Area3D" type="Area3D" parent="Puerta1"]
 transform = Transform3D(-0.0317248, 0.999497, -4.36894e-08, -9.99201e-16, -4.37114e-08, -1, -0.999497, -0.0317248, 1.38674e-09, -77.8476, 8.82501, -13.9161)
-script = ExtResource("4_cr4p5")
+script = ExtResource("4_5fcfc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Puerta1/Area3D"]
 transform = Transform3D(1, -7.45058e-09, -4.44089e-16, 7.45058e-09, 1, 1.00024e-14, -3.33067e-16, -1.13382e-14, 1, -15.369, 67.432, 0)
@@ -89,7 +89,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_a0tk4")
 
 [node name="Area3D" type="Area3D" parent="Puerta2"]
-script = ExtResource("5_ufvg2")
+script = ExtResource("5_5j1qc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Puerta2/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 7.96167, -0.541534)

@@ -1,7 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://bvijaj7p3u78f"]
+[gd_scene load_steps=14 format=3 uid="uid://bvijaj7p3u78f"]
 
 [ext_resource type="Texture2D" uid="uid://c5nkojvlegd80" path="res://assets/bg_computer_on.png" id="1_8rk4y"]
-[ext_resource type="Script" uid="uid://cbof3f5n81jqy" path="res://Scenes/game_scene_base.gd" id="1_fuvdj"]
+[ext_resource type="Script" uid="uid://cbof3f5n81jqy" path="res://scripts/game_scene_base.gd" id="1_fuvdj"]
 [ext_resource type="Script" uid="uid://8agdvscwih2x" path="res://scripts/evidencias/evidence_cpu.gd" id="2_el77p"]
 [ext_resource type="Texture2D" uid="uid://dg7m7plas2yx6" path="res://assets/cpu.png" id="3_5tv8x"]
 [ext_resource type="Script" uid="uid://d1ejug71y114r" path="res://scripts/evidencias/evidence_usb.gd" id="3_fubrg"]
@@ -9,25 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://0d0gcgntx8mf" path="res://assets/postit.png" id="4_fubrg"]
 [ext_resource type="Texture2D" uid="uid://cxn71sawvwvta" path="res://assets/usb.png" id="5_ctdx8"]
 [ext_resource type="Script" uid="uid://d3vm3lb7ap0y4" path="res://scripts/popup_menu_evidencia.gd" id="8_o78d7"]
-[ext_resource type="FontFile" uid="uid://rq1i6w444yyd" path="res://assets/fonts/cour.ttf" id="9_efjjv"]
-[ext_resource type="Script" uid="uid://bohuq4vdqxcx8" path="res://Scenes/boton_guardar_bitacora.gd" id="10_d4flg"]
+[ext_resource type="PackedScene" uid="uid://d20lyjikymox4" path="res://Scenes/info_panel.tscn" id="10_d4flg"]
+[ext_resource type="PackedScene" uid="uid://bp6bfuo1ycbsx" path="res://Scenes/options.tscn" id="11_fuvdj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fubrg"]
 size = Vector2(106, 226)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctdx8"]
 size = Vector2(65, 23.5)
-
-[sub_resource type="Theme" id="Theme_o78d7"]
-
-[sub_resource type="Gradient" id="Gradient_fuvdj"]
-offsets = PackedFloat32Array(0, 0.5, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.3, 0.3, 0.3, 1, 1, 1, 1, 1)
-metadata/_snap_enabled = true
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_mfr2o"]
-gradient = SubResource("Gradient_fuvdj")
-width = 40
 
 [node name="GameScene_ComputerOff" type="Control"]
 layout_mode = 3
@@ -37,10 +26,9 @@ script = ExtResource("1_fuvdj")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 8.0
-offset_top = -73.0
-offset_right = 1256.0
-offset_bottom = 759.0
+offset_top = -87.0
+offset_right = 1280.0
+offset_bottom = 745.0
 texture = ExtResource("1_8rk4y")
 
 [node name="UI" type="Control" parent="."]
@@ -56,7 +44,7 @@ position = Vector2(999, 514)
 texture = ExtResource("3_5tv8x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EvidenceCPU"]
-position = Vector2(995, 505)
+position = Vector2(996, 514)
 shape = SubResource("RectangleShape2D_fubrg")
 
 [node name="Evidence_USB" type="Area2D" parent="."]
@@ -75,11 +63,12 @@ shape = SubResource("RectangleShape2D_ctdx8")
 script = ExtResource("4_el77p")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Evidence_PostIt"]
-position = Vector2(719, 113)
+position = Vector2(731, 98)
 polygon = PackedVector2Array(-19, 27, 17, 35, 8, 72, 20, 108, 50, 109, 52, 142, 19, 145, 17, 108, 7, 71, -28, 64)
 
 [node name="Sprite2D" type="Sprite2D" parent="Evidence_PostIt"]
-position = Vector2(732, 198)
+position = Vector2(743, 183)
+scale = Vector2(1.025, 1)
 texture = ExtResource("4_fubrg")
 
 [node name="EvidenciaMenu" type="PopupMenu" parent="."]
@@ -95,78 +84,30 @@ item_3/text = "Recolectar"
 item_3/id = 3
 script = ExtResource("8_o78d7")
 
-[node name="UIX" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="InfoPanel" type="Panel" parent="UIX"]
-custom_minimum_size = Vector2(40, 40)
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -316.0
-offset_top = 4.0
-offset_right = -49.0
-offset_bottom = 292.0
-grow_horizontal = 0
-theme = SubResource("Theme_o78d7")
+[node name="UIX" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_bottom = 0.057
+offset_left = 109.0
+offset_top = 26.0
+offset_right = 187.0
+offset_bottom = 38.96
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UIX/InfoPanel"]
-layout_mode = 0
-offset_right = 267.0
-offset_bottom = 288.0
+[node name="InfoPanel" parent="CanvasLayer/UIX" instance=ExtResource("10_d4flg")]
+layout_mode = 1
+offset_left = -162.982
+offset_top = -52.322
+offset_right = -162.982
+offset_bottom = -52.322
 
-[node name="Puntuacion" type="Label" parent="UIX/InfoPanel/VBoxContainer"]
-layout_mode = 2
-text = "🧮 Puntuación:"
-
-[node name="ScoreLabel" type="Label" parent="UIX/InfoPanel/VBoxContainer"]
-layout_mode = 2
-
-[node name="Bitacora" type="Label" parent="UIX/InfoPanel/VBoxContainer"]
-layout_mode = 2
-text = "📋 Bitácora:"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="UIX/InfoPanel/VBoxContainer"]
-custom_minimum_size = Vector2(260, 200)
-layout_mode = 2
-
-[node name="LogPanel" type="RichTextLabel" parent="UIX/InfoPanel/VBoxContainer/ScrollContainer"]
-custom_minimum_size = Vector2(260, 200)
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("9_efjjv")
-theme_override_font_sizes/normal_font_size = 14
-bbcode_enabled = true
-scroll_following = true
-tab_size = 10
-
-[node name="BottomButtonPanel" type="HBoxContainer" parent="UIX"]
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -534.0
-offset_top = 10.0
-offset_right = -383.0
-offset_bottom = -662.0
-
-[node name="BotonAyuda" type="Button" parent="UIX/BottomButtonPanel"]
-custom_minimum_size = Vector2(40, 10)
-layout_mode = 2
-text = "?"
-
-[node name="BotonGuardar" type="Button" parent="UIX/BottomButtonPanel"]
-custom_minimum_size = Vector2(40, 10)
-layout_mode = 2
-text = "R"
-icon = SubResource("GradientTexture1D_mfr2o")
-script = ExtResource("10_d4flg")
-
-[node name="BotonReiniciar" type="Button" parent="UIX/BottomButtonPanel"]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-text = "<-"
+[node name="Options" parent="CanvasLayer/UIX" instance=ExtResource("11_fuvdj")]
+offset_left = 558.0
+offset_top = 338.0
+offset_right = 558.0
+offset_bottom = 338.0
 
 [connection signal="input_event" from="EvidenceCPU" to="EvidenceCPU" method="_on_input_event"]
 [connection signal="input_event" from="Evidence_USB" to="Evidence_USB" method="_on_input_event"]
 [connection signal="input_event" from="Evidence_PostIt" to="Evidence_PostIt" method="_on_input_event"]
 [connection signal="id_pressed" from="EvidenciaMenu" to="EvidenciaMenu" method="_on_id_pressed"]
-[connection signal="pressed" from="UIX/BottomButtonPanel/BotonGuardar" to="UIX/BottomButtonPanel/BotonGuardar" method="_on_pressed"]

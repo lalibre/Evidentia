@@ -19,7 +19,7 @@ func _ready():
 		print("🔍 Nodo visible:", node.name, " Tipo:", node)
 
 func _on_continue_button_pressed():
-	var selector = preload("res://scene_selector.tscn")
+	var selector = preload("res://Scenes/scene_selector.tscn")
 	get_tree().change_scene_to_packed(selector)
 	
 		#var random_scene = [
