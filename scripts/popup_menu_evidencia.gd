@@ -13,3 +13,7 @@ func _on_id_pressed(id: int):
 	if evidencia_actual:
 		evidencia_actual.aplicar_accion(accion)
 	hide()
+
+
+func _on_boton_guardar_pressed() -> void:
+	pass # Replace with function body.

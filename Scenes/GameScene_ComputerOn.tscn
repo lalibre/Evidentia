@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://x2awoenect7x"]
+[gd_scene load_steps=5 format=3 uid="uid://x2awoenect7x"]
 
 [ext_resource type="Texture2D" uid="uid://cy4xlx2nup2do" path="res://assets/bg_computer_off.png" id="1_ynxmt"]
 [ext_resource type="PackedScene" uid="uid://c08p64wom0udv" path="res://Scenes/evidencia_menu.tscn" id="2_c4bq0"]
+[ext_resource type="PackedScene" uid="uid://d20lyjikymox4" path="res://Scenes/info_panel.tscn" id="3_1yloc"]
+[ext_resource type="PackedScene" uid="uid://bp6bfuo1ycbsx" path="res://Scenes/options.tscn" id="4_dbabi"]
 
 [node name="GameScene_ComputerOn" type="Control"]
 layout_mode = 3
@@ -9,6 +11,9 @@ anchors_preset = 0
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
+offset_top = -40.0
+offset_right = 1280.0
+offset_bottom = 792.0
 texture = ExtResource("1_ynxmt")
 
 [node name="EvidenceArea" type="Node2D" parent="."]
@@ -25,3 +30,25 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="EvidenciaMenu" parent="." instance=ExtResource("2_c4bq0")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UIX" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -59.0
+offset_top = 311.0
+offset_right = -59.0
+offset_bottom = 311.0
+
+[node name="InfoPanel" parent="CanvasLayer/UIX" instance=ExtResource("3_1yloc")]
+offset_left = 59.0
+offset_top = -311.0
+offset_right = 59.0
+offset_bottom = -311.0
+
+[node name="Options" parent="CanvasLayer/UIX" instance=ExtResource("4_dbabi")]
+offset_left = 706.0
+offset_top = 81.0
+offset_right = 706.0
+offset_bottom = 81.0
