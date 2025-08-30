@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://doeq2nm8yh8sk"]
+
+[ext_resource type="Script" uid="uid://dvv0jiop6kior" path="res://Scenes/cpu_menu_dialog.gd" id="1_qurgk"]
+[ext_resource type="Texture2D" uid="uid://bw0jmvmirdrlh" path="res://assets/desktop.png" id="2_fphq3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdf8v"]
+bg_color = Color(0.0562916, 0.0562916, 0.0562916, 1)
+
+[node name="CpuActionDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_qurgk")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 152.0
+offset_right = 967.0
+offset_bottom = 568.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wdf8v")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 38.0
+offset_right = 570.0
+offset_bottom = 383.0
+texture = ExtResource("2_fphq3")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 313.0
+offset_right = 535.0
+offset_bottom = 343.0
+
+[node name="Recolectar" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Adquisicion" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2

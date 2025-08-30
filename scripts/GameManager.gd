@@ -1,10 +1,21 @@
 extends Node
 class_name GameManager
 
+var evidencias: Array = []
 var puntuacion := 0
 var score_label: Label = null
 var log_panel: RichTextLabel = null
 var bitacora_texto := ""
+var aciertos := 0
+var fallos := 0
+var total := 0
+
+enum EstadoEvidencia {
+	ENCENDIDO,
+	APAGADO,
+	DESCONECTADO,
+	RECOLECTADO
+}
 
 func _ready():
 	var scene_root = get_tree().get_current_scene()
@@ -66,3 +77,21 @@ func guardar_bitacora_en_archivo():
 		print("Bitácora guardada en:", ruta)
 	else:
 		print("No se pudo guardar la bitácora.")
+
+func verificar_fin_juego():
+	for e in evidencias:
+		if e.estado != EstadoEvidencia.RECOLECTADO:
+			return
+		# Todas recolectadas
+	mostrar_resultados_finales()
+	
+func mostrar_resultados_finales():
+	# Mostrar un panel con resultados
+	print("🎉 Juego terminado")
+	print("Puntaje final:", puntuacion)
+	var aciertos = 0
+	var fallos = 0
+	# Supongamos que llevas contadores separados en GameManager
+	print("Aciertos:", aciertos)
+	print("Fallos:", fallos)
+	# Aquí podrías abrir un PopupPanel con esta información

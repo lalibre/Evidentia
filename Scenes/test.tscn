@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpbsupwoilty3"]
+
+[ext_resource type="PackedScene" uid="uid://b20t03833yaga" path="res://Scenes/texture_rect.tscn" id="1_8od7v"]
+[ext_resource type="Texture2D" uid="uid://vpmbd40sucs8" path="res://assets/evidencia.png" id="2_8od7v"]
+
+[node name="Test" type="Node2D"]
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+offset_left = 325.0
+offset_top = 57.0
+offset_right = 365.0
+offset_bottom = 97.0
+
+[node name="TextureRect" parent="." instance=ExtResource("1_8od7v")]
+offset_left = 62.0
+offset_top = 69.0
+offset_right = 131.0
+offset_bottom = 140.0
+texture = ExtResource("2_8od7v")
+
+[node name="TextureRect2" parent="." instance=ExtResource("1_8od7v")]
+offset_left = 196.0
+offset_top = 69.0
+offset_right = 265.0
+offset_bottom = 140.0

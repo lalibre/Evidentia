@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bp6bfuo1ycbsx" path="res://Scenes/options.tscn" id="11_fuvdj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fubrg"]
-size = Vector2(106, 226)
+size = Vector2(111, 226)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctdx8"]
 size = Vector2(65, 23.5)
@@ -44,7 +44,7 @@ position = Vector2(999, 514)
 texture = ExtResource("3_5tv8x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EvidenceCPU"]
-position = Vector2(996, 514)
+position = Vector2(999.5, 510)
 shape = SubResource("RectangleShape2D_fubrg")
 
 [node name="Evidence_USB" type="Area2D" parent="."]

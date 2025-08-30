@@ -3,7 +3,7 @@ extends EvidenciaBase
 func _ready():
 	input_pickable = true
 	tipo = "CPU"
-	estado = "apagado"
+	estado = "encendido"
 	#print("ClickableArea ready")
 
 

@@ -9,6 +9,10 @@ signal estado_cambiado(nuevo_estado)
 	"pierde_datos_al_apagar": true,
 	"es_extraible": false
 }
+# Precargar la escena del diálogo
+@onready var cpu_dialog_scene = preload("res://Scenes/CpuMenuDialog.tscn")
+var cpu_dialog_instance: Control
+
 
 func _ready():
 	input_pickable = true
@@ -16,14 +20,51 @@ func _ready():
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
-		var menu = get_tree().get_current_scene().get_node("EvidenciaMenu")
-		if menu:
-			menu.mostrar_menu(self, get_global_mouse_position())
-			#print("¡Hiciste clic en:", tipo, "!")
+		if estado == "recolectado":
+			mostrar_mensaje("Esta evidencia ya fue recolectada. No se puede realizar más acciones.")
+		return
+		
+		# Validar si está desconectada (para abrir puzzle de recolectar)
+		if estado == "desconectado":
+			abrir_dialogo_recolectar()
 		else:
-			print("EvidenciaMenu no encontrado")
+			# Abrir el menú de acciones normal
+			var menu = get_tree().get_current_scene().get_node("EvidenciaMenu")
+			if menu:
+				menu.mostrar_menu(self, get_global_mouse_position())
+				print("¡Hiciste clic en:", tipo, "!")
+			else:
+				print("EvidenciaMenu no encontrado")
+
+func mostrar_mensaje(texto: String):
+	var dialog = AcceptDialog.new()
+	get_tree().current_scene.add_child(dialog)
+	dialog.dialog_text = texto
+	dialog.popup_centered()
+
+# Función que abre un diálogo o puzzle de recolectar
+func abrir_dialogo_recolectar():
+	# Precargar la escena del puzzle de recolectar
+	var puzzle_scene = preload("res://Scenes/options.tscn")
+	var puzzle_instance = puzzle_scene.instantiate()
+
+	# Añadir al nodo raíz de la escena actual
+	get_tree().current_scene.add_child(puzzle_instance)
+
+	# Opcional: centrar el diálogo en la pantalla
+	#if puzzle_instance is WindowDialog:
+	#	puzzle_instance.popup_centered()
+func abrir_dialogo_cpu():
+	print("llega")
+	#if not cpu_dialog_instance:
+	print("entra")
+	cpu_dialog_instance = cpu_dialog_scene.instantiate()
+	get_tree().current_scene.add_child(cpu_dialog_instance)
+	#cpu_dialog_instance.mostrar(self, get_global_mouse_position())
+
 
 func aplicar_accion(accion: String):
+	print("Esta es la accion: %s" %accion)
 	match accion.to_lower():
 		"apagar":
 			if estado == "encendido":
@@ -49,6 +90,8 @@ func aplicar_accion(accion: String):
 		"adquisición encendido":
 			if estado == "encendido":
 				Game_Manager.sumar_puntos(10)
+				 # Abrir el diálogo de CPU para seleccionar las sub-acciones
+				abrir_dialogo_cpu()
 				Game_Manager.registrar_en_bitacora("Se hizo adquisición de %s encendida." % tipo)
 			else:
 				Game_Manager.sumar_puntos(-5)

@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://borbskx7g50wi"]
+
+[ext_resource type="Texture2D" uid="uid://c5nkojvlegd80" path="res://assets/bg_computer_on.png" id="1_u5avb"]
+[ext_resource type="Script" uid="uid://ddvwakt3tivcu" path="res://scripts/evidence_cpu_on.gd" id="2_hmthe"]
+[ext_resource type="Texture2D" uid="uid://dfnwpqhki6ops" path="res://assets/cpu_on.png" id="3_b6oma"]
+[ext_resource type="Script" uid="uid://dn2p36p8mqkho" path="res://scripts/evidencias/evidence_pos_it_puzzle.gd" id="4_gdwsl"]
+[ext_resource type="Texture2D" uid="uid://b0t8obeybvj3g" path="res://assets/clave.png" id="5_ckt5m"]
+[ext_resource type="Texture2D" uid="uid://byo6m5ue2d5nm" path="res://assets/cajon.png" id="6_tlsye"]
+[ext_resource type="PackedScene" uid="uid://d20lyjikymox4" path="res://Scenes/info_panel.tscn" id="7_r1448"]
+[ext_resource type="PackedScene" uid="uid://bp6bfuo1ycbsx" path="res://Scenes/options.tscn" id="8_khk4h"]
+[ext_resource type="Script" uid="uid://dd4dt2d15ke4q" path="res://scripts/evidencia_menu.gd" id="9_msydc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkhr1"]
+size = Vector2(170, 386)
+
+[node name="GameScene_ComputerOn" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -41.0
+offset_right = 1280.0
+offset_bottom = 791.0
+texture = ExtResource("1_u5avb")
+
+[node name="UI" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Evidence_CPU" type="Area2D" parent="."]
+top_level = true
+script = ExtResource("2_hmthe")
+
+[node name="Sprite2D" type="Sprite2D" parent="Evidence_CPU"]
+position = Vector2(189, 540)
+texture = ExtResource("3_b6oma")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Evidence_CPU"]
+position = Vector2(193, 520)
+shape = SubResource("RectangleShape2D_hkhr1")
+
+[node name="Evidence_PosIt" type="Area2D" parent="."]
+script = ExtResource("4_gdwsl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Evidence_PosIt"]
+position = Vector2(535, 451)
+texture = ExtResource("5_ckt5m")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Evidence_PosIt"]
+position = Vector2(320, -130)
+polygon = PackedVector2Array(155, 547, 160, 594, 174, 621, 271, 602, 259, 580, 250, 534)
+
+[node name="Evidence_Cajon" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Evidence_Cajon"]
+position = Vector2(1081, 534)
+texture = ExtResource("6_tlsye")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Evidence_Cajon"]
+position = Vector2(876, -75)
+polygon = PackedVector2Array(154, 556, 149, 685, 255, 663, 259, 539)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UIX" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -59.0
+offset_top = 311.0
+offset_right = -59.0
+offset_bottom = 311.0
+
+[node name="InfoPanel" parent="CanvasLayer/UIX" instance=ExtResource("7_r1448")]
+layout_mode = 1
+offset_left = 59.0
+offset_top = -311.0
+offset_right = 59.0
+offset_bottom = -311.0
+
+[node name="Options" parent="CanvasLayer/UIX" instance=ExtResource("8_khk4h")]
+offset_left = 706.0
+offset_top = 81.0
+offset_right = 706.0
+offset_bottom = 81.0
+
+[node name="EvidenciaMenu" type="PopupMenu" parent="CanvasLayer/UIX"]
+script = ExtResource("9_msydc")
+
+[connection signal="input_event" from="Evidence_CPU" to="Evidence_CPU" method="_on_input_event"]
+[connection signal="mouse_entered" from="Evidence_CPU" to="Evidence_CPU" method="_on_mouse_entered"]
