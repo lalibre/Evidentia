@@ -6,7 +6,11 @@ extends Control
 var evidencia_actual: Node
 var completed_actions: int = 0
 var total_actions: int = 3
-
+var acciones_realizadas: Dictionary = {
+	"memory": false,
+	"network": false,
+	"malware": false
+}
 
 func _ready():
 	print("DEBUG: hijos de Panel:", $Panel.get_children())
@@ -17,20 +21,48 @@ func _ready():
 	$Panel/HBoxContainer/Network.pressed.connect(_on_network_pressed)
 	$Panel/HBoxContainer/Malware.pressed.connect(_on_malware_pressed)
 	
-	
 func show_message(msg: String):
 	typewriter.start_typing(msg)
 
 func _on_memory_pressed():
-	_start_action("Adquiriendo memoria volátil...", "Memoria adquirida con éxito.")
-
+	if acciones_realizadas["memory"]:
+		status_label.text = "⚠️ La adquisición de memoria ya fue realizada."
+		return
+		
+	acciones_realizadas["memory"] = true
+	_start_action("Adquiriendo memoria volátil...", "Memoria adquirida con éxito.", "Volatile Memory Acquisition", true)
+	$Panel/HBoxContainer/Memory.disabled = true  # desactivar botón
+	Game_Manager.sumar_puntos(10) 
+	Game_Manager.registrar_en_bitacora("✅ Memoria volatil adquirida con éxito")
+		
 func _on_network_pressed():
-	_start_action("Capturando tráfico de red...", "Captura de red finalizada.")
-
+	if acciones_realizadas["network"]:
+		status_label.text = "⚠️ Captura de red ya realizada."
+		return
+		
+	_start_action("Capturando tráfico de red...", "Captura de red finalizada.", "Network Traffic", true)
+	Game_Manager.registrar_en_bitacora("✅ Captura de tráfico de red finalizada")
+	Game_Manager.sumar_puntos(10)
+	$Panel/HBoxContainer/Network.disabled = true
+	
 func _on_malware_pressed():
-	_start_action("Analizando muestras de malware...", "Malware identificado y almacenado.")
-
-func _start_action(start_msg: String, end_msg: String):
+	if acciones_realizadas["malware"]:
+		status_label.text = "⚠️ Análisis de malware ya realizado."
+		return
+	
+	acciones_realizadas["malware"] = true
+	_start_action(
+		"Analizando malware...", 
+		"Malware analizado con éxito.", 
+		"Malware Analysis", 
+		true
+	)
+	_start_action("Analizando muestras de malware...", "Malware identificado y almacenado.", "Analysis Malware", true)
+	Game_Manager.registrar_en_bitacora("✅ Malware identificado y almacenado")
+	Game_Manager.sumar_puntos(10)
+	$Panel/HBoxContainer/Malware.disabled = true
+	
+func _start_action(start_msg: String, end_msg: String, accion: String, exito: bool):
 	# Reinicia barra y muestra mensaje inicial
 	progress_bar.value = 0
 	status_label.text = start_msg
@@ -40,19 +72,18 @@ func _start_action(start_msg: String, end_msg: String):
 	tween.tween_property(progress_bar, "value", 100, 3.0)
 
 	# Al terminar, mostramos el mensaje final
-	tween.tween_callback(Callable(self, "_show_end_message").bind(end_msg))
+	tween.tween_callback(Callable(self, "_show_end_message").bind(end_msg, accion, exito))
 
-func _show_end_message(end_msg: String):
+func _show_end_message(end_msg: String, accion: String, exito: bool):
 	status_label.text = end_msg
 	completed_actions += 1
 	if completed_actions >= total_actions:
+		Game_Manager.aciertos += 3
 		_all_actions_completed()
-		
+
 func _all_actions_completed():
 	hide() 
 	typewriter.hide()
-
-
 
 func mostrar(evidencia: Node, global_pos: Vector2):
 	evidencia_actual = evidencia

@@ -50,14 +50,14 @@ shape = SubResource("RectangleShape2D_fubrg")
 [node name="Evidence_USB" type="Area2D" parent="."]
 script = ExtResource("5_cwtea")
 
-[node name="Sprite2D" type="Sprite2D" parent="Evidence_USB"]
-position = Vector2(1080, 552)
-scale = Vector2(1.04878, 0.968563)
-texture = ExtResource("6_cwtea")
-
 [node name="CollisionShapeUSB" type="CollisionShape2D" parent="Evidence_USB"]
 position = Vector2(1081, 560)
 shape = SubResource("RectangleShape2D_ctdx8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1080, 552)
+scale = Vector2(1.04878, 0.968563)
+texture = ExtResource("6_cwtea")
 
 [node name="Evidence_PostIt" type="Area2D" parent="."]
 script = ExtResource("7_gvk18")
