@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4ikyp33b3wyk"]
 
 [ext_resource type="Script" uid="uid://bqxd2v5mdwh0g" path="res://rich_text_label.gd" id="1_dbjvh"]
-[ext_resource type="AudioStream" uid="uid://8h545ekxa4d8" path="res://typewriter-typing-68696.mp3" id="2_p8m3n"]
+[ext_resource type="AudioStream" uid="uid://b4twrggnb3532" path="res://typewriter.mp3" id="2_8j3i1"]
 
-[node name="TywriterEffect" type="Node2D"]
+[node name="TypewriterEffect" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -15,10 +15,12 @@ offset_bottom = 40.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_right = 334.0
-offset_bottom = 75.0
-text = "Ejemplo"
+offset_left = 401.0
+offset_top = 195.0
+offset_right = 930.0
+offset_bottom = 311.0
 script = ExtResource("1_dbjvh")
+full_text = ""
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Control/RichTextLabel"]
-stream = ExtResource("2_p8m3n")
+stream = ExtResource("2_8j3i1")

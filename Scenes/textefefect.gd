@@ -10,7 +10,7 @@ func _ready():
 	$Timer.start()
 
 func _on_Timer_timeout():
-	if char_index < full_text.length():
+	if char_index < full_text.length() - 1 :
 		text += full_text[char_index]
 		char_index += 1
 	else:

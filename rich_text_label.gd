@@ -4,11 +4,20 @@ extends RichTextLabel
 @export var typing_duration:float = 2.0
 # Called when the node enters the scene tree for the first time.
 @onready var _sfx: AudioStreamPlayer = get_node_or_null("AudioStreamPlayer")
+var _full_text: String = ""
 
 func _ready():
-	text = full_text
+	#text = full_text
 	visible_ratio = 0.0
+	if not _full_text.is_empty():
+		start_typing(_full_text)
 	
+func start_typing(new_text: String):
+	# Llamar a esta función desde fuera para cambiar el texto
+	_full_text = new_text
+	text = _full_text
+	visible_ratio = 0.0
+		
 	# Inicia el sonido
 	if _sfx.stream:
 		_sfx.play()
