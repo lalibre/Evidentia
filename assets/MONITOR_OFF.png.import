@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c05y5uanhcvbq"
-path="res://.godot/imported/CPU_ON.png-7982d1203f3620a76790b969b2bb47d4.ctex"
+uid="uid://dt8vbmapgqnee"
+path="res://.godot/imported/MONITOR_OFF.png-ab01b46d9f5fc4cc9bb0de2c9f98592d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/CPU_ON.png"
-dest_files=["res://.godot/imported/CPU_ON.png-7982d1203f3620a76790b969b2bb47d4.ctex"]
+source_file="res://assets/MONITOR_OFF.png"
+dest_files=["res://.godot/imported/MONITOR_OFF.png-ab01b46d9f5fc4cc9bb0de2c9f98592d.ctex"]
 
 [params]
 

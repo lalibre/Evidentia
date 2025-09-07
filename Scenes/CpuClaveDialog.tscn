@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://krvn5414vhqj"]
+
+[ext_resource type="Script" uid="uid://nn40tnod368d" path="res://scripts/cpu_clave_dialog.gd" id="1_ypljy"]
+[ext_resource type="Texture2D" uid="uid://bfsm5wxchxw1s" path="res://assets/fondo azul.png" id="2_ypljy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdf8v"]
+bg_color = Color(0.0562916, 0.0562916, 0.0562916, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugkmf"]
+bg_color = Color(0.32549, 0.32549, 0.32549, 0.831373)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dvqip"]
+
+[sub_resource type="Theme" id="Theme_fg3ld"]
+
+[node name="CpuActionDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ypljy")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 152.0
+offset_right = 967.0
+offset_bottom = 568.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wdf8v")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 28.0
+offset_right = 570.0
+offset_bottom = 373.0
+texture = ExtResource("2_ypljy")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="Panel/TextureRect"]
+offset_left = 122.0
+offset_top = 87.0
+offset_right = 418.0
+offset_bottom = 276.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ugkmf")
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/TextureRect"]
+material = SubResource("ShaderMaterial_dvqip")
+offset_left = -369.0
+offset_top = -180.0
+offset_right = 910.0
+offset_bottom = 533.0
+theme = SubResource("Theme_fg3ld")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/TextureRect/CenterContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Panel/TextureRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Administrador"
+horizontal_alignment = 1
+
+[node name="NameLabel" type="Label" parent="Panel/TextureRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Ingrese contraseña de usuario"
+
+[node name="ClaveInput" type="LineEdit" parent="Panel/TextureRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MensajeLabel" type="Label" parent="Panel/TextureRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="IniciarSesion" type="Button" parent="Panel/TextureRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Iniciar sesión"
+
+[node name="Cancelar" type="Button" parent="Panel/TextureRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Cancelar"
+
+[connection signal="pressed" from="Panel/TextureRect/CenterContainer/VBoxContainer/IniciarSesion" to="." method="_on_iniciar_sesion_pressed"]
+[connection signal="pressed" from="Panel/TextureRect/CenterContainer/VBoxContainer/Cancelar" to="." method="_on_cancelar_pressed"]

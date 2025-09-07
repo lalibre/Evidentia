@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1lowchl5qv76"]
+
+[ext_resource type="Script" uid="uid://bwwt5kj5b6axh" path="res://ver_dialog.gd" id="1_7ix6a"]
+
+[node name="VerDialog" type="AcceptDialog"]
+title = "Inspección de evidencia"
+position = Vector2i(0, 36)
+ok_button_text = "Cerrar"
+script = ExtResource("1_7ix6a")
+
+[node name="InfoLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(400, 90)
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 92.0
+offset_bottom = 51.0
+theme_override_colors/table_border = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+autowrap_mode = 2
+tab_size = 14

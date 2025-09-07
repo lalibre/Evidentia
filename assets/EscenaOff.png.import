@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c05y5uanhcvbq"
-path="res://.godot/imported/CPU_ON.png-7982d1203f3620a76790b969b2bb47d4.ctex"
+uid="uid://dd2nicef75a"
+path="res://.godot/imported/EscenaOff.png-48e1e5bf9026c054cca28a34312b861b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/CPU_ON.png"
-dest_files=["res://.godot/imported/CPU_ON.png-7982d1203f3620a76790b969b2bb47d4.ctex"]
+source_file="res://assets/EscenaOff.png"
+dest_files=["res://.godot/imported/EscenaOff.png-48e1e5bf9026c054cca28a34312b861b.ctex"]
 
 [params]
 

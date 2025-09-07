@@ -20,9 +20,9 @@ func _ready():
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
-		if estado == "recolectado":
-			mostrar_mensaje("Esta evidencia ya fue recolectada. No se puede realizar más acciones.")
-		return
+		#if estado == "recolectado":
+		#	mostrar_mensaje("Esta evidencia ya fue recolectada. No se puede realizar más acciones.")
+		#return
 		
 		# Validar si está desconectada (para abrir puzzle de recolectar)
 		if estado == "desconectado":
@@ -31,7 +31,7 @@ func _input_event(viewport, event, shape_idx):
 			# Abrir el menú de acciones normal
 			var menu = get_tree().get_current_scene().get_node("EvidenciaMenu")
 			if menu:
-				menu.mostrar_menu(self, get_global_mouse_position())
+				menu.mostrar_menu(self, get_global_mouse_position(), estado)
 				print("¡Hiciste clic en:", tipo, "!")
 			else:
 				print("EvidenciaMenu no encontrado")
@@ -62,6 +62,18 @@ func abrir_dialogo_cpu():
 	get_tree().current_scene.add_child(cpu_dialog_instance)
 	#cpu_dialog_instance.mostrar(self, get_global_mouse_position())
 
+func abrir_dialogo_clave():
+	var clave_scene = preload("res://Scenes/CpuClaveDialog.tscn")
+	var clave_instance = clave_scene.instantiate()
+	get_tree().current_scene.add_child(clave_instance)
+
+	# Conecta la señal para saber si fue validada
+	clave_instance.connect("clave_correcta", Callable(self, "_on_clave_correcta"))
+
+func _on_clave_correcta():
+	abrir_dialogo_cpu()
+	Game_Manager.registrar_en_bitacora("El usuario ingresó la clave correctamente para adquirir en vivo.")
+
 
 func aplicar_accion(accion: String):
 	print("Esta es la accion: %s" %accion)
@@ -87,15 +99,17 @@ func aplicar_accion(accion: String):
 				Game_Manager.registrar_en_bitacora("Error: Se intentó desconectar %s encendida." % tipo)	
 				print("Error: No puedes desconectar %s encendida" % tipo)
 				Game_Manager.sumar_puntos(-5)
+			estado = "desconectado"
 		"adquisición encendido":
 			if estado == "encendido":
 				Game_Manager.sumar_puntos(10)
 				 # Abrir el diálogo de CPU para seleccionar las sub-acciones
-				abrir_dialogo_cpu()
+				abrir_dialogo_clave()
 				Game_Manager.registrar_en_bitacora("Se hizo adquisición de %s encendida." % tipo)
 			else:
 				Game_Manager.sumar_puntos(-5)
 		"recolectar":
-			Game_Manager.registrar_en_bitacora("Se intentó adquisición en %s apagada." % tipo)
+			Game_Manager.registrar_en_bitacora("Recolectando dispositivo %s" % tipo)
 			print("Recolectando %s..." % tipo)
+			estado = "recolectado"
 	emit_signal("estado_cambiado", estado)

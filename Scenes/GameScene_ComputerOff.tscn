@@ -1,22 +1,25 @@
-[gd_scene load_steps=14 format=3 uid="uid://bvijaj7p3u78f"]
+[gd_scene load_steps=16 format=3 uid="uid://bvijaj7p3u78f"]
 
 [ext_resource type="Script" uid="uid://cbof3f5n81jqy" path="res://scripts/game_scene_base.gd" id="1_fuvdj"]
+[ext_resource type="Texture2D" uid="uid://butxjyqxch7p1" path="res://assets/Escena OFF_FINAL.png" id="2_d4flg"]
 [ext_resource type="Script" uid="uid://8agdvscwih2x" path="res://scripts/evidencias/evidence_cpu.gd" id="2_el77p"]
-[ext_resource type="Texture2D" uid="uid://cy4xlx2nup2do" path="res://assets/bg_computer_off.png" id="2_fuvdj"]
-[ext_resource type="Texture2D" uid="uid://dg7m7plas2yx6" path="res://assets/cpu.png" id="3_5tv8x"]
 [ext_resource type="Script" uid="uid://d1ejug71y114r" path="res://scripts/evidencias/evidence_usb.gd" id="3_fubrg"]
 [ext_resource type="Script" uid="uid://b5dwyqnu5wau5" path="res://scripts/evidencias/evidence_post_it.gd" id="4_el77p"]
-[ext_resource type="Texture2D" uid="uid://0d0gcgntx8mf" path="res://assets/postit.png" id="4_fubrg"]
-[ext_resource type="Texture2D" uid="uid://cxn71sawvwvta" path="res://assets/usb.png" id="5_ctdx8"]
+[ext_resource type="Texture2D" uid="uid://bq2qena8djly4" path="res://assets/CPU_OFF.png" id="4_fuvdj"]
+[ext_resource type="Texture2D" uid="uid://btoe6b78j03x3" path="res://assets/USB_OFF.png" id="6_fuvdj"]
 [ext_resource type="Script" uid="uid://d3vm3lb7ap0y4" path="res://scripts/popup_menu_evidencia.gd" id="8_o78d7"]
 [ext_resource type="PackedScene" uid="uid://d20lyjikymox4" path="res://Scenes/info_panel.tscn" id="10_d4flg"]
+[ext_resource type="Script" uid="uid://dt4hihc6yvak" path="res://scripts/evidencias/evidence_monitor.gd" id="11_164do"]
 [ext_resource type="PackedScene" uid="uid://bp6bfuo1ycbsx" path="res://Scenes/options.tscn" id="11_fuvdj"]
+[ext_resource type="Texture2D" uid="uid://dt8vbmapgqnee" path="res://assets/MONITOR_OFF.png" id="11_mfr2o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fubrg"]
-size = Vector2(111, 226)
+size = Vector2(199.5, 171.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctdx8"]
-size = Vector2(65, 23.5)
+size = Vector2(87.75, 33.75)
+
+[sub_resource type="ImageTexture" id="ImageTexture_fuvdj"]
 
 [node name="GameScene_ComputerOff" type="Control"]
 layout_mode = 3
@@ -26,10 +29,11 @@ script = ExtResource("1_fuvdj")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_top = -87.0
-offset_right = 1280.0
-offset_bottom = 745.0
-texture = ExtResource("2_fuvdj")
+offset_left = 6.0
+offset_top = -101.0
+offset_right = 1366.0
+offset_bottom = 731.0
+texture = ExtResource("2_d4flg")
 
 [node name="UI" type="Control" parent="."]
 anchors_preset = 0
@@ -40,23 +44,24 @@ offset_bottom = 40.0
 script = ExtResource("2_el77p")
 
 [node name="Sprite2D" type="Sprite2D" parent="EvidenceCPU"]
-position = Vector2(999, 514)
-texture = ExtResource("3_5tv8x")
+position = Vector2(227.625, 363.75)
+scale = Vector2(1.24215, 1.07108)
+texture = ExtResource("4_fuvdj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EvidenceCPU"]
-position = Vector2(999.5, 510)
+position = Vector2(227, 362.75)
 shape = SubResource("RectangleShape2D_fubrg")
 
 [node name="Evidence_USB" type="Area2D" parent="."]
 script = ExtResource("3_fubrg")
 
 [node name="Sprite2D" type="Sprite2D" parent="Evidence_USB"]
-position = Vector2(389, 320)
-scale = Vector2(0.343056, 0.367647)
-texture = ExtResource("5_ctdx8")
+position = Vector2(447.5, 458.5)
+scale = Vector2(1.22785, 1.10811)
+texture = ExtResource("6_fuvdj")
 
 [node name="CollisionShapeUSB" type="CollisionShape2D" parent="Evidence_USB"]
-position = Vector2(390, 320.25)
+position = Vector2(449.125, 458.125)
 shape = SubResource("RectangleShape2D_ctdx8")
 
 [node name="Evidence_PostIt" type="Area2D" parent="."]
@@ -65,23 +70,21 @@ script = ExtResource("4_el77p")
 [node name="Sprite2D" type="Sprite2D" parent="Evidence_PostIt"]
 position = Vector2(743, 183)
 scale = Vector2(1.025, 1)
-texture = ExtResource("4_fubrg")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Evidence_PostIt"]
-position = Vector2(731, 98)
-polygon = PackedVector2Array(-19, 27, 17, 35, 8, 72, 20, 108, 50, 109, 52, 142, 19, 145, 17, 108, 7, 71, -28, 64)
+position = Vector2(109, 26)
+polygon = PackedVector2Array(22, 16, 121, 37, 107, 138, -1, 115)
 
 [node name="EvidenciaMenu" type="PopupMenu" parent="."]
-size = Vector2i(215, 116)
-item_count = 4
-item_0/text = "Apagar"
+size = Vector2i(200, 90)
+item_count = 3
+item_0/text = "Ver"
+item_0/icon = SubResource("ImageTexture_fuvdj")
 item_0/id = 0
-item_1/text = "Desconectar"
+item_1/text = "Adquisición encendido"
 item_1/id = 1
-item_2/text = "Adquisición encendido"
+item_2/text = "Apagar"
 item_2/id = 2
-item_3/text = "Recolectar"
-item_3/id = 3
 script = ExtResource("8_o78d7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -107,7 +110,20 @@ offset_top = 338.0
 offset_right = 558.0
 offset_bottom = 338.0
 
+[node name="EvidenceMonitor" type="Area2D" parent="."]
+script = ExtResource("11_164do")
+
+[node name="Sprite2D" type="Sprite2D" parent="EvidenceMonitor"]
+position = Vector2(480, 278)
+scale = Vector2(1.24215, 1.07108)
+texture = ExtResource("11_mfr2o")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="EvidenceMonitor"]
+position = Vector2(450, 255)
+polygon = PackedVector2Array(-115, -87, 163, -66, 182, 107, 64, 117, -91, 125)
+
 [connection signal="input_event" from="EvidenceCPU" to="EvidenceCPU" method="_on_input_event"]
 [connection signal="input_event" from="Evidence_USB" to="Evidence_USB" method="_on_input_event"]
 [connection signal="input_event" from="Evidence_PostIt" to="Evidence_PostIt" method="_on_input_event"]
 [connection signal="id_pressed" from="EvidenciaMenu" to="EvidenciaMenu" method="_on_id_pressed"]
+[connection signal="input_event" from="EvidenceMonitor" to="EvidenceMonitor" method="_on_input_event"]

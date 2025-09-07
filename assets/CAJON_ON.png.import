@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c05y5uanhcvbq"
-path="res://.godot/imported/CPU_ON.png-7982d1203f3620a76790b969b2bb47d4.ctex"
+uid="uid://bxmtj42yiko3k"
+path="res://.godot/imported/CAJON_ON.png-939f662d7f46568f5480a2487db6f2f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/CPU_ON.png"
-dest_files=["res://.godot/imported/CPU_ON.png-7982d1203f3620a76790b969b2bb47d4.ctex"]
+source_file="res://assets/CAJON_ON.png"
+dest_files=["res://.godot/imported/CAJON_ON.png-939f662d7f46568f5480a2487db6f2f9.ctex"]
 
 [params]
 

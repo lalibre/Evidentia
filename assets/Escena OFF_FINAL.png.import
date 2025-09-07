@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c05y5uanhcvbq"
-path="res://.godot/imported/CPU_ON.png-7982d1203f3620a76790b969b2bb47d4.ctex"
+uid="uid://butxjyqxch7p1"
+path="res://.godot/imported/Escena OFF_FINAL.png-d49aaea2f85d3c17d074d523f27652dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/CPU_ON.png"
-dest_files=["res://.godot/imported/CPU_ON.png-7982d1203f3620a76790b969b2bb47d4.ctex"]
+source_file="res://assets/Escena OFF_FINAL.png"
+dest_files=["res://.godot/imported/Escena OFF_FINAL.png-d49aaea2f85d3c17d074d523f27652dc.ctex"]
 
 [params]
 
