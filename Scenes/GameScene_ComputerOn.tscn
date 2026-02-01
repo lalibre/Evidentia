@@ -1,17 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://cnvhive4j4tw3"]
+[gd_scene load_steps=17 format=3 uid="uid://xgxxf0tl8wcl"]
 
 [ext_resource type="Script" uid="uid://cbof3f5n81jqy" path="res://scripts/game_scene_base.gd" id="1_phlmm"]
 [ext_resource type="Texture2D" uid="uid://c0d4mlsh27rnm" path="res://assets/Escena On_2.png" id="2_phlmm"]
 [ext_resource type="Script" path="res://scripts/evidencias/evidence_cpu_on.gd" id="3_gvk18"]
+[ext_resource type="Script" uid="uid://bxdwdea21ly1r" path="res://Scenes/help_panel.gd" id="3_m7jco"]
 [ext_resource type="Texture2D" uid="uid://c05y5uanhcvbq" path="res://assets/CPU_ON.png" id="4_phlmm"]
 [ext_resource type="Script" path="res://scripts/evidencias/evidence_cajon.gd" id="5_m7jco"]
 [ext_resource type="Texture2D" uid="uid://bxmtj42yiko3k" path="res://assets/CAJON_ON.png" id="6_cwtea"]
 [ext_resource type="Script" uid="uid://b5dwyqnu5wau5" path="res://scripts/evidencias/evidence_post_it.gd" id="7_2yrbb"]
 [ext_resource type="Texture2D" uid="uid://bgpm4dhp4qrhn" path="res://assets/POSTIT ON.png" id="8_gvk18"]
 [ext_resource type="Script" uid="uid://d3vm3lb7ap0y4" path="res://scripts/popup_menu_evidencia.gd" id="9_tbpka"]
-[ext_resource type="PackedScene" uid="uid://d20lyjikymox4" path="res://Scenes/info_panel.tscn" id="10_hprjn"]
+[ext_resource type="PackedScene" uid="uid://bm6cw17bhci42" path="res://Scenes/info_panel.tscn" id="10_hprjn"]
 [ext_resource type="Texture2D" uid="uid://cm68dp5pnpy0e" path="res://assets/MONITOR_ON.png" id="11_cwtea"]
-[ext_resource type="PackedScene" uid="uid://bp6bfuo1ycbsx" path="res://Scenes/options.tscn" id="11_e76gl"]
+[ext_resource type="PackedScene" uid="uid://b6jp532ass17w" path="res://Scenes/options.tscn" id="11_e76gl"]
 [ext_resource type="Script" path="res://scripts/evidencias/evidence_monitor_on.gd" id="12_j4xcu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fubrg"]
@@ -37,6 +38,25 @@ texture = ExtResource("2_phlmm")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="HelpPanel" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 532.0
+offset_right = 446.0
+offset_bottom = 625.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("3_m7jco")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HelpPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI/HelpPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Timer" type="Timer" parent="UI/HelpPanel/VBoxContainer"]
 
 [node name="EvidenceCPU" type="Area2D" parent="."]
 script = ExtResource("3_gvk18")
@@ -90,23 +110,30 @@ script = ExtResource("9_tbpka")
 [node name="UIX" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchor_bottom = 0.057
-offset_left = 109.0
-offset_top = 26.0
-offset_right = 187.0
-offset_bottom = 38.96
+offset_left = -668.0
+offset_top = 28.0
+offset_right = -590.0
+offset_bottom = 40.96
+scale = Vector2(1.57443, 1.15269)
 
 [node name="InfoPanel" parent="CanvasLayer/UIX" instance=ExtResource("10_hprjn")]
 layout_mode = 1
-offset_left = -162.982
-offset_top = -52.322
-offset_right = -162.982
-offset_bottom = -52.322
+offset_left = 109.603
+offset_top = -50.0366
+offset_right = 109.603
+offset_bottom = -50.0366
+scale = Vector2(0.771346, 1)
 
 [node name="Options" parent="CanvasLayer/UIX" instance=ExtResource("11_e76gl")]
-offset_left = 558.0
-offset_top = 338.0
-offset_right = 558.0
-offset_bottom = 338.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.056
+anchor_bottom = 0.259
+offset_left = 1513.56
+offset_top = 510.534
+offset_right = 1513.56
+offset_bottom = 493.524
+scale = Vector2(0.612507, 0.831246)
 
 [node name="EvidenceMonitor" type="Area2D" parent="."]
 script = ExtResource("12_j4xcu")

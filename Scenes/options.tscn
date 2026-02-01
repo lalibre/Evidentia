@@ -1,16 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp6bfuo1ycbsx"]
+[gd_scene load_steps=6 format=3 uid="uid://b6jp532ass17w"]
 
 [ext_resource type="Script" uid="uid://co424ekmufsd6" path="res://scripts/options.gd" id="1_4tmxy"]
 [ext_resource type="Script" uid="uid://bohuq4vdqxcx8" path="res://scripts/boton_guardar_bitacora.gd" id="1_prnvy"]
-
-[sub_resource type="Gradient" id="Gradient_fuvdj"]
-offsets = PackedFloat32Array(0, 0.5, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.3, 0.3, 0.3, 1, 1, 1, 1, 1)
-metadata/_snap_enabled = true
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_4tmxy"]
-gradient = SubResource("Gradient_fuvdj")
-width = 40
+[ext_resource type="Texture2D" uid="uid://b5b7hyqquckl8" path="res://assets/ayuda.png" id="2_kftxf"]
+[ext_resource type="Texture2D" uid="uid://0e831b4mvlab" path="res://assets/finalizar.png" id="3_663nc"]
+[ext_resource type="Script" uid="uid://h74ncrh6k53x" path="res://Scenes/boton_ayuda.gd" id="3_kftxf"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -23,33 +17,31 @@ script = ExtResource("1_4tmxy")
 
 [node name="BottomButtonPanel" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -534.0
-offset_top = -341.0
-offset_right = -383.0
-offset_bottom = -310.0
+offset_left = -1246.5
+offset_top = -645.5
+offset_right = 329.5
+offset_bottom = -4.5
 grow_horizontal = 2
-grow_vertical = 2
+scale = Vector2(0.165962, 0.197863)
+metadata/_edit_use_anchors_ = true
 
 [node name="BotonAyuda" type="Button" parent="BottomButtonPanel"]
 custom_minimum_size = Vector2(40, 10)
 layout_mode = 2
-text = "?"
+icon = ExtResource("2_kftxf")
+flat = true
+script = ExtResource("3_kftxf")
 
 [node name="BotonGuardar" type="Button" parent="BottomButtonPanel"]
 custom_minimum_size = Vector2(40, 10)
 layout_mode = 2
-text = "R"
-icon = SubResource("GradientTexture1D_4tmxy")
+icon = ExtResource("3_663nc")
+flat = true
 script = ExtResource("1_prnvy")
 
-[node name="BotonSalir" type="Button" parent="BottomButtonPanel"]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 2
-text = "<-"
-
-[connection signal="pressed" from="BottomButtonPanel/BotonGuardar" to="BottomButtonPanel/BotonGuardar" method="_on_ayuda_pressed"]
-[connection signal="pressed" from="BottomButtonPanel/BotonSalir" to="." method="_on_boton_salir_pressed"]
+[connection signal="pressed" from="BottomButtonPanel/BotonAyuda" to="." method="_on_boton_ayuda_pressed"]
+[connection signal="pressed" from="BottomButtonPanel/BotonGuardar" to="." method="_on_boton_guardar_pressed"]
+[connection signal="toggled" from="BottomButtonPanel/BotonGuardar" to="." method="_on_boton_guardar_pressed"]

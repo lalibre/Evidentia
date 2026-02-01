@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4ikyp33b3wyk"]
+[gd_scene load_steps=3 format=3 uid="uid://bmednuiv1f2wq"]
 
 [ext_resource type="Script" uid="uid://bqxd2v5mdwh0g" path="res://rich_text_label.gd" id="1_dbjvh"]
 [ext_resource type="AudioStream" uid="uid://b4twrggnb3532" path="res://typewriter.mp3" id="2_8j3i1"]

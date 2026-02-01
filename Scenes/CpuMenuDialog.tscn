@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://doeq2nm8yh8sk"]
+[gd_scene load_steps=5 format=3 uid="uid://dwbqtlhci0rph"]
 
 [ext_resource type="Script" uid="uid://dvv0jiop6kior" path="res://Scenes/cpu_menu_dialog.gd" id="1_qurgk"]
 [ext_resource type="Texture2D" uid="uid://bw0jmvmirdrlh" path="res://assets/desktop.png" id="2_fphq3"]
-[ext_resource type="PackedScene" uid="uid://c4ikyp33b3wyk" path="res://typwriter_effect.tscn" id="3_wdf8v"]
+[ext_resource type="PackedScene" uid="uid://bmednuiv1f2wq" path="res://typwriter_effect.tscn" id="3_wdf8v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdf8v"]
 bg_color = Color(0.0562916, 0.0562916, 0.0562916, 1)

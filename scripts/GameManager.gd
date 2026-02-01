@@ -8,7 +8,7 @@ var log_panel: RichTextLabel = null
 var bitacora_texto := ""
 var aciertos := 0
 var fallos := 0
-var total := 0
+var acciones_totales := 0
 
 enum EstadoEvidencia {
 	ENCENDIDO,
@@ -84,7 +84,15 @@ func verificar_fin_juego():
 			return
 		# Todas recolectadas
 	mostrar_resultados_finales()
-	
+
+func registrar_acierto():
+	aciertos += 1
+
+func registrar_fallo():
+	fallos += 1
+
+func puntuacion_final() -> int:
+	return aciertos * 10 - fallos * 5
 func mostrar_resultados_finales():
 	# Mostrar un panel con resultados
 	print("🎉 Juego terminado")

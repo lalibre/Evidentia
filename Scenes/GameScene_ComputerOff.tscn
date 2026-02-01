@@ -1,23 +1,24 @@
-[gd_scene load_steps=16 format=3 uid="uid://bvijaj7p3u78f"]
+[gd_scene load_steps=17 format=3 uid="uid://wv1n5rguqn6u"]
 
 [ext_resource type="Script" uid="uid://cbof3f5n81jqy" path="res://scripts/game_scene_base.gd" id="1_fuvdj"]
 [ext_resource type="Texture2D" uid="uid://butxjyqxch7p1" path="res://assets/Escena OFF_FINAL.png" id="2_d4flg"]
 [ext_resource type="Script" uid="uid://8agdvscwih2x" path="res://scripts/evidencias/evidence_cpu.gd" id="2_el77p"]
+[ext_resource type="Script" uid="uid://bxdwdea21ly1r" path="res://Scenes/help_panel.gd" id="3_164do"]
 [ext_resource type="Script" uid="uid://d1ejug71y114r" path="res://scripts/evidencias/evidence_usb.gd" id="3_fubrg"]
 [ext_resource type="Script" uid="uid://b5dwyqnu5wau5" path="res://scripts/evidencias/evidence_post_it.gd" id="4_el77p"]
 [ext_resource type="Texture2D" uid="uid://bq2qena8djly4" path="res://assets/CPU_OFF.png" id="4_fuvdj"]
 [ext_resource type="Texture2D" uid="uid://btoe6b78j03x3" path="res://assets/USB_OFF.png" id="6_fuvdj"]
 [ext_resource type="Script" uid="uid://d3vm3lb7ap0y4" path="res://scripts/popup_menu_evidencia.gd" id="8_o78d7"]
-[ext_resource type="PackedScene" uid="uid://d20lyjikymox4" path="res://Scenes/info_panel.tscn" id="10_d4flg"]
+[ext_resource type="PackedScene" uid="uid://bm6cw17bhci42" path="res://Scenes/info_panel.tscn" id="10_d4flg"]
 [ext_resource type="Script" uid="uid://dt4hihc6yvak" path="res://scripts/evidencias/evidence_monitor.gd" id="11_164do"]
-[ext_resource type="PackedScene" uid="uid://bp6bfuo1ycbsx" path="res://Scenes/options.tscn" id="11_fuvdj"]
+[ext_resource type="PackedScene" uid="uid://b6jp532ass17w" path="res://Scenes/options.tscn" id="11_fuvdj"]
 [ext_resource type="Texture2D" uid="uid://dt8vbmapgqnee" path="res://assets/MONITOR_OFF.png" id="11_mfr2o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fubrg"]
-size = Vector2(199.5, 171.5)
+size = Vector2(195.75, 171.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctdx8"]
-size = Vector2(87.75, 33.75)
+size = Vector2(94.875, 36.875)
 
 [sub_resource type="ImageTexture" id="ImageTexture_fuvdj"]
 
@@ -29,10 +30,11 @@ script = ExtResource("1_fuvdj")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 6.0
-offset_top = -101.0
-offset_right = 1366.0
-offset_bottom = 731.0
+offset_left = -54.0
+offset_top = -61.0
+offset_right = 1306.0
+offset_bottom = 771.0
+scale = Vector2(1.00287, 0.945161)
 texture = ExtResource("2_d4flg")
 
 [node name="UI" type="Control" parent="."]
@@ -40,31 +42,53 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="HelpPanel" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 542.0
+offset_right = 496.0
+offset_bottom = 631.0
+scale = Vector2(1.07023, 1.23553)
+color = Color(1, 1, 1, 0)
+script = ExtResource("3_164do")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HelpPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1, 0.850008)
+
+[node name="Label" type="Label" parent="UI/HelpPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Timer" type="Timer" parent="UI/HelpPanel/VBoxContainer"]
+
 [node name="EvidenceCPU" type="Area2D" parent="."]
 script = ExtResource("2_el77p")
 
 [node name="Sprite2D" type="Sprite2D" parent="EvidenceCPU"]
-position = Vector2(227.625, 363.75)
+position = Vector2(173, 379)
 scale = Vector2(1.24215, 1.07108)
 texture = ExtResource("4_fuvdj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EvidenceCPU"]
-position = Vector2(227, 362.75)
+position = Vector2(172.875, 376)
 shape = SubResource("RectangleShape2D_fubrg")
 
 [node name="Evidence_USB" type="Area2D" parent="."]
 script = ExtResource("3_fubrg")
 
 [node name="Sprite2D" type="Sprite2D" parent="Evidence_USB"]
-position = Vector2(447.5, 458.5)
-scale = Vector2(1.22785, 1.10811)
+position = Vector2(387.25, 468)
+scale = Vector2(1.22152, 1.02703)
 texture = ExtResource("6_fuvdj")
 
 [node name="CollisionShapeUSB" type="CollisionShape2D" parent="Evidence_USB"]
-position = Vector2(449.125, 458.125)
+position = Vector2(385, 469)
 shape = SubResource("RectangleShape2D_ctdx8")
 
 [node name="Evidence_PostIt" type="Area2D" parent="."]
+scale = Vector2(0.541903, 0.880672)
 script = ExtResource("4_el77p")
 
 [node name="Sprite2D" type="Sprite2D" parent="Evidence_PostIt"]
@@ -92,10 +116,10 @@ script = ExtResource("8_o78d7")
 [node name="UIX" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchor_bottom = 0.057
-offset_left = 109.0
-offset_top = 26.0
-offset_right = 187.0
-offset_bottom = 38.96
+offset_left = -26.0
+offset_top = 40.0
+offset_right = 52.0
+offset_bottom = 52.96
 
 [node name="InfoPanel" parent="CanvasLayer/UIX" instance=ExtResource("10_d4flg")]
 layout_mode = 1
@@ -105,22 +129,26 @@ offset_right = -162.982
 offset_bottom = -52.322
 
 [node name="Options" parent="CanvasLayer/UIX" instance=ExtResource("11_fuvdj")]
-offset_left = 558.0
-offset_top = 338.0
-offset_right = 558.0
-offset_bottom = 338.0
+offset_left = 1865.0
+offset_top = 621.0
+offset_right = 1865.0
+offset_bottom = 621.0
+scale = Vector2(0.936713, 1.01538)
 
 [node name="EvidenceMonitor" type="Area2D" parent="."]
+scale = Vector2(0.999988, 1.02811)
 script = ExtResource("11_164do")
 
 [node name="Sprite2D" type="Sprite2D" parent="EvidenceMonitor"]
-position = Vector2(480, 278)
-scale = Vector2(1.24215, 1.07108)
+position = Vector2(419.659, 290.145)
+scale = Vector2(1.24893, 1.00627)
 texture = ExtResource("11_mfr2o")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="EvidenceMonitor"]
-position = Vector2(450, 255)
-polygon = PackedVector2Array(-115, -87, 163, -66, 182, 107, 64, 117, -91, 125)
+position = Vector2(387.005, 262.618)
+polygon = PackedVector2Array(-116.001, -73.9221, 166.002, -53.4962, 185.002, 108.938, 64, 117, -94.0011, 121.582)
+
+[node name="UI2" type="CanvasLayer" parent="."]
 
 [connection signal="input_event" from="EvidenceCPU" to="EvidenceCPU" method="_on_input_event"]
 [connection signal="input_event" from="Evidence_USB" to="Evidence_USB" method="_on_input_event"]

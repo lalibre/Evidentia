@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://cra7n8iqv3y18"]
+
+[ext_resource type="Script" uid="uid://by7chjt2khgj1" path="res://Scenes/informe.gd" id="1_7047q"]
+
+[node name="Informe" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_7047q")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 34.0
+offset_right = 394.0
+offset_bottom = 74.0
+scale = Vector2(13.4487, 16.1256)
+
+[node name="Titulo" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 9.14587
+offset_top = 1.11624
+offset_right = 98.1459
+offset_bottom = 24.1162
+scale = Vector2(0.231591, 0.184394)
+text = "Puntuación"
+
+[node name="Aciertos" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 1.18971
+offset_top = 10.2322
+offset_right = 41.1897
+offset_bottom = 33.2322
+scale = Vector2(0.912535, 0.225518)
+
+[node name="Fallos" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 1.18971
+offset_top = 16.6816
+offset_right = 41.1897
+offset_bottom = 39.6816
+scale = Vector2(0.912535, 0.225518)
+
+[node name="Puntuacion" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 14.797
+offset_top = 23.8131
+offset_right = 75.797
+offset_bottom = 46.8131
+scale = Vector2(0.162632, 0.140794)
+text = "Score: 0"
+
+[node name="Cancelar" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 13.2355
+offset_top = 30.9446
+offset_right = 89.2355
+offset_bottom = 61.9446
+scale = Vector2(0.183016, 0.148713)
+text = "Cancelar"

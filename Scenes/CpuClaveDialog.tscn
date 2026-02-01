@@ -36,6 +36,7 @@ texture = ExtResource("2_ypljy")
 expand_mode = 1
 
 [node name="Panel" type="Panel" parent="Panel/TextureRect"]
+layout_mode = 0
 offset_left = 122.0
 offset_top = 87.0
 offset_right = 418.0
@@ -44,6 +45,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ugkmf")
 
 [node name="CenterContainer" type="CenterContainer" parent="Panel/TextureRect"]
 material = SubResource("ShaderMaterial_dvqip")
+layout_mode = 0
 offset_left = -369.0
 offset_top = -180.0
 offset_right = 910.0

@@ -43,7 +43,7 @@ func mostrar_info(evidencia: Node, estado: String):
 			match estado:
 				"recolectado":
 					texto = "✅ ¡Papel encontrado! Las piezas no están en orden…Si logras armarlo, podrías descubrir la clave que necesitamos."
-					var clave_scene = preload("res://Scenes/test.tscn")
+					var clave_scene = preload("res://Scenes/puzzle.tscn")
 					var clave_instance = clave_scene.instantiate()
 					get_tree().current_scene.add_child(clave_instance)
 				_:

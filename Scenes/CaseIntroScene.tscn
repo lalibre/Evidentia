@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ct7htg5h7a28s"]
+[gd_scene load_steps=5 format=3 uid="uid://gekicy32fb8e"]
 
 [ext_resource type="Script" uid="uid://e3txg6v0dt8q" path="res://scripts/case_intro_scene.gd" id="1_wpm3k"]
 [ext_resource type="Texture2D" uid="uid://72ogcbryej04" path="res://assets/background_selector.png" id="2_xeaxe"]
@@ -22,10 +22,10 @@ texture = ExtResource("2_xeaxe")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 360.0
-offset_top = 145.0
-offset_right = 988.0
-offset_bottom = 595.0
+offset_left = 374.0
+offset_top = 152.0
+offset_right = 1002.0
+offset_bottom = 602.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_f5e1f")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
