@@ -10,24 +10,10 @@ config_version=5
 
 [application]
 
-config/name="C&A"
-run/main_scene="uid://bx254xk206aph"
-config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+run/main_scene="uid://7stme2pg5661"
+config/features=PackedStringArray("4.4")
 
 [autoload]
 
-Global="*res://Global.gd"
 Game_Manager="*res://scripts/GameManager.gd"
-
-[display]
-
-window/size/viewport_width=1280
-window/size/viewport_height=720
-window/stretch/mode="viewport"
-window/stretch/aspect="keep_width"
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+Global="*res://Global.gd"

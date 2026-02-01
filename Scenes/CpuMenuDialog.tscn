@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwbqtlhci0rph"]
+
+[ext_resource type="Script" uid="uid://dvv0jiop6kior" path="res://Scenes/cpu_menu_dialog.gd" id="1_qurgk"]
+[ext_resource type="Texture2D" uid="uid://bw0jmvmirdrlh" path="res://assets/desktop.png" id="2_fphq3"]
+[ext_resource type="PackedScene" uid="uid://bmednuiv1f2wq" path="res://typwriter_effect.tscn" id="3_wdf8v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdf8v"]
+bg_color = Color(0.0562916, 0.0562916, 0.0562916, 1)
+
+[node name="CpuActionDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_qurgk")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 350.0
+offset_top = 152.0
+offset_right = 967.0
+offset_bottom = 568.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wdf8v")
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 28.0
+offset_right = 570.0
+offset_bottom = 373.0
+texture = ExtResource("2_fphq3")
+expand_mode = 1
+
+[node name="TypewriterEffect" parent="Panel" instance=ExtResource("3_wdf8v")]
+position = Vector2(46, 72)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 240.0
+offset_right = 538.0
+offset_bottom = 377.0
+
+[node name="Memory" type="Button" parent="Panel/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 10
+text = "Iniciar ▶"
+
+[node name="Network" type="Button" parent="Panel/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 10
+text = "Iniciar ▶"
+
+[node name="Malware" type="Button" parent="Panel/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 10
+text = "Iniciar ▶"
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel"]
+layout_mode = 2
+offset_left = 110.0
+offset_top = 333.0
+offset_right = 242.0
+offset_bottom = 360.0
+
+[node name="StatusLabel" type="Label" parent="Panel"]
+layout_mode = 2
+offset_left = 279.0
+offset_top = 337.0
+offset_right = 537.0
+offset_bottom = 360.0

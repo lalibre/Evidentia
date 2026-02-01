@@ -1,10 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://c08p64wom0udv"]
+[gd_scene load_steps=2 format=3 uid="uid://bdu4wvsvxb2ne"]
 
 [ext_resource type="Script" uid="uid://bj2mof7a63db6" path="res://evidencia_menu.gd" id="1_30owl"]
 
 [node name="EvidenciaMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+scale = Vector2(1, 0.92517)
 script = ExtResource("1_30owl")
 
 [node name="Panel" type="Panel" parent="."]

@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bd37xyktam8t4"]
+
+[ext_resource type="Texture2D" uid="uid://c5nkojvlegd80" path="res://assets/bg_computer_on.png" id="1_3m58s"]
+[ext_resource type="Script" uid="uid://ds7nbawcf5hwd" path="res://evidencia_cpu_on.gd" id="2_qya40"]
+[ext_resource type="Texture2D" uid="uid://dfnwpqhki6ops" path="res://assets/cpu_on.png" id="3_h1gyt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehlhf"]
+size = Vector2(61.3222, 37.1118)
+
+[node name="ComputerON" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -36.0
+offset_right = 1283.0
+offset_bottom = 796.0
+texture = ExtResource("1_3m58s")
+
+[node name="UI" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="EvidenciaCpuOn" type="Area2D" parent="."]
+script = ExtResource("2_qya40")
+
+[node name="Sprite2D" type="Sprite2D" parent="EvidenciaCpuOn"]
+position = Vector2(192, 551)
+texture = ExtResource("3_h1gyt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EvidenciaCpuOn"]
+position = Vector2(192, 533)
+scale = Vector2(2.41348, 9.91598)
+shape = SubResource("RectangleShape2D_ehlhf")
+
+[connection signal="input_event" from="EvidenciaCpuOn" to="EvidenciaCpuOn" method="input_event"]

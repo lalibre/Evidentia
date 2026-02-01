@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://1vhc14w60yhx"]
+
+[ext_resource type="PackedScene" uid="uid://b20t03833yaga" path="res://Scenes/texture_rect.tscn" id="1_8od7v"]
+[ext_resource type="Texture2D" uid="uid://ul81rmmcdmbm" path="res://assets/Parte 1.png" id="3_35xla"]
+[ext_resource type="Texture2D" uid="uid://boaacdgi6kcdp" path="res://assets/Parte 2.png" id="4_i3aeo"]
+[ext_resource type="Texture2D" uid="uid://cep61pqbbk5te" path="res://assets/Parte 3.png" id="5_5wyu1"]
+
+[node name="puzzle" type="Node2D"]
+
+[node name="TextureRect2" parent="." instance=ExtResource("1_8od7v")]
+offset_left = 174.0
+offset_top = 44.0
+offset_right = 243.0
+offset_bottom = 233.0
+rotation = -0.523598
+texture = ExtResource("3_35xla")
+
+[node name="TextureRect3" parent="." instance=ExtResource("1_8od7v")]
+offset_left = 363.0
+offset_top = 20.0
+offset_right = 432.0
+offset_bottom = 196.0
+rotation = 0.261799
+texture = ExtResource("4_i3aeo")
+
+[node name="TextureRect4" parent="." instance=ExtResource("1_8od7v")]
+offset_left = 22.0
+offset_top = 64.0
+offset_right = 91.0
+offset_bottom = 240.0
+rotation = -1.0472
+texture = ExtResource("5_5wyu1")
+
+[node name="TextureRect5" parent="." instance=ExtResource("1_8od7v")]
+offset_left = 132.0
+offset_top = 217.0
+offset_right = 201.0
+offset_bottom = 353.0
+
+[node name="TextureRect6" parent="." instance=ExtResource("1_8od7v")]
+offset_left = 198.0
+offset_top = 217.0
+offset_right = 267.0
+offset_bottom = 353.0
+
+[node name="TextureRect7" parent="." instance=ExtResource("1_8od7v")]
+offset_left = 264.0
+offset_top = 217.0
+offset_right = 333.0
+offset_bottom = 353.0

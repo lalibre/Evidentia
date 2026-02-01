@@ -1,54 +1,154 @@
-[gd_scene load_steps=5 format=3 uid="uid://x2awoenect7x"]
+[gd_scene load_steps=17 format=3 uid="uid://xgxxf0tl8wcl"]
 
-[ext_resource type="Texture2D" uid="uid://cy4xlx2nup2do" path="res://assets/bg_computer_off.png" id="1_ynxmt"]
-[ext_resource type="PackedScene" uid="uid://c08p64wom0udv" path="res://Scenes/evidencia_menu.tscn" id="2_c4bq0"]
-[ext_resource type="PackedScene" uid="uid://d20lyjikymox4" path="res://Scenes/info_panel.tscn" id="3_1yloc"]
-[ext_resource type="PackedScene" uid="uid://bp6bfuo1ycbsx" path="res://Scenes/options.tscn" id="4_dbabi"]
+[ext_resource type="Script" uid="uid://cbof3f5n81jqy" path="res://scripts/game_scene_base.gd" id="1_phlmm"]
+[ext_resource type="Texture2D" uid="uid://c0d4mlsh27rnm" path="res://assets/Escena On_2.png" id="2_phlmm"]
+[ext_resource type="Script" path="res://scripts/evidencias/evidence_cpu_on.gd" id="3_gvk18"]
+[ext_resource type="Script" uid="uid://bxdwdea21ly1r" path="res://Scenes/help_panel.gd" id="3_m7jco"]
+[ext_resource type="Texture2D" uid="uid://c05y5uanhcvbq" path="res://assets/CPU_ON.png" id="4_phlmm"]
+[ext_resource type="Script" path="res://scripts/evidencias/evidence_cajon.gd" id="5_m7jco"]
+[ext_resource type="Texture2D" uid="uid://bxmtj42yiko3k" path="res://assets/CAJON_ON.png" id="6_cwtea"]
+[ext_resource type="Script" uid="uid://b5dwyqnu5wau5" path="res://scripts/evidencias/evidence_post_it.gd" id="7_2yrbb"]
+[ext_resource type="Texture2D" uid="uid://bgpm4dhp4qrhn" path="res://assets/POSTIT ON.png" id="8_gvk18"]
+[ext_resource type="Script" uid="uid://d3vm3lb7ap0y4" path="res://scripts/popup_menu_evidencia.gd" id="9_tbpka"]
+[ext_resource type="PackedScene" uid="uid://bm6cw17bhci42" path="res://Scenes/info_panel.tscn" id="10_hprjn"]
+[ext_resource type="Texture2D" uid="uid://cm68dp5pnpy0e" path="res://assets/MONITOR_ON.png" id="11_cwtea"]
+[ext_resource type="PackedScene" uid="uid://b6jp532ass17w" path="res://Scenes/options.tscn" id="11_e76gl"]
+[ext_resource type="Script" path="res://scripts/evidencias/evidence_monitor_on.gd" id="12_j4xcu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fubrg"]
+size = Vector2(129.875, 145.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctdx8"]
+size = Vector2(141, 207.5)
 
 [node name="GameScene_ComputerOn" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_phlmm")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_top = -40.0
-offset_right = 1280.0
-offset_bottom = 792.0
-texture = ExtResource("1_ynxmt")
-
-[node name="EvidenceArea" type="Node2D" parent="."]
-
-[node name="Evidence_Computer" type="Area2D" parent="EvidenceArea"]
-
-[node name="Evidence_USB" type="Area2D" parent="EvidenceArea"]
-
-[node name="Evidence_Papers" type="Area2D" parent="EvidenceArea"]
+offset_top = -79.0
+offset_right = 1360.0
+offset_bottom = 753.0
+texture = ExtResource("2_phlmm")
 
 [node name="UI" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="EvidenciaMenu" parent="." instance=ExtResource("2_c4bq0")]
+[node name="HelpPanel" type="ColorRect" parent="UI"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 532.0
+offset_right = 446.0
+offset_bottom = 625.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("3_m7jco")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HelpPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI/HelpPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Timer" type="Timer" parent="UI/HelpPanel/VBoxContainer"]
+
+[node name="EvidenceCPU" type="Area2D" parent="."]
+script = ExtResource("3_gvk18")
+
+[node name="Sprite2D" type="Sprite2D" parent="EvidenceCPU"]
+position = Vector2(312, 320)
+scale = Vector2(1, 1.07653)
+texture = ExtResource("4_phlmm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EvidenceCPU"]
+position = Vector2(310, 321.25)
+shape = SubResource("RectangleShape2D_fubrg")
+
+[node name="EvidenceCajon" type="Area2D" parent="."]
+script = ExtResource("5_m7jco")
+
+[node name="Sprite2D" type="Sprite2D" parent="EvidenceCajon"]
+position = Vector2(913.216, 532.481)
+scale = Vector2(1.00381, 1.08549)
+texture = ExtResource("6_cwtea")
+
+[node name="CollisionShapeUSB" type="CollisionShape2D" parent="EvidenceCajon"]
+position = Vector2(909.5, 533.25)
+shape = SubResource("RectangleShape2D_ctdx8")
+
+[node name="EvidencePostIt" type="Area2D" parent="."]
+script = ExtResource("7_2yrbb")
+
+[node name="Sprite2D" type="Sprite2D" parent="EvidencePostIt"]
+position = Vector2(544, 322.25)
+scale = Vector2(1.025, 1.04545)
+texture = ExtResource("8_gvk18")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EvidencePostIt"]
+position = Vector2(545, 238)
+polygon = PackedVector2Array(-35, 65, 15, 56, 22, 84, 29, 99, -24, 111, -32, 85)
+
+[node name="EvidenciaMenu" type="PopupMenu" parent="."]
+size = Vector2i(215, 116)
+item_count = 3
+item_0/text = "Ver"
+item_0/id = 0
+item_1/text = "Adquisición encendido"
+item_1/id = 1
+item_2/text = "Apagar"
+item_2/id = 2
+script = ExtResource("9_tbpka")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UIX" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
-offset_left = -59.0
-offset_top = 311.0
-offset_right = -59.0
-offset_bottom = 311.0
+anchor_bottom = 0.057
+offset_left = -668.0
+offset_top = 28.0
+offset_right = -590.0
+offset_bottom = 40.96
+scale = Vector2(1.57443, 1.15269)
 
-[node name="InfoPanel" parent="CanvasLayer/UIX" instance=ExtResource("3_1yloc")]
-offset_left = 59.0
-offset_top = -311.0
-offset_right = 59.0
-offset_bottom = -311.0
+[node name="InfoPanel" parent="CanvasLayer/UIX" instance=ExtResource("10_hprjn")]
+layout_mode = 1
+offset_left = 109.603
+offset_top = -50.0366
+offset_right = 109.603
+offset_bottom = -50.0366
+scale = Vector2(0.771346, 1)
 
-[node name="Options" parent="CanvasLayer/UIX" instance=ExtResource("4_dbabi")]
-offset_left = 706.0
-offset_top = 81.0
-offset_right = 706.0
-offset_bottom = 81.0
+[node name="Options" parent="CanvasLayer/UIX" instance=ExtResource("11_e76gl")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.056
+anchor_bottom = 0.259
+offset_left = 1513.56
+offset_top = 510.534
+offset_right = 1513.56
+offset_bottom = 493.524
+scale = Vector2(0.612507, 0.831246)
+
+[node name="EvidenceMonitor" type="Area2D" parent="."]
+script = ExtResource("12_j4xcu")
+
+[node name="Sprite2D" type="Sprite2D" parent="EvidenceMonitor"]
+position = Vector2(429, 283)
+scale = Vector2(1, 1.07653)
+texture = ExtResource("11_cwtea")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="EvidenceMonitor"]
+position = Vector2(443, 278)
+polygon = PackedVector2Array(-65, -67, 17, -60, 45, -56, 54, 69, 13, 72, -57, 72)
+
+[connection signal="input_event" from="EvidenceCPU" to="EvidenceCPU" method="_on_input_event"]
+[connection signal="input_event" from="EvidenceCajon" to="EvidenceCajon" method="_on_input_event"]
+[connection signal="input_event" from="EvidencePostIt" to="EvidencePostIt" method="_on_input_event"]
+[connection signal="id_pressed" from="EvidenciaMenu" to="EvidenciaMenu" method="_on_id_pressed"]
+[connection signal="input_event" from="EvidenceMonitor" to="EvidenceMonitor" method="_on_input_event"]

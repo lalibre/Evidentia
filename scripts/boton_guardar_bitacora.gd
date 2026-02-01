@@ -11,9 +11,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_pressed() -> void:
+
+func _on_boton_guardar_pressed(toggled_on: bool) -> void:
+	print("Guardando en bitacora")
 	Game_Manager.guardar_bitacora_en_archivo()
-
-
-func _on_ayuda_pressed() -> void:
-	pass # Replace with function body.
