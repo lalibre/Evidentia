@@ -96,8 +96,8 @@ position = Vector2(743, 183)
 scale = Vector2(1.025, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Evidence_PostIt"]
-position = Vector2(109, 26)
-polygon = PackedVector2Array(22, 16, 121, 37, 107, 138, -1, 115)
+position = Vector2(99.6488, 54.5038)
+polygon = PackedVector2Array(29.5256, 31.7939, 219.596, 54.5038, 178.999, 157.834, -9.22675, 141.937)
 
 [node name="EvidenciaMenu" type="PopupMenu" parent="."]
 size = Vector2i(200, 90)

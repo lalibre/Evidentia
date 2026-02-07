@@ -28,6 +28,8 @@ func mostrar_menu(evidencia: Node, global_position: Vector2, estado):
 			menu.add_item("Reportar")
 		"recolectado":
 			menu.add_item("Inspeccionar")
+		"reportado":
+			menu.add_item("Inspeccionar")
 	menu.reset_size()
 	var item_count = menu.item_count
 	menu.size = Vector2(200, item_count * 28)

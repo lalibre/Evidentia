@@ -9,9 +9,3 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-
-
-func _on_boton_guardar_pressed(toggled_on: bool) -> void:
-	print("Guardando en bitacora")
-	Game_Manager.guardar_bitacora_en_archivo()

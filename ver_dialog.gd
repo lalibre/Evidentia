@@ -48,6 +48,16 @@ func mostrar_info(evidencia: Node, estado: String):
 					get_tree().current_scene.add_child(clave_instance)
 				_:
 					texto = "🔍 No hay información disponible para este tipo de evidencia."
+		"postit":
+			match estado:
+				"evidenciado":
+					texto = " ¡Papel encontrado! Al parecer contiene información importante."
+				"recolectado":
+					texto = "✅ ¡La evidencia ha sido recolectada."
+				"reportado":
+					texto = "✅ La evidencia ha sido reportada al equipo forense policial."
+				_:
+					texto = "🔍 No hay información disponible para este tipo de evidencia."
 
 	info_label.text = texto
 	reset_size()

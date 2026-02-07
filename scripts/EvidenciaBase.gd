@@ -112,4 +112,8 @@ func aplicar_accion(accion: String):
 			Game_Manager.registrar_en_bitacora("Recolectando dispositivo %s" % tipo)
 			print("Recolectando %s..." % tipo)
 			estado = "recolectado"
+		"reportar":
+			Game_Manager.registrar_en_bitacora("Reportando al policia forense la evidencia %s" % tipo)
+			print("Reportando %s..." % tipo)
+			estado = "reportado"
 	emit_signal("estado_cambiado", estado)
