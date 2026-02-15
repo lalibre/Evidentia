@@ -34,15 +34,17 @@ offset_right = 267.0
 offset_bottom = 231.0
 
 [node name="Puntuacion" type="Label" parent="InfoPanel/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "🧮 Puntuación:"
 
 [node name="ScoreLabel" type="Label" parent="InfoPanel/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Bitacora" type="Label" parent="InfoPanel/VBoxContainer"]
 layout_mode = 2
-text = "📋 Bitácora:"
+text = "📋 Bitácora"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="InfoPanel/VBoxContainer"]
 custom_minimum_size = Vector2(260, 150)

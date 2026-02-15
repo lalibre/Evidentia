@@ -1,20 +1,21 @@
 extends Control
+@onready var aciertos = $Panel/AciertosValue
+@onready var fallos = $Panel/FallosValue
+@onready var evidencias = $Panel/Puntuacion
+@onready var texto = $Panel/TextoInforme
 
-@onready var aciertos_lbl = $Infore/Aciertos
-@onready var fallos_lbl = $Infore/Fallos
-@onready var puntuacion_lbl = $Infore/Puntuacion
 #@onready var evaluacion_lbl = $Infore/LabelEvaluacion
 
 func _ready():
-	var aciertos = Game_Manager.aciertos
-	var fallos = Game_Manager.fallos
-	var puntuacion = Game_Manager.puntuacion_final
+	var total_aciertos = Game_Manager.aciertos
+	var total_fallos = Game_Manager.fallos
+	var evidencias = Game_Manager.registrar_evidencia_recolectada
 
-	aciertos_lbl.text = "Aciertos: %d" % aciertos
-	fallos_lbl.text = "Fallos: %d" % fallos
-	puntuacion_lbl.text = "Puntuación final: %d" % puntuacion
+	aciertos.text =  str(total_aciertos)
+	fallos.text = str(total_fallos)
+	#evidencias.text = "Puntuación final: %d" % evidencias
 
-	#evaluacion_lbl.text = evaluar(puntuacion)
+	#evaluacion.text = evaluar(puntuacion)
 
 func evaluar(puntos: int) -> String:
 	if puntos >= 80:
@@ -23,3 +24,15 @@ func evaluar(puntos: int) -> String:
 		return "Buen trabajo, aunque hubo errores."
 	else:
 		return "Análisis deficiente. La evidencia pudo verse comprometida."
+
+
+func _on_pressed() -> void:
+	var ruta = "user://bitacora_forense.txt"
+
+	if FileAccess.file_exists(ruta):
+		var archivo = FileAccess.open(ruta, FileAccess.READ)
+		var contenido = archivo.get_as_text()
+		archivo.close()
+		texto.text = contenido
+	else:
+		texto.text = "No se encontró el reporte."

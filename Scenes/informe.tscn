@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cra7n8iqv3y18"]
+[gd_scene load_steps=5 format=3 uid="uid://cra7n8iqv3y18"]
 
 [ext_resource type="Script" uid="uid://by7chjt2khgj1" path="res://Scenes/informe.gd" id="1_7047q"]
+[ext_resource type="FontFile" uid="uid://daem6pjn6eil8" path="res://assets/fonts/Xolonium-Regular.ttf" id="2_ins5d"]
+[ext_resource type="Script" uid="uid://dlhtfjqj0tu58" path="res://Scenes/salir.gd" id="3_fnl05"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fop2m"]
+bg_color = Color(0.176471, 0.247059, 0.317647, 0.705882)
 
 [node name="Informe" type="Control"]
 layout_mode = 3
@@ -10,50 +15,92 @@ script = ExtResource("1_7047q")
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 354.0
-offset_top = 34.0
-offset_right = 394.0
-offset_bottom = 74.0
-scale = Vector2(13.4487, 16.1256)
+offset_top = 85.0
+offset_right = 390.0
+offset_bottom = 121.0
+scale = Vector2(9.9687, 12.2808)
+theme_override_styles/panel = SubResource("StyleBoxFlat_fop2m")
 
 [node name="Titulo" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 9.14587
-offset_top = 1.11624
-offset_right = 98.1459
-offset_bottom = 24.1162
-scale = Vector2(0.231591, 0.184394)
-text = "Puntuación"
+offset_left = 6.11915
+offset_top = 2.11713
+offset_right = 139.119
+offset_bottom = 25.1171
+scale = Vector2(0.195229, 0.145004)
+text = "🧮Puntuación🧮"
 
 [node name="Aciertos" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 1.18971
-offset_top = 10.2322
-offset_right = 41.1897
-offset_bottom = 33.2322
-scale = Vector2(0.912535, 0.225518)
+offset_left = 8.22575
+offset_top = 6.26997
+offset_right = 102.226
+offset_bottom = 29.27
+scale = Vector2(0.146267, 0.108617)
+text = "✅ Aciertos:"
+
+[node name="AciertosValue" type="Label" parent="Panel"]
+offset_left = 24.9437
+offset_top = 5.74187
+offset_right = 34.9437
+offset_bottom = 28.7419
+scale = Vector2(0.180403, 0.124133)
+text = "0"
 
 [node name="Fallos" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 1.18971
-offset_top = 16.6816
-offset_right = 41.1897
-offset_bottom = 39.6816
-scale = Vector2(0.912535, 0.225518)
+offset_left = 8.30011
+offset_top = 9.44777
+offset_right = 83.3001
+offset_bottom = 32.4478
+scale = Vector2(0.141213, 0.115837)
+text = "❌ Fallos:"
+
+[node name="FallosValue" type="Label" parent="Panel"]
+offset_left = 24.915
+offset_top = 9.48666
+offset_right = 34.915
+offset_bottom = 32.4867
+scale = Vector2(0.188025, 0.128314)
+text = "0"
 
 [node name="Puntuacion" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 14.797
-offset_top = 23.8131
-offset_right = 75.797
-offset_bottom = 46.8131
+offset_left = 13.0641
+offset_top = 12.3984
+offset_right = 74.0641
+offset_bottom = 35.3984
 scale = Vector2(0.162632, 0.140794)
 text = "Score: 0"
 
-[node name="Cancelar" type="Button" parent="Panel"]
+[node name="TextoInforme" type="RichTextLabel" parent="Panel"]
 layout_mode = 0
-offset_left = 13.2355
-offset_top = 30.9446
-offset_right = 89.2355
-offset_bottom = 61.9446
-scale = Vector2(0.183016, 0.148713)
-text = "Cancelar"
+offset_left = 3.10973
+offset_top = 17.7513
+offset_right = 43.1097
+offset_bottom = 57.7513
+scale = Vector2(0.7581, 0.257405)
+theme_override_fonts/normal_font = ExtResource("2_ins5d")
+theme_override_font_sizes/normal_font_size = 14
+text = "_"
+
+[node name="Ver Reporte" type="Button" parent="Panel"]
+offset_left = 3.71162
+offset_top = 29.0699
+offset_right = 103.712
+offset_bottom = 60.0699
+scale = Vector2(0.148909, 0.117952)
+text = "Ver Reporte"
+
+[node name="Salir" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 21.9688
+offset_top = 29.3956
+offset_right = 97.9688
+offset_bottom = 60.3956
+scale = Vector2(0.148909, 0.117952)
+text = "Salir"
+script = ExtResource("3_fnl05")
+
+[connection signal="pressed" from="Panel/Ver Reporte" to="." method="_on_pressed"]
+[connection signal="pressed" from="Panel/Salir" to="Panel/Salir" method="_on_pressed"]

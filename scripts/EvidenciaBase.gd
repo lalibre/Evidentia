@@ -83,37 +83,38 @@ func aplicar_accion(accion: String):
 				if caracteristicas.get("pierde_datos_al_apagar", false):
 					Game_Manager.sumar_puntos(-10)
 					Game_Manager.registrar_en_bitacora("Se apagó %s y se perdieron datos." % tipo)
+					Game_Manager.registrar_fallo()
 			else:
 				Game_Manager.registrar_en_bitacora("Se apagó %s sin pérdida de datos." % tipo)
 				Game_Manager.registrar_accion("Se apagó %s sin pérdida de datos." % tipo)
-			estado = "apagado"
-			print("%s apagada" % tipo)
-				
+				Game_Manager.registrar_acierto()
+			estado = "apagado"				
 		"desconectar":
 			if estado == "apagado":
-				print("%s desconectada correctamente" % tipo)
-				Game_Manager.sumar_puntos(5)
+				Game_Manager.registrar_acierto()				
 				Game_Manager.registrar_en_bitacora("Se desconectó %s correctamente." % tipo)
+				estado = "desconectado"
 			else:
-				Game_Manager.sumar_puntos(-5)
 				Game_Manager.registrar_en_bitacora("Error: Se intentó desconectar %s encendida." % tipo)	
-				print("Error: No puedes desconectar %s encendida" % tipo)
-				Game_Manager.sumar_puntos(-5)
-			estado = "desconectado"
+				Game_Manager.registrar_fallo()		
 		"adquisición encendido":
 			if estado == "encendido":
-				Game_Manager.sumar_puntos(10)
 				 # Abrir el diálogo de CPU para seleccionar las sub-acciones
 				abrir_dialogo_clave()
 				Game_Manager.registrar_en_bitacora("Se hizo adquisición de %s encendida." % tipo)
+				Game_Manager.registrar_acierto()
 			else:
-				Game_Manager.sumar_puntos(-5)
+				Game_Manager.registrar_fallo()
 		"recolectar":
-			Game_Manager.registrar_en_bitacora("Recolectando dispositivo %s" % tipo)
-			print("Recolectando %s..." % tipo)
+			if estado == "evidenciado":
+				Game_Manager.registrar_fallo()
+			else:
+				Game_Manager.registrar_acierto()	
+			Game_Manager.registrar_en_bitacora("Recolectando  %s" % tipo)
+			Game_Manager.registrar_evidencia_recolectada()
 			estado = "recolectado"
 		"reportar":
 			Game_Manager.registrar_en_bitacora("Reportando al policia forense la evidencia %s" % tipo)
-			print("Reportando %s..." % tipo)
 			estado = "reportado"
+			Game_Manager.registrar_acierto()
 	emit_signal("estado_cambiado", estado)

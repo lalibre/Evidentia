@@ -3,12 +3,14 @@ class_name GameManager
 
 var evidencias: Array = []
 var puntuacion := 0
+var evidencias_recolectadas := 0
+var aciertos := 0
+var fallos := 0
+
 var score_label: Label = null
 var log_panel: RichTextLabel = null
 var bitacora_texto := ""
-var aciertos := 0
-var fallos := 0
-var acciones_totales := 0
+
 
 enum EstadoEvidencia {
 	ENCENDIDO,
@@ -31,7 +33,19 @@ func cambiar_a_scene_selector():
 	get_tree().current_scene.free()
 	get_tree().current_scene = selector_scene
 	get_tree().root.add_child(selector_scene)
-	
+
+func registrar_acierto():
+	aciertos += 1
+	print("✅ Acierto registrado. Total aciertos:", aciertos)
+
+func registrar_fallo():
+	fallos += 1
+	print("❌ Fallo registrado. Total fallos:", fallos)
+
+func registrar_evidencia_recolectada():
+	evidencias_recolectadas += 1
+	print("📦 Evidencia recolectada. Total:", evidencias_recolectadas)
+
 func sumar_puntos(valor: int):
 	puntuacion += valor
 	if score_label:
@@ -51,7 +65,9 @@ func registrar_accion(texto: String):
 func registrar_en_bitacora(mensaje: String) -> void:
 	var timestamp = "[" + Time.get_datetime_string_from_system().substr(11, 8) + "]"  # Solo HH:MM:SS
 	var entrada = "[color=blue]" + timestamp + "[/color] " + mensaje
-	
+	bitacora_texto += entrada
+	print("Contenido de bitácora 1:", bitacora_texto)
+
 	if log_panel:
 		if log_panel is RichTextLabel:
 			print("¡Es un RichTextLabel!")
@@ -78,21 +94,10 @@ func guardar_bitacora_en_archivo():
 	else:
 		print("No se pudo guardar la bitácora.")
 
-func verificar_fin_juego():
-	for e in evidencias:
-		if e.estado != EstadoEvidencia.RECOLECTADO:
-			return
-		# Todas recolectadas
-	mostrar_resultados_finales()
-
-func registrar_acierto():
-	aciertos += 1
-
-func registrar_fallo():
-	fallos += 1
 
 func puntuacion_final() -> int:
 	return aciertos * 10 - fallos * 5
+	
 func mostrar_resultados_finales():
 	# Mostrar un panel con resultados
 	print("🎉 Juego terminado")

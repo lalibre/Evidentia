@@ -35,13 +35,21 @@ icon = ExtResource("2_kftxf")
 flat = true
 script = ExtResource("3_kftxf")
 
-[node name="BotonGuardar" type="Button" parent="BottomButtonPanel"]
+[node name="BotonFinalizar" type="Button" parent="BottomButtonPanel"]
 custom_minimum_size = Vector2(40, 10)
 layout_mode = 2
 icon = ExtResource("3_663nc")
 flat = true
 script = ExtResource("1_prnvy")
 
+[node name="ConfirmationExitDialog" type="ConfirmationDialog" parent="."]
+title = "Finalizar análisis"
+position = Vector2i(450, 300)
+size = Vector2i(295, 106)
+dialog_text = "¿Deseas finalizar el análisis forense?
+Se generará el informe final."
+
 [connection signal="pressed" from="BottomButtonPanel/BotonAyuda" to="." method="_on_boton_ayuda_pressed"]
-[connection signal="pressed" from="BottomButtonPanel/BotonGuardar" to="." method="_on_boton_guardar_pressed"]
-[connection signal="toggled" from="BottomButtonPanel/BotonGuardar" to="." method="_on_boton_guardar_pressed"]
+[connection signal="pressed" from="BottomButtonPanel/BotonFinalizar" to="." method="_on_boton_finalizar_pressed"]
+[connection signal="canceled" from="ConfirmationExitDialog" to="BottomButtonPanel/BotonFinalizar" method="_on_confirmation_exit_dialog_canceled"]
+[connection signal="confirmed" from="ConfirmationExitDialog" to="BottomButtonPanel/BotonFinalizar" method="_on_confirmation_exit_dialog_confirmed"]
