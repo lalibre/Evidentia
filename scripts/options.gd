@@ -19,8 +19,10 @@ func _on_guardar_pressed():
 		print("Bitácora guardada desde OptionsPanel kkk")
 
 func _on_boton_ayuda_pressed() -> void:
-	print("Mostrar ayuda presed") # aquí puedes abrir un Popup con tips
-	# Replace with function body.
+	var ayuda_scene = preload("res://Scenes/ayuda.tscn")
+	var ayuda_instance = ayuda_scene.instantiate()
+	get_tree().current_scene.add_child(ayuda_instance)
+
 
 func _on_boton_finalizar_pressed():
 	print("Guardando en bitacora::::::")

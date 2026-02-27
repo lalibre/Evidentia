@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://72ogcbryej04" path="res://assets/background_selector.png" id="2_xeaxe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5e1f"]
-bg_color = Color(0.32549, 0.32549, 0.32549, 0.831373)
+bg_color = Color(0.309804, 0.32549, 0.360784, 0.960784)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_klwcj"]
 
@@ -22,10 +22,11 @@ texture = ExtResource("2_xeaxe")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 374.0
-offset_top = 152.0
-offset_right = 1002.0
-offset_bottom = 602.0
+offset_left = 480.0
+offset_top = 165.0
+offset_right = 1108.0
+offset_bottom = 615.0
+scale = Vector2(0.6, 0.92)
 theme_override_styles/panel = SubResource("StyleBoxFlat_f5e1f")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -41,7 +42,7 @@ layout_mode = 2
 
 [node name="CaseLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Introducción al caso"
+text = "📁 Caso de investigación"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -50,7 +51,20 @@ autowrap_mode = 2
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_vertical = 3
-text = "📁 Caso: Se ha encontrado un equipo sospechoso en la escena de un ciberataque. Tu tarea es preservar las evidencias digitales sin comprometer la integridad de los datos."
+text = "Se ha encontrado un equipo sospechoso en la escena de un posible cibercrimen. 
+
+Eres un analista forense digital encargado de intervenir para recopilar evidencias.
+
+🎯 Tu objetivo es:
+
+- Identificar correctamente las evidencias digitales.
+
+- Aplicar el procedimiento adecuado según el estado del dispositivo.
+
+- Evitar acciones que comprometan la integridad de los datos.
+
+En cada escena deberás interactuar con los elementos disponibles y tomar decisiones profesionales."
+tab_size = 6
 
 [node name="ContinueButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2

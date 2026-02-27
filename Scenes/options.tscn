@@ -20,17 +20,17 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -1246.5
-offset_top = -645.5
-offset_right = 329.5
-offset_bottom = -4.5
+offset_left = -1338.0
+offset_top = -631.0
+offset_right = 1139.0
+offset_bottom = 10.0
 grow_horizontal = 2
-scale = Vector2(0.165962, 0.197863)
-metadata/_edit_use_anchors_ = true
+scale = Vector2(0.112132, 0.0966472)
 
 [node name="BotonAyuda" type="Button" parent="BottomButtonPanel"]
 custom_minimum_size = Vector2(40, 10)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 icon = ExtResource("2_kftxf")
 flat = true
 script = ExtResource("3_kftxf")
@@ -38,6 +38,7 @@ script = ExtResource("3_kftxf")
 [node name="BotonFinalizar" type="Button" parent="BottomButtonPanel"]
 custom_minimum_size = Vector2(40, 10)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 icon = ExtResource("3_663nc")
 flat = true
 script = ExtResource("1_prnvy")

@@ -14,30 +14,34 @@ script = ExtResource("1_qurgk")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 350.0
-offset_top = 152.0
-offset_right = 967.0
-offset_bottom = 568.0
+offset_left = 260.0
+offset_top = 146.0
+offset_right = 877.0
+offset_bottom = 562.0
+scale = Vector2(0.872196, 0.844334)
 theme_override_styles/panel = SubResource("StyleBoxFlat_wdf8v")
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]
 layout_mode = 0
-offset_left = 46.0
-offset_top = 28.0
-offset_right = 570.0
-offset_bottom = 373.0
+offset_left = 21.7841
+offset_top = 20.1342
+offset_right = 545.784
+offset_bottom = 365.134
+scale = Vector2(1.09172, 1.10659)
 texture = ExtResource("2_fphq3")
 expand_mode = 1
 
 [node name="TypewriterEffect" parent="Panel" instance=ExtResource("3_wdf8v")]
-position = Vector2(46, 72)
+position = Vector2(22.9306, 49.7433)
+scale = Vector2(27.8164, -0.425448)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 0
-offset_left = 110.0
-offset_top = 240.0
-offset_right = 538.0
-offset_bottom = 377.0
+offset_left = 77.9641
+offset_top = 251.085
+offset_right = 505.964
+offset_bottom = 388.085
+scale = Vector2(1.18251, 1.26025)
 
 [node name="Memory" type="Button" parent="Panel/HBoxContainer"]
 clip_contents = true
@@ -68,14 +72,14 @@ text = "Iniciar ▶"
 
 [node name="ProgressBar" type="ProgressBar" parent="Panel"]
 layout_mode = 2
-offset_left = 110.0
-offset_top = 333.0
-offset_right = 242.0
-offset_bottom = 360.0
+offset_left = 96.3086
+offset_top = 360.047
+offset_right = 228.309
+offset_bottom = 387.047
 
 [node name="StatusLabel" type="Label" parent="Panel"]
 layout_mode = 2
-offset_left = 279.0
-offset_top = 337.0
-offset_right = 537.0
-offset_bottom = 360.0
+offset_left = 248.797
+offset_top = 361.231
+offset_right = 506.797
+offset_bottom = 384.231

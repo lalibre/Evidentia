@@ -2,10 +2,13 @@ extends Node
 class_name GameManager
 
 var evidencias: Array = []
-var puntuacion := 0
+var acciones := 0
 var evidencias_recolectadas := 0
 var aciertos := 0
 var fallos := 0
+var errores_criticos := 0
+var total_acciones_posibles := 0
+var puntuacion := 0
 
 var score_label: Label = null
 var log_panel: RichTextLabel = null
@@ -36,25 +39,28 @@ func cambiar_a_scene_selector():
 
 func registrar_acierto():
 	aciertos += 1
+	sumar_acciones(1)
 	print("✅ Acierto registrado. Total aciertos:", aciertos)
 
 func registrar_fallo():
 	fallos += 1
+	sumar_acciones(1)
 	print("❌ Fallo registrado. Total fallos:", fallos)
+
+func registrar_error_critico():
+	errores_criticos += 1
 
 func registrar_evidencia_recolectada():
 	evidencias_recolectadas += 1
 	print("📦 Evidencia recolectada. Total:", evidencias_recolectadas)
 
-func sumar_puntos(valor: int):
-	puntuacion += valor
+func sumar_acciones(valor: int):
+	acciones += valor
 	if score_label:
-		score_label.text = str(puntuacion)
-		print("Puntaje actualizado en ScoreLabel:", score_label.text)
+		score_label.text = str(acciones)
 		print("score_label es:", Game_Manager.score_label, "Tipo:", Game_Manager.score_label.get_class())
 	else:
 		print("ScoreLabel es null")
-	#print("Puntuación actual:", puntuacion)
 
 func registrar_accion(texto: String):
 	if log_panel:
@@ -64,7 +70,7 @@ func registrar_accion(texto: String):
 		
 func registrar_en_bitacora(mensaje: String) -> void:
 	var timestamp = "[" + Time.get_datetime_string_from_system().substr(11, 8) + "]"  # Solo HH:MM:SS
-	var entrada = "[color=blue]" + timestamp + "[/color] " + mensaje
+	var entrada = "[color=yellow]" + timestamp + "[/color] " + mensaje
 	bitacora_texto += entrada
 	print("Contenido de bitácora 1:", bitacora_texto)
 
@@ -93,18 +99,3 @@ func guardar_bitacora_en_archivo():
 		print("Bitácora guardada en:", ruta)
 	else:
 		print("No se pudo guardar la bitácora.")
-
-
-func puntuacion_final() -> int:
-	return aciertos * 10 - fallos * 5
-	
-func mostrar_resultados_finales():
-	# Mostrar un panel con resultados
-	print("🎉 Juego terminado")
-	print("Puntaje final:", puntuacion)
-	var aciertos = 0
-	var fallos = 0
-	# Supongamos que llevas contadores separados en GameManager
-	print("Aciertos:", aciertos)
-	print("Fallos:", fallos)
-	# Aquí podrías abrir un PopupPanel con esta información

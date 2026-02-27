@@ -13,7 +13,7 @@ func mostrar_menu(evidencia: Node, global_position: Vector2, estado):
 		"encendido":
 			menu.add_item("Inspeccionar")
 			menu.add_item("Apagar")
-			menu.add_item("Adquisición encendido")
+			menu.add_item("Adquisición")
 		"adquisicion_realizada":
 			menu.add_item("Inspeccionar")
 			menu.add_item("Apagar")

@@ -1,4 +1,4 @@
-extends Button
+extends Control
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,5 +11,5 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_boton_ayuda_pressed() -> void:
-	pass # Replace with function body.
+func _on_continue_button_pressed() -> void:
+	hide()

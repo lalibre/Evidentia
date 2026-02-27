@@ -8,11 +8,14 @@ func _ready():
 func mostrar_info(evidencia: Node, estado: String):
 	var texto := ""
 	print(evidencia.tipo)
+
 	match evidencia.tipo:
 		"CPU":
 			match estado:
 				"encendido":					
 					texto  = "💻 La CPU muestra luces LED parpadeando. 🔊 Se escucha un leve zumbido de ventiladores. 📶 Hay señales de actividad, como si estuviera en uso."
+				"adquisicion_realizada":
+					texto = "✅ Ya se ha realizado la adquicisión en encendido de esta evidencia."
 				"apagado":
 					texto = "💻 La CPU está sin luces. 🔇 No se perciben sonidos de ventiladores.  🔌 Aún se encuentra conectado a la corriente."
 				"desconectado":
@@ -31,6 +34,8 @@ func mostrar_info(evidencia: Node, estado: String):
 			match estado:
 				"encendido":					
 					texto  = "💻 📶 Hay señales de actividad, como si estuviera en uso."
+				"adquisicion_realizada":
+					texto = "✅ Ya se ha registrado el estado de esta evidencia."
 				"apagado":
 					texto = "💻 No hay luces de encendido detectadas  🔌 El monitor aún se encuentra conectado a la corriente."
 				"desconectado":
@@ -46,6 +51,8 @@ func mostrar_info(evidencia: Node, estado: String):
 					var clave_scene = preload("res://Scenes/puzzle.tscn")
 					var clave_instance = clave_scene.instantiate()
 					get_tree().current_scene.add_child(clave_instance)
+				"reportado":
+					texto = "✅ No hay evidencia de medios electronicos."
 				_:
 					texto = "🔍 No hay información disponible para este tipo de evidencia."
 		"postit":

@@ -13,10 +13,9 @@ signal estado_cambiado(nuevo_estado)
 @onready var cpu_dialog_scene = preload("res://Scenes/CpuMenuDialog.tscn")
 var cpu_dialog_instance: Control
 
-
 func _ready():
 	input_pickable = true
-	#print("EvidenceBase ready")
+
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
@@ -55,9 +54,6 @@ func abrir_dialogo_recolectar():
 	#if puzzle_instance is WindowDialog:
 	#	puzzle_instance.popup_centered()
 func abrir_dialogo_cpu():
-	print("llega")
-	#if not cpu_dialog_instance:
-	print("entra")
 	cpu_dialog_instance = cpu_dialog_scene.instantiate()
 	get_tree().current_scene.add_child(cpu_dialog_instance)
 	#cpu_dialog_instance.mostrar(self, get_global_mouse_position())
@@ -72,8 +68,10 @@ func abrir_dialogo_clave():
 
 func _on_clave_correcta():
 	abrir_dialogo_cpu()
+	estado = "adquisicion_realizada"
 	Game_Manager.registrar_en_bitacora("El usuario ingresó la clave correctamente para adquirir en vivo.")
-
+	Game_Manager.registrar_en_bitacora("Se hizo adquisición de %s encendida." % tipo)
+	Game_Manager.registrar_acierto()
 
 func aplicar_accion(accion: String):
 	print("Esta es la accion: %s" %accion)
@@ -81,7 +79,6 @@ func aplicar_accion(accion: String):
 		"apagar":
 			if estado == "encendido":
 				if caracteristicas.get("pierde_datos_al_apagar", false):
-					Game_Manager.sumar_puntos(-10)
 					Game_Manager.registrar_en_bitacora("Se apagó %s y se perdieron datos." % tipo)
 					Game_Manager.registrar_fallo()
 			else:
@@ -97,17 +94,20 @@ func aplicar_accion(accion: String):
 			else:
 				Game_Manager.registrar_en_bitacora("Error: Se intentó desconectar %s encendida." % tipo)	
 				Game_Manager.registrar_fallo()		
-		"adquisición encendido":
+		"adquisición":
 			if estado == "encendido":
-				 # Abrir el diálogo de CPU para seleccionar las sub-acciones
-				abrir_dialogo_clave()
-				Game_Manager.registrar_en_bitacora("Se hizo adquisición de %s encendida." % tipo)
-				Game_Manager.registrar_acierto()
+				if tipo == "CPU":
+					 # Abrir el diálogo de CPU para seleccionar las sub-acciones
+					abrir_dialogo_clave()
+				else: 
+					Game_Manager.registrar_en_bitacora("El %s esta encendido.  Se procede a tomar una fotografía de pantalla." % tipo)
+					estado = "adquisicion_realizada"	
 			else:
 				Game_Manager.registrar_fallo()
 		"recolectar":
 			if estado == "evidenciado":
 				Game_Manager.registrar_fallo()
+				Game_Manager.registrar_en_bitacora("Se recolectó %s antes de ser reportado a la policia forense" % tipo)
 			else:
 				Game_Manager.registrar_acierto()	
 			Game_Manager.registrar_en_bitacora("Recolectando  %s" % tipo)

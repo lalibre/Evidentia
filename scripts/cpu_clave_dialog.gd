@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 func _on_iniciar_sesion_pressed() -> void:
 	if clave_input.text == "X49B":
 		emit_signal("clave_correcta")
+		
 		queue_free()
 	else:
 		$Panel/TextureRect/CenterContainer/VBoxContainer/MensajeLabel.text = "❌ Clave incorrecta"

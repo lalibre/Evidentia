@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://xgxxf0tl8wcl"]
+[gd_scene load_steps=18 format=3 uid="uid://xgxxf0tl8wcl"]
 
 [ext_resource type="Script" uid="uid://cbof3f5n81jqy" path="res://scripts/game_scene_base.gd" id="1_phlmm"]
 [ext_resource type="Texture2D" uid="uid://c0d4mlsh27rnm" path="res://assets/Escena On_2.png" id="2_phlmm"]
@@ -21,6 +21,9 @@ size = Vector2(129.875, 145.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctdx8"]
 size = Vector2(141, 207.5)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7jco"]
+bg_color = Color(0.16, 0.186667, 0.2, 0.901961)
+
 [node name="GameScene_ComputerOn" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -32,31 +35,8 @@ layout_mode = 0
 offset_top = -79.0
 offset_right = 1360.0
 offset_bottom = 753.0
+mouse_filter = 2
 texture = ExtResource("2_phlmm")
-
-[node name="UI" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="HelpPanel" type="ColorRect" parent="UI"]
-layout_mode = 0
-offset_left = 22.0
-offset_top = 532.0
-offset_right = 446.0
-offset_bottom = 625.0
-color = Color(1, 1, 1, 0)
-script = ExtResource("3_m7jco")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/HelpPanel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="UI/HelpPanel/VBoxContainer"]
-layout_mode = 2
-
-[node name="Timer" type="Timer" parent="UI/HelpPanel/VBoxContainer"]
 
 [node name="EvidenceCPU" type="Area2D" parent="."]
 script = ExtResource("3_gvk18")
@@ -93,6 +73,18 @@ texture = ExtResource("8_gvk18")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EvidencePostIt"]
 position = Vector2(545, 238)
 polygon = PackedVector2Array(-35, 65, 15, 56, 22, 84, 29, 99, -24, 111, -32, 85)
+
+[node name="EvidenceMonitor" type="Area2D" parent="."]
+script = ExtResource("12_j4xcu")
+
+[node name="Sprite2D" type="Sprite2D" parent="EvidenceMonitor"]
+position = Vector2(429, 283)
+scale = Vector2(1, 1.07653)
+texture = ExtResource("11_cwtea")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="EvidenceMonitor"]
+position = Vector2(443, 278)
+polygon = PackedVector2Array(-65, -67, 17, -60, 45, -56, 54, 69, 13, 72, -57, 72)
 
 [node name="EvidenciaMenu" type="PopupMenu" parent="."]
 size = Vector2i(215, 116)
@@ -135,20 +127,67 @@ offset_right = 1513.56
 offset_bottom = 493.524
 scale = Vector2(0.612507, 0.831246)
 
-[node name="EvidenceMonitor" type="Area2D" parent="."]
-script = ExtResource("12_j4xcu")
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 579.0
+offset_top = 380.0
+offset_right = 579.0
+offset_bottom = 380.0
+scale = Vector2(0.815294, 0.813899)
 
-[node name="Sprite2D" type="Sprite2D" parent="EvidenceMonitor"]
-position = Vector2(429, 283)
-scale = Vector2(1, 1.07653)
-texture = ExtResource("11_cwtea")
+[node name="HelpPanel" type="ColorRect" parent="UI"]
+layout_mode = 2
+offset_left = -56.4214
+offset_top = -17.2012
+offset_right = 29.5786
+offset_bottom = -17.2012
+scale = Vector2(1, 1.01829)
+color = Color(1, 1, 1, 0)
+script = ExtResource("3_m7jco")
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="EvidenceMonitor"]
-position = Vector2(443, 278)
-polygon = PackedVector2Array(-65, -67, 17, -60, 45, -56, 54, 69, 13, 72, -57, 72)
+[node name="Panel" type="Panel" parent="UI/HelpPanel"]
+layout_mode = 0
+offset_left = -380.23
+offset_top = -182.194
+offset_right = 464.77
+offset_bottom = 260.806
+scale = Vector2(0.861033, 1.11906)
+theme_override_styles/panel = SubResource("StyleBoxFlat_m7jco")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HelpPanel"]
+layout_mode = 0
+offset_left = -360.605
+offset_top = -164.095
+offset_right = -274.605
+offset_bottom = -106.095
+scale = Vector2(1.33338, 1.21425)
+
+[node name="Label" type="Label" parent="UI/HelpPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Timer" type="Timer" parent="UI/HelpPanel/VBoxContainer"]
+
+[node name="ContinueButton" type="Button" parent="UI/HelpPanel"]
+layout_mode = 2
+offset_left = -63.7804
+offset_top = 243.73
+offset_right = 22.2196
+offset_bottom = 274.73
+scale = Vector2(1.35705, 1.34595)
+text = "Continuar"
 
 [connection signal="input_event" from="EvidenceCPU" to="EvidenceCPU" method="_on_input_event"]
+[connection signal="mouse_entered" from="EvidenceCPU" to="EvidenceCPU" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EvidenceCPU" to="EvidenceCPU" method="_on_mouse_exited"]
 [connection signal="input_event" from="EvidenceCajon" to="EvidenceCajon" method="_on_input_event"]
+[connection signal="mouse_entered" from="EvidenceCajon" to="EvidenceCajon" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EvidenceCajon" to="EvidenceCajon" method="_on_mouse_exited"]
 [connection signal="input_event" from="EvidencePostIt" to="EvidencePostIt" method="_on_input_event"]
-[connection signal="id_pressed" from="EvidenciaMenu" to="EvidenciaMenu" method="_on_id_pressed"]
+[connection signal="mouse_entered" from="EvidencePostIt" to="EvidencePostIt" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EvidencePostIt" to="EvidencePostIt" method="_on_mouse_exited"]
 [connection signal="input_event" from="EvidenceMonitor" to="EvidenceMonitor" method="_on_input_event"]
+[connection signal="mouse_entered" from="EvidenceMonitor" to="EvidenceMonitor" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EvidenceMonitor" to="EvidenceMonitor" method="_on_mouse_exited"]
+[connection signal="id_pressed" from="EvidenciaMenu" to="EvidenciaMenu" method="_on_id_pressed"]
+[connection signal="pressed" from="UI/HelpPanel/ContinueButton" to="UI/HelpPanel" method="_on_continue_button_pressed"]

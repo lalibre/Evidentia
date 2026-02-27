@@ -1,11 +1,63 @@
-[gd_scene load_steps=5 format=3 uid="uid://cra7n8iqv3y18"]
+[gd_scene load_steps=6 format=3 uid="uid://cra7n8iqv3y18"]
 
 [ext_resource type="Script" uid="uid://by7chjt2khgj1" path="res://Scenes/informe.gd" id="1_7047q"]
 [ext_resource type="FontFile" uid="uid://daem6pjn6eil8" path="res://assets/fonts/Xolonium-Regular.ttf" id="2_ins5d"]
 [ext_resource type="Script" uid="uid://dlhtfjqj0tu58" path="res://Scenes/salir.gd" id="3_fnl05"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fop2m"]
-bg_color = Color(0.176471, 0.247059, 0.317647, 0.705882)
+bg_color = Color(0.172549, 0.188235, 0.2, 0.945098)
+
+[sub_resource type="FontFile" id="FontFile_ins5d"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/4/0/ascent = 0.0
+cache/0/4/0/descent = 0.0
+cache/0/4/0/underline_position = 0.0
+cache/0/4/0/underline_thickness = 0.0
+cache/0/4/0/scale = 1.0
+cache/0/5/0/ascent = 0.0
+cache/0/5/0/descent = 0.0
+cache/0/5/0/underline_position = 0.0
+cache/0/5/0/underline_thickness = 0.0
+cache/0/5/0/scale = 1.0
+cache/0/6/0/ascent = 0.0
+cache/0/6/0/descent = 0.0
+cache/0/6/0/underline_position = 0.0
+cache/0/6/0/underline_thickness = 0.0
+cache/0/6/0/scale = 1.0
+cache/0/7/0/ascent = 0.0
+cache/0/7/0/descent = 0.0
+cache/0/7/0/underline_position = 0.0
+cache/0/7/0/underline_thickness = 0.0
+cache/0/7/0/scale = 1.0
+cache/0/8/0/ascent = 0.0
+cache/0/8/0/descent = 0.0
+cache/0/8/0/underline_position = 0.0
+cache/0/8/0/underline_thickness = 0.0
+cache/0/8/0/scale = 1.0
+cache/0/9/0/ascent = 0.0
+cache/0/9/0/descent = 0.0
+cache/0/9/0/underline_position = 0.0
+cache/0/9/0/underline_thickness = 0.0
+cache/0/9/0/scale = 1.0
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+cache/0/11/0/ascent = 0.0
+cache/0/11/0/descent = 0.0
+cache/0/11/0/underline_position = 0.0
+cache/0/11/0/underline_thickness = 0.0
+cache/0/11/0/scale = 1.0
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
 
 [node name="Informe" type="Control"]
 layout_mode = 3
@@ -14,91 +66,122 @@ script = ExtResource("1_7047q")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 354.0
-offset_top = 85.0
-offset_right = 390.0
-offset_bottom = 121.0
-scale = Vector2(9.9687, 12.2808)
+offset_left = 401.0
+offset_top = 170.0
+offset_right = 437.0
+offset_bottom = 206.0
+scale = Vector2(8.4087, 10.1335)
 theme_override_styles/panel = SubResource("StyleBoxFlat_fop2m")
 
 [node name="Titulo" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 6.11915
-offset_top = 2.11713
-offset_right = 139.119
-offset_bottom = 25.1171
-scale = Vector2(0.195229, 0.145004)
+offset_left = 8.68148
+offset_top = 2.07233
+offset_right = 141.681
+offset_bottom = 25.0723
+scale = Vector2(0.142484, 0.10932)
 text = "🧮Puntuación🧮"
 
 [node name="Aciertos" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 8.22575
-offset_top = 6.26997
-offset_right = 102.226
-offset_bottom = 29.27
-scale = Vector2(0.146267, 0.108617)
+offset_left = 8.07094
+offset_top = 10.4539
+offset_right = 102.071
+offset_bottom = 33.4539
+scale = Vector2(0.10675, 0.0846586)
 text = "✅ Aciertos:"
 
 [node name="AciertosValue" type="Label" parent="Panel"]
-offset_left = 24.9437
-offset_top = 5.74187
-offset_right = 34.9437
-offset_bottom = 28.7419
-scale = Vector2(0.180403, 0.124133)
+layout_mode = 0
+offset_left = 24.7889
+offset_top = 9.92578
+offset_right = 34.7889
+offset_bottom = 32.9258
+scale = Vector2(0.131664, 0.0935849)
 text = "0"
 
 [node name="Fallos" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 8.30011
-offset_top = 9.44777
-offset_right = 83.3001
-offset_bottom = 32.4478
-scale = Vector2(0.141213, 0.115837)
+offset_left = 7.73009
+offset_top = 12.434
+offset_right = 82.7301
+offset_bottom = 35.434
+scale = Vector2(0.103062, 0.0873305)
 text = "❌ Fallos:"
 
 [node name="FallosValue" type="Label" parent="Panel"]
-offset_left = 24.915
-offset_top = 9.48666
-offset_right = 34.915
-offset_bottom = 32.4867
-scale = Vector2(0.188025, 0.128314)
+layout_mode = 0
+offset_left = 25.0931
+offset_top = 12.434
+offset_right = 35.0931
+offset_bottom = 35.434
+scale = Vector2(0.137227, 0.096737)
 text = "0"
 
 [node name="Puntuacion" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 13.0641
-offset_top = 12.3984
-offset_right = 74.0641
-offset_bottom = 35.3984
-scale = Vector2(0.162632, 0.140794)
-text = "Score: 0"
+offset_left = 12.9628
+offset_top = 6.11832
+offset_right = 73.9628
+offset_bottom = 29.1183
+scale = Vector2(0.122596, 0.107383)
+text = "Score:"
+
+[node name="PuntuacionValue" type="Label" parent="Panel"]
+offset_left = 21.2875
+offset_top = 6.41437
+offset_right = 31.2875
+offset_bottom = 29.4144
+scale = Vector2(0.176596, 0.113025)
+text = "0"
+
+[node name="Evaluacion" type="RichTextLabel" parent="Panel"]
+custom_minimum_size = Vector2(20, 10)
+layout_mode = 0
+offset_left = 3.68666
+offset_top = 17.2695
+offset_right = 123.687
+offset_bottom = 57.2695
+scale = Vector2(0.242916, 0.318212)
+theme_override_fonts/normal_font = ExtResource("2_ins5d")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+scroll_following = true
+autowrap_mode = 2
+tab_size = 12
+shortcut_keys_enabled = false
 
 [node name="TextoInforme" type="RichTextLabel" parent="Panel"]
+visible = false
 layout_mode = 0
-offset_left = 3.10973
-offset_top = 17.7513
-offset_right = 43.1097
-offset_bottom = 57.7513
-scale = Vector2(0.7581, 0.257405)
-theme_override_fonts/normal_font = ExtResource("2_ins5d")
-theme_override_font_sizes/normal_font_size = 14
-text = "_"
+offset_left = 4.63805
+offset_top = 21.4141
+offset_right = 44.638
+offset_bottom = 61.4141
+scale = Vector2(0.150937, 0.122787)
+theme_override_fonts/normal_font = SubResource("FontFile_ins5d")
+theme_override_font_sizes/normal_font_size = 12
+text = "hola"
+autowrap_mode = 2
+tab_size = 12
 
 [node name="Ver Reporte" type="Button" parent="Panel"]
-offset_left = 3.71162
-offset_top = 29.0699
-offset_right = 103.712
-offset_bottom = 60.0699
-scale = Vector2(0.148909, 0.117952)
+visible = false
+layout_mode = 0
+offset_left = 3.68666
+offset_top = 31.085
+offset_right = 103.687
+offset_bottom = 62.085
+scale = Vector2(0.120566, 0.100025)
 text = "Ver Reporte"
 
 [node name="Salir" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 21.9688
-offset_top = 29.3956
-offset_right = 97.9688
-offset_bottom = 60.3956
-scale = Vector2(0.148909, 0.117952)
+offset_left = 13.6763
+offset_top = 31.085
+offset_right = 89.6763
+offset_bottom = 62.085
+scale = Vector2(0.120566, 0.100025)
 text = "Salir"
 script = ExtResource("3_fnl05")
 

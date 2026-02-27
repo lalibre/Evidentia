@@ -10,6 +10,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
+func reset_resultados() -> void:
+	Game_Manager.aciertos = 0
+	Game_Manager.fallos = 0
+	Game_Manager.puntuacion
+	
 func _on_pressed() -> void:
+	reset_resultados()
 	get_tree().change_scene_to_file("res://Scenes/scene_selector.tscn")
