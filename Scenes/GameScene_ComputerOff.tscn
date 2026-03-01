@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://wv1n5rguqn6u"]
+[gd_scene load_steps=20 format=3 uid="uid://wv1n5rguqn6u"]
 
 [ext_resource type="Script" uid="uid://cbof3f5n81jqy" path="res://scripts/game_scene_base.gd" id="1_fuvdj"]
 [ext_resource type="Texture2D" uid="uid://butxjyqxch7p1" path="res://assets/Escena OFF_FINAL.png" id="2_d4flg"]
@@ -12,79 +12,60 @@
 [ext_resource type="PackedScene" uid="uid://bm6cw17bhci42" path="res://Scenes/info_panel.tscn" id="10_d4flg"]
 [ext_resource type="Script" uid="uid://dt4hihc6yvak" path="res://scripts/evidencias/evidence_monitor.gd" id="11_164do"]
 [ext_resource type="PackedScene" uid="uid://b6jp532ass17w" path="res://Scenes/options.tscn" id="11_fuvdj"]
+[ext_resource type="Script" uid="uid://ccyyl0kqv2esw" path="res://Scenes/evidence_cajon_off.gd" id="11_ipp3i"]
 [ext_resource type="Texture2D" uid="uid://dt8vbmapgqnee" path="res://assets/MONITOR_OFF.png" id="11_mfr2o"]
+[ext_resource type="Texture2D" uid="uid://cu1o7bw0j4y2w" path="res://assets/EvidenceCajon.png" id="14_3f8tb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fubrg"]
-size = Vector2(195.75, 171.5)
+size = Vector2(186, 172.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctdx8"]
-size = Vector2(94.875, 36.875)
+size = Vector2(77.4375, 22)
 
 [sub_resource type="ImageTexture" id="ImageTexture_fuvdj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ipp3i"]
+bg_color = Color(0.14902, 0.156863, 0.196078, 0.784314)
 
 [node name="GameScene_ComputerOff" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
+mouse_force_pass_scroll_events = false
 script = ExtResource("1_fuvdj")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -54.0
+offset_left = -57.0
 offset_top = -61.0
-offset_right = 1306.0
+offset_right = 1303.0
 offset_bottom = 771.0
-scale = Vector2(1.00287, 0.945161)
+scale = Vector2(0.936697, 0.887223)
+mouse_filter = 2
 texture = ExtResource("2_d4flg")
-
-[node name="UI" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="HelpPanel" type="ColorRect" parent="UI"]
-layout_mode = 0
-offset_left = 35.0
-offset_top = 542.0
-offset_right = 496.0
-offset_bottom = 631.0
-scale = Vector2(1.07023, 1.23553)
-color = Color(1, 1, 1, 0)
-script = ExtResource("3_164do")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/HelpPanel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(1, 0.850008)
-
-[node name="Label" type="Label" parent="UI/HelpPanel/VBoxContainer"]
-layout_mode = 2
-
-[node name="Timer" type="Timer" parent="UI/HelpPanel/VBoxContainer"]
 
 [node name="EvidenceCPU" type="Area2D" parent="."]
 script = ExtResource("2_el77p")
 
 [node name="Sprite2D" type="Sprite2D" parent="EvidenceCPU"]
-position = Vector2(173, 379)
+position = Vector2(155, 360)
 scale = Vector2(1.24215, 1.07108)
 texture = ExtResource("4_fuvdj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EvidenceCPU"]
-position = Vector2(172.875, 376)
+position = Vector2(157, 360.625)
 shape = SubResource("RectangleShape2D_fubrg")
 
 [node name="Evidence_USB" type="Area2D" parent="."]
 script = ExtResource("3_fubrg")
 
 [node name="Sprite2D" type="Sprite2D" parent="Evidence_USB"]
-position = Vector2(387.25, 468)
-scale = Vector2(1.22152, 1.02703)
+position = Vector2(361, 435)
+scale = Vector2(1.14152, 1.02703)
 texture = ExtResource("6_fuvdj")
 
 [node name="CollisionShapeUSB" type="CollisionShape2D" parent="Evidence_USB"]
-position = Vector2(385, 469)
+position = Vector2(365.281, 438)
 shape = SubResource("RectangleShape2D_ctdx8")
 
 [node name="Evidence_PostIt" type="Area2D" parent="."]
@@ -92,12 +73,41 @@ scale = Vector2(0.541903, 0.880672)
 script = ExtResource("4_el77p")
 
 [node name="Sprite2D" type="Sprite2D" parent="Evidence_PostIt"]
-position = Vector2(743, 183)
+position = Vector2(666.171, 152.157)
 scale = Vector2(1.025, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Evidence_PostIt"]
-position = Vector2(109, 26)
-polygon = PackedVector2Array(22, 16, 121, 37, 107, 138, -1, 115)
+position = Vector2(73.8139, 45.4199)
+scale = Vector2(1.02101, 0.946542)
+polygon = PackedVector2Array(29.5256, 31.7939, 219.596, 54.5038, 178.999, 157.834, -9.22675, 141.937)
+
+[node name="EvidenceMonitor" type="Area2D" parent="."]
+scale = Vector2(0.999988, 1.02811)
+script = ExtResource("11_164do")
+
+[node name="Sprite2D" type="Sprite2D" parent="EvidenceMonitor"]
+position = Vector2(395.659, 272.637)
+scale = Vector2(1.24893, 0.967364)
+texture = ExtResource("11_mfr2o")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="EvidenceMonitor"]
+position = Vector2(361.004, 245.11)
+scale = Vector2(1.02181, 0.976255)
+polygon = PackedVector2Array(-116.001, -73.9221, 166.002, -53.4962, 185.002, 108.938, 64, 117, -94.0011, 121.582)
+
+[node name="EvidenceCajon" type="Area2D" parent="."]
+scale = Vector2(0.999988, 1.02811)
+script = ExtResource("11_ipp3i")
+
+[node name="Sprite2D" type="Sprite2D" parent="EvidenceCajon"]
+position = Vector2(838.01, 519.4)
+scale = Vector2(1.24893, 0.967364)
+texture = ExtResource("14_3f8tb")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="EvidenceCajon"]
+position = Vector2(649.008, 456.177)
+scale = Vector2(1.02181, 0.976255)
+polygon = PackedVector2Array(183.011, 37.86, 216.285, 36.8636, 227.051, 45.8305, 232.923, 73.7273, 135.056, 102.621, 135.056, 48.8194)
 
 [node name="EvidenciaMenu" type="PopupMenu" parent="."]
 size = Vector2i(200, 90)
@@ -135,23 +145,71 @@ offset_right = 1865.0
 offset_bottom = 621.0
 scale = Vector2(0.936713, 1.01538)
 
-[node name="EvidenceMonitor" type="Area2D" parent="."]
-scale = Vector2(0.999988, 1.02811)
-script = ExtResource("11_164do")
-
-[node name="Sprite2D" type="Sprite2D" parent="EvidenceMonitor"]
-position = Vector2(419.659, 290.145)
-scale = Vector2(1.24893, 1.00627)
-texture = ExtResource("11_mfr2o")
-
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="EvidenceMonitor"]
-position = Vector2(387.005, 262.618)
-polygon = PackedVector2Array(-116.001, -73.9221, 166.002, -53.4962, 185.002, 108.938, 64, 117, -94.0011, 121.582)
-
 [node name="UI2" type="CanvasLayer" parent="."]
 
+[node name="UI" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 579.0
+offset_top = 380.0
+offset_right = 579.0
+offset_bottom = 380.0
+
+[node name="HelpPanel" type="ColorRect" parent="UI"]
+layout_mode = 2
+offset_left = -43.0
+offset_top = -17.0
+offset_right = 43.0
+offset_bottom = -17.0
+scale = Vector2(1, 0.92)
+color = Color(1, 1, 1, 0)
+script = ExtResource("3_164do")
+
+[node name="Panel" type="Panel" parent="UI/HelpPanel"]
+layout_mode = 0
+offset_left = -337.0
+offset_top = -173.913
+offset_right = 508.0
+offset_bottom = 269.087
+scale = Vector2(0.729399, 1.05648)
+theme_override_styles/panel = SubResource("StyleBoxFlat_ipp3i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HelpPanel"]
+layout_mode = 0
+offset_left = -318.0
+offset_top = -148.913
+offset_right = -232.0
+offset_bottom = -90.913
+scale = Vector2(1.04327, 1.10952)
+
+[node name="Label" type="Label" parent="UI/HelpPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Timer" type="Timer" parent="UI/HelpPanel/VBoxContainer"]
+
+[node name="ContinueButton" type="Button" parent="UI/HelpPanel"]
+layout_mode = 2
+offset_left = -55.0
+offset_top = 227.174
+offset_right = 31.0
+offset_bottom = 258.174
+scale = Vector2(1.28769, 1.43016)
+text = "Continuar"
+
 [connection signal="input_event" from="EvidenceCPU" to="EvidenceCPU" method="_on_input_event"]
+[connection signal="mouse_entered" from="EvidenceCPU" to="EvidenceCPU" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EvidenceCPU" to="EvidenceCPU" method="_on_mouse_exited"]
 [connection signal="input_event" from="Evidence_USB" to="Evidence_USB" method="_on_input_event"]
+[connection signal="mouse_entered" from="Evidence_USB" to="Evidence_USB" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Evidence_USB" to="Evidence_USB" method="_on_mouse_exited"]
 [connection signal="input_event" from="Evidence_PostIt" to="Evidence_PostIt" method="_on_input_event"]
-[connection signal="id_pressed" from="EvidenciaMenu" to="EvidenciaMenu" method="_on_id_pressed"]
+[connection signal="mouse_entered" from="Evidence_PostIt" to="Evidence_PostIt" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Evidence_PostIt" to="Evidence_PostIt" method="_on_mouse_exited"]
 [connection signal="input_event" from="EvidenceMonitor" to="EvidenceMonitor" method="_on_input_event"]
+[connection signal="mouse_entered" from="EvidenceMonitor" to="EvidenceMonitor" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EvidenceMonitor" to="EvidenceMonitor" method="_on_mouse_exited"]
+[connection signal="input_event" from="EvidenceCajon" to="EvidenceCajon" method="_on_input_event"]
+[connection signal="mouse_entered" from="EvidenceCajon" to="EvidenceCajon" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EvidenceCajon" to="EvidenceCajon" method="_on_mouse_exited"]
+[connection signal="id_pressed" from="EvidenciaMenu" to="EvidenciaMenu" method="_on_id_pressed"]
+[connection signal="pressed" from="UI/HelpPanel/ContinueButton" to="UI/HelpPanel" method="_on_continue_button_pressed"]

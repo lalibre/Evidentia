@@ -32,7 +32,6 @@ func _on_memory_pressed():
 	acciones_realizadas["memory"] = true
 	_start_action("Adquiriendo memoria volátil...", "Memoria adquirida con éxito.", "Volatile Memory Acquisition", true)
 	$Panel/HBoxContainer/Memory.disabled = true  # desactivar botón
-	Game_Manager.sumar_puntos(10) 
 	Game_Manager.registrar_en_bitacora("✅ Memoria volatil adquirida con éxito")
 		
 func _on_network_pressed():
@@ -42,7 +41,6 @@ func _on_network_pressed():
 		
 	_start_action("Capturando tráfico de red...", "Captura de red finalizada.", "Network Traffic", true)
 	Game_Manager.registrar_en_bitacora("✅ Captura de tráfico de red finalizada")
-	Game_Manager.sumar_puntos(10)
 	$Panel/HBoxContainer/Network.disabled = true
 	
 func _on_malware_pressed():
@@ -59,7 +57,6 @@ func _on_malware_pressed():
 	)
 	_start_action("Analizando muestras de malware...", "Malware identificado y almacenado.", "Analysis Malware", true)
 	Game_Manager.registrar_en_bitacora("✅ Malware identificado y almacenado")
-	Game_Manager.sumar_puntos(10)
 	$Panel/HBoxContainer/Malware.disabled = true
 	
 func _start_action(start_msg: String, end_msg: String, accion: String, exito: bool):

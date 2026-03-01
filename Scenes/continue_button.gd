@@ -11,5 +11,5 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_boton_ayuda_pressed() -> void:
-	pass # Replace with function body.
+func _on_pressed() -> void:
+		hide()

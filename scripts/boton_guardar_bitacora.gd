@@ -11,7 +11,11 @@ func _process(delta: float) -> void:
 	pass
 
 
+func _on_confirmation_exit_dialog_canceled() -> void:
+	pass # Replace with function body.
 
-func _on_boton_guardar_pressed(toggled_on: bool) -> void:
-	print("Guardando en bitacora")
-	Game_Manager.guardar_bitacora_en_archivo()
+
+func _on_confirmation_exit_dialog_confirmed() -> void:
+	var informe_scene = preload("res://Scenes/informe.tscn")
+	var informe_instance = informe_scene.instantiate()
+	get_tree().current_scene.add_child(informe_instance)

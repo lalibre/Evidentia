@@ -23,10 +23,18 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	$UI/HelpPanel.show_message("🔍 En esta escena hay posibles evidencias digitales. 
-	Examina cada elemento con atención y selecciona la acción correcta al hacer clic sobre ellos.
-	💡 Consejo: Toma decisiones con cuidado: 
-	Una mala acción puede destruir datos o comprometer la cadena de custodia.")
+	$UI/HelpPanel.show_message("🧪 Escena del crimen
+
+Te encuentras en un entorno con posibles evidencias digitales.
+
+🔍 Haz clic sobre los dispositivos para inspeccionarlos.
+Cada dispositivo puede requerir una acción distinta según su estado.
+
+✔ Las decisiones correctas suman puntos.
+✖ Las acciones incorrectas restan puntos.
+
+📌 Cuando creas haber gestionado todas las evidencias relevantes, 
+pulsa el botón 'Finalizar' para cerrar la escena y ver tu puntuación.")
 
 	# Llamar función que mostrará el mouse luego de un delay
 	_show_mouse_after_delay()

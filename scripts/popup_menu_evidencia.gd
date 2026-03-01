@@ -13,7 +13,7 @@ func mostrar_menu(evidencia: Node, global_position: Vector2, estado):
 		"encendido":
 			menu.add_item("Inspeccionar")
 			menu.add_item("Apagar")
-			menu.add_item("Adquisición encendido")
+			menu.add_item("Adquisición")
 		"adquisicion_realizada":
 			menu.add_item("Inspeccionar")
 			menu.add_item("Apagar")
@@ -27,6 +27,8 @@ func mostrar_menu(evidencia: Node, global_position: Vector2, estado):
 			menu.add_item("Recolectar")
 			menu.add_item("Reportar")
 		"recolectado":
+			menu.add_item("Inspeccionar")
+		"reportado":
 			menu.add_item("Inspeccionar")
 	menu.reset_size()
 	var item_count = menu.item_count

@@ -20,7 +20,7 @@ func _input_event(camera: Camera3D, event: InputEvent, click_position: Vector3, 
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		print("Puerta clickeada, cargando escena...")
 		get_tree().change_scene_to_packed(preload("res://Scenes/GameScene_ComputerOn.tscn"))
-
+		Game_Manager.total_acciones_posibles = 6
 
 func input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	pass # Replace with function body.

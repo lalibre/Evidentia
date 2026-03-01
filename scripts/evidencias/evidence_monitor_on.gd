@@ -9,3 +9,11 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		var menu = get_parent().get_node("EvidenciaMenu")
 		menu.mostrar_menu(self, get_global_mouse_position(), estado)
+
+
+func _on_mouse_entered() -> void:
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
+
+
+func _on_mouse_exited() -> void:
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)

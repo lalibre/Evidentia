@@ -54,3 +54,7 @@ func _on_Timer_timeout():
 	if message_queue.size() > 0:
 		var next = message_queue.pop_front()
 		_display_message(next[0], next[1])
+
+
+func _on_continue_button_pressed() -> void:
+	hide()

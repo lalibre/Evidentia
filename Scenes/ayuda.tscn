@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://bswprolqemwmu"]
+
+[ext_resource type="Script" uid="uid://d3p53h7k2fxms" path="res://Scenes/ayuda.gd" id="1_yyw0t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gngk"]
+bg_color = Color(0.305882, 0.329412, 0.34902, 0.870588)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yyw0t"]
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_yyw0t")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 388.0
+offset_top = 165.0
+offset_right = 1016.0
+offset_bottom = 615.0
+scale = Vector2(0.6, 0.92)
+theme_override_styles/panel = SubResource("StyleBoxFlat_3gngk")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+material = SubResource("ShaderMaterial_yyw0t")
+layout_mode = 0
+offset_left = 169.0
+offset_top = 125.0
+offset_right = 980.0
+offset_bottom = 600.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="CaseLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Instrucciones"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CaseText" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_vertical = 3
+text = " En esta escena hay posibles evidencias digitales. 
+🔍Examina cada elemento con atención, haz clic y selecciona la acción correcta.
+🔍Cada acción que realices tendrá efecto sobre la evidencia cambiando su estado.
+📌Asegurate de recoger todas la evidencias, al terminar haz clic en Finalizar. 
+	
+💡 Consejo: Toma decisiones con cuidado.  Una mala acción puede destruir datos o comprometer la cadena de custodia."
+tab_size = 6
+
+[node name="ContinueButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Continuar"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
