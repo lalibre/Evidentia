@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bswprolqemwmu"]
+[gd_scene load_steps=6 format=3 uid="uid://bswprolqemwmu"]
 
 [ext_resource type="Script" uid="uid://d3p53h7k2fxms" path="res://Scenes/ayuda.gd" id="1_yyw0t"]
+[ext_resource type="FontFile" uid="uid://c5p12f8qeg1vc" path="res://assets/fonts/NotoColorEmoji-Regular.ttf" id="2_1xgla"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gngk"]
 bg_color = Color(0.305882, 0.329412, 0.34902, 0.870588)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yyw0t"]
+
+[sub_resource type="FontVariation" id="FontVariation_1xgla"]
+fallbacks = Array[Font]([ExtResource("2_1xgla")])
 
 [node name="Node2D" type="Control"]
 layout_mode = 3
@@ -43,6 +47,7 @@ autowrap_mode = 2
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/normal_font = SubResource("FontVariation_1xgla")
 text = " En esta escena hay posibles evidencias digitales. 
 🔍Examina cada elemento con atención, haz clic y selecciona la acción correcta.
 🔍Cada acción que realices tendrá efecto sobre la evidencia cambiando su estado.

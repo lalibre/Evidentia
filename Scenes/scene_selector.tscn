@@ -1,12 +1,16 @@
-[gd_scene load_steps=21 format=3 uid="uid://3e1c61xhoay8"]
+[gd_scene load_steps=23 format=3 uid="uid://3e1c61xhoay8"]
 
 [ext_resource type="Script" uid="uid://c58d58otptrx5" path="res://scripts/scene_selector_3d.gd" id="1_1gt5h"]
 [ext_resource type="Script" uid="uid://bxdwdea21ly1r" path="res://Scenes/help_panel.gd" id="2_6mr2h"]
 [ext_resource type="Script" uid="uid://0kify7hjiptj" path="res://scripts/camera_rig.gd" id="2_lm1wi"]
+[ext_resource type="FontFile" uid="uid://c5p12f8qeg1vc" path="res://assets/fonts/NotoColorEmoji-Regular.ttf" id="3_5fcfc"]
 [ext_resource type="Texture2D" uid="uid://c1wa5j287faau" path="res://assets/puerta1.png" id="3_6mr2h"]
 [ext_resource type="Script" uid="uid://da6820pklws6u" path="res://scripts/area_3d_puerta1.gd" id="4_5fcfc"]
 [ext_resource type="Script" uid="uid://cqutsyxpb3aeg" path="res://scripts/area_3d_puerta2.gd" id="5_5j1qc"]
 [ext_resource type="Texture2D" uid="uid://d73kgwg4dwi1" path="res://assets/e08e7209-6272-4627-b353-63350996b700.png" id="6_k56gt"]
+
+[sub_resource type="FontVariation" id="FontVariation_5j1qc"]
+fallbacks = Array[Font]([ExtResource("3_5fcfc")])
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
 albedo_color = Color(0.171637, 0.171637, 0.171637, 1)
@@ -64,6 +68,7 @@ offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="UI/HelpPanel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_5j1qc")
 
 [node name="Timer" type="Timer" parent="UI/HelpPanel/VBoxContainer"]
 

@@ -1,11 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwbqtlhci0rph"]
+[gd_scene load_steps=9 format=3 uid="uid://dwbqtlhci0rph"]
 
 [ext_resource type="Script" uid="uid://dvv0jiop6kior" path="res://Scenes/cpu_menu_dialog.gd" id="1_qurgk"]
 [ext_resource type="Texture2D" uid="uid://bw0jmvmirdrlh" path="res://assets/desktop.png" id="2_fphq3"]
 [ext_resource type="PackedScene" uid="uid://bmednuiv1f2wq" path="res://typwriter_effect.tscn" id="3_wdf8v"]
+[ext_resource type="FontFile" uid="uid://dcvscttdgemg6" path="res://assets/fonts/OpenMoji-color-cbdt.ttf" id="4_x5412"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdf8v"]
 bg_color = Color(0.0562916, 0.0562916, 0.0562916, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_m8rhe"]
+fallbacks = Array[Font]([ExtResource("4_x5412")])
+
+[sub_resource type="FontVariation" id="FontVariation_0vo65"]
+fallbacks = Array[Font]([ExtResource("4_x5412")])
+
+[sub_resource type="FontVariation" id="FontVariation_thhoy"]
+fallbacks = Array[Font]([ExtResource("4_x5412")])
 
 [node name="CpuActionDialog" type="Control"]
 layout_mode = 3
@@ -49,6 +59,7 @@ custom_minimum_size = Vector2(100, 10)
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 4
+theme_override_fonts/font = SubResource("FontVariation_m8rhe")
 theme_override_font_sizes/font_size = 10
 text = "Iniciar ▶"
 
@@ -58,6 +69,7 @@ custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 4
+theme_override_fonts/font = SubResource("FontVariation_0vo65")
 theme_override_font_sizes/font_size = 10
 text = "Iniciar ▶"
 
@@ -67,6 +79,7 @@ custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 4
+theme_override_fonts/font = SubResource("FontVariation_thhoy")
 theme_override_font_sizes/font_size = 10
 text = "Iniciar ▶"
 

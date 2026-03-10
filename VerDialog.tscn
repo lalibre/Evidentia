@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://3ay7h2glvvg"]
+[gd_scene load_steps=4 format=3 uid="uid://3ay7h2glvvg"]
 
 [ext_resource type="Script" uid="uid://bwwt5kj5b6axh" path="res://ver_dialog.gd" id="1_7ix6a"]
+[ext_resource type="FontFile" uid="uid://c5p12f8qeg1vc" path="res://assets/fonts/NotoColorEmoji-Regular.ttf" id="2_i1pev"]
+
+[sub_resource type="FontVariation" id="FontVariation_7281y"]
+fallbacks = Array[Font]([ExtResource("2_i1pev")])
 
 [node name="VerDialog" type="AcceptDialog"]
 title = "Inspección de evidencia"
@@ -16,5 +20,6 @@ offset_right = 92.0
 offset_bottom = 51.0
 theme_override_colors/table_border = Color(0, 0, 0, 1)
 theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_7281y")
 autowrap_mode = 2
 tab_size = 14

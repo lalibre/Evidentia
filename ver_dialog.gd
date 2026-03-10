@@ -13,19 +13,19 @@ func mostrar_info(evidencia: Node, estado: String):
 		"CPU":
 			match estado:
 				"encendido":					
-					texto  = "💻 La CPU muestra luces LED parpadeando. 🔊 Se escucha un leve zumbido de ventiladores. 📶 Hay señales de actividad, como si estuviera en uso."
+					texto  = "💻 La CPU muestra luces LED parpadeando.\n 🔊 Se escucha un leve zumbido de ventiladores. \n📶 Hay señales de actividad, como si estuviera en uso."
 				"adquisicion_realizada":
 					texto = "✅ Ya se ha realizado la adquicisión en encendido de esta evidencia."
 				"apagado":
-					texto = "💻 La CPU está sin luces. 🔇 No se perciben sonidos de ventiladores.  🔌 Aún se encuentra conectado a la corriente."
+					texto = "💻 La CPU está sin luces.\n 🔇 No se perciben sonidos de ventiladores.\n 🔌 Aún se encuentra conectado a la corriente."
 				"desconectado":
 					texto = "💻 La CPU no tiene luces ni sonidos. 🔌 El cable de corriente está desconectado.  ✅ Parece listo para ser recolectado."
 				"recolectado":
-					texto = "✅ El CPU ya ha sido recolectado. 📂 Ahora forma parte de la evidencia almacenada."
+					texto = "✅ El CPU ya ha sido recolectado. \n📂 Ahora forma parte de la evidencia almacenada."
 		"USB":
 			match estado:
 				"desconectado":
-					texto = "💾 El módulo de memoria está aislado.  ✅ Puede ser recolectado para análisis."
+					texto = "💾 El módulo de memoria está aislado. \n ✅ Puede ser recolectado para análisis."
 				"recolectado":
 					texto = "✅ La memoria ya fue recolectada."
 				_:
@@ -37,7 +37,7 @@ func mostrar_info(evidencia: Node, estado: String):
 				"adquisicion_realizada":
 					texto = "✅ Ya se ha registrado el estado de esta evidencia."
 				"apagado":
-					texto = "💻 No hay luces de encendido detectadas  🔌 El monitor aún se encuentra conectado a la corriente."
+					texto = "💻 No hay luces de encendido detectadas  \n🔌 El monitor aún se encuentra conectado a la corriente."
 				"desconectado":
 					texto = "✅ El monitor ahora  puede ser recolectado para análisis."
 				"recolectado":

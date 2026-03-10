@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://7stme2pg5661"]
+[gd_scene load_steps=8 format=3 uid="uid://7stme2pg5661"]
 
 [ext_resource type="Script" uid="uid://clfhtxn3mafbb" path="res://scripts/start_scene.gd" id="1_82sop"]
 [ext_resource type="Texture2D" uid="uid://dbs7li3cptnsy" path="res://assets/intro.png" id="2_aeweq"]
+[ext_resource type="FontFile" uid="uid://dcvscttdgemg6" path="res://assets/fonts/OpenMoji-color-cbdt.ttf" id="3_8turk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aeweq"]
 bg_color = Color(0.32549, 0.32549, 0.32549, 0.831373)
@@ -9,6 +10,9 @@ bg_color = Color(0.32549, 0.32549, 0.32549, 0.831373)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_82sop"]
 
 [sub_resource type="Theme" id="Theme_8turk"]
+
+[sub_resource type="FontVariation" id="FontVariation_tn7b4"]
+fallbacks = Array[Font]([ExtResource("3_8turk")])
 
 [node name="StartScene" type="Control"]
 layout_mode = 3
@@ -19,8 +23,9 @@ script = ExtResource("1_82sop")
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 offset_right = 1279.0
-offset_bottom = 713.0
+offset_bottom = 720.0
 texture = ExtResource("2_aeweq")
+expand_mode = 2
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -52,6 +57,7 @@ text = "Ingrese nombre del analista"
 
 [node name="NameInput" type="LineEdit" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_tn7b4")
 
 [node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2

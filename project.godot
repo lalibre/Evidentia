@@ -18,3 +18,9 @@ config/features=PackedStringArray("4.4")
 
 Game_Manager="*res://scripts/GameManager.gd"
 Global="*res://Global.gd"
+
+[display]
+
+window/size/initial_position_type=5
+window/stretch/mode="canvas_items"
+window/stretch/scale=0.9

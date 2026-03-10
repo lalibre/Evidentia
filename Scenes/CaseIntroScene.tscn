@@ -1,12 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://gekicy32fb8e"]
+[gd_scene load_steps=8 format=3 uid="uid://gekicy32fb8e"]
 
 [ext_resource type="Script" uid="uid://e3txg6v0dt8q" path="res://scripts/case_intro_scene.gd" id="1_wpm3k"]
 [ext_resource type="Texture2D" uid="uid://72ogcbryej04" path="res://assets/background_selector.png" id="2_xeaxe"]
+[ext_resource type="FontFile" uid="uid://c5p12f8qeg1vc" path="res://assets/fonts/NotoColorEmoji-Regular.ttf" id="3_f5e1f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5e1f"]
 bg_color = Color(0.309804, 0.32549, 0.360784, 0.960784)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_klwcj"]
+
+[sub_resource type="FontVariation" id="FontVariation_klwcj"]
+fallbacks = Array[Font]([ExtResource("3_f5e1f")])
+
+[sub_resource type="FontVariation" id="FontVariation_vx2vh"]
+fallbacks = Array[Font]([ExtResource("3_f5e1f")])
 
 [node name="CaseIntroScene" type="Control"]
 layout_mode = 3
@@ -42,6 +49,7 @@ layout_mode = 2
 
 [node name="CaseLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_klwcj")
 text = "📁 Caso de investigación"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -51,6 +59,7 @@ autowrap_mode = 2
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/normal_font = SubResource("FontVariation_vx2vh")
 text = "Se ha encontrado un equipo sospechoso en la escena de un posible cibercrimen. 
 
 Eres un analista forense digital encargado de intervenir para recopilar evidencias.

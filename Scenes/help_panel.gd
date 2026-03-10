@@ -4,6 +4,8 @@ signal message_finished
 
 @onready var label = $VBoxContainer/Label
 @onready var timer = $VBoxContainer/Timer
+@onready var sound = $AudioStreamPlayer
+
 
 var typing_speed := 0.02
 var is_typing := false
@@ -13,6 +15,7 @@ var is_showing := false
 func show_message(text: String, duration := 3.5):
 	if is_showing:
 		message_queue.append([text, duration])
+		sound.play()
 	else:
 		_display_message(text, duration)
 

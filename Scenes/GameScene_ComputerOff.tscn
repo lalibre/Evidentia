@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://wv1n5rguqn6u"]
+[gd_scene load_steps=22 format=3 uid="uid://wv1n5rguqn6u"]
 
 [ext_resource type="Script" uid="uid://cbof3f5n81jqy" path="res://scripts/game_scene_base.gd" id="1_fuvdj"]
 [ext_resource type="Texture2D" uid="uid://butxjyqxch7p1" path="res://assets/Escena OFF_FINAL.png" id="2_d4flg"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://ccyyl0kqv2esw" path="res://Scenes/evidence_cajon_off.gd" id="11_ipp3i"]
 [ext_resource type="Texture2D" uid="uid://dt8vbmapgqnee" path="res://assets/MONITOR_OFF.png" id="11_mfr2o"]
 [ext_resource type="Texture2D" uid="uid://cu1o7bw0j4y2w" path="res://assets/EvidenceCajon.png" id="14_3f8tb"]
+[ext_resource type="FontFile" uid="uid://c5p12f8qeg1vc" path="res://assets/fonts/NotoColorEmoji-Regular.ttf" id="16_io20j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fubrg"]
 size = Vector2(186, 172.75)
@@ -27,6 +28,9 @@ size = Vector2(77.4375, 22)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ipp3i"]
 bg_color = Color(0.14902, 0.156863, 0.196078, 0.784314)
 
+[sub_resource type="FontVariation" id="FontVariation_lb7k3"]
+fallbacks = Array[Font]([ExtResource("16_io20j")])
+
 [node name="GameScene_ComputerOff" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -38,8 +42,8 @@ script = ExtResource("1_fuvdj")
 layout_mode = 0
 offset_left = -57.0
 offset_top = -61.0
-offset_right = 1303.0
-offset_bottom = 771.0
+offset_right = 1372.0
+offset_bottom = 816.0
 scale = Vector2(0.936697, 0.887223)
 mouse_filter = 2
 texture = ExtResource("2_d4flg")
@@ -48,24 +52,24 @@ texture = ExtResource("2_d4flg")
 script = ExtResource("2_el77p")
 
 [node name="Sprite2D" type="Sprite2D" parent="EvidenceCPU"]
-position = Vector2(155, 360)
+position = Vector2(164, 369)
 scale = Vector2(1.24215, 1.07108)
 texture = ExtResource("4_fuvdj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EvidenceCPU"]
-position = Vector2(157, 360.625)
+position = Vector2(169, 368)
 shape = SubResource("RectangleShape2D_fubrg")
 
 [node name="Evidence_USB" type="Area2D" parent="."]
 script = ExtResource("3_fubrg")
 
 [node name="Sprite2D" type="Sprite2D" parent="Evidence_USB"]
-position = Vector2(361, 435)
-scale = Vector2(1.14152, 1.02703)
+position = Vector2(377.5, 462.5)
+scale = Vector2(1.25316, 1)
 texture = ExtResource("6_fuvdj")
 
 [node name="CollisionShapeUSB" type="CollisionShape2D" parent="Evidence_USB"]
-position = Vector2(365.281, 438)
+position = Vector2(381, 461)
 shape = SubResource("RectangleShape2D_ctdx8")
 
 [node name="Evidence_PostIt" type="Area2D" parent="."]
@@ -77,21 +81,21 @@ position = Vector2(666.171, 152.157)
 scale = Vector2(1.025, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Evidence_PostIt"]
-position = Vector2(73.8139, 45.4199)
+position = Vector2(88.5767, 52.2328)
 scale = Vector2(1.02101, 0.946542)
-polygon = PackedVector2Array(29.5256, 31.7939, 219.596, 54.5038, 178.999, 157.834, -9.22675, 141.937)
+polygon = PackedVector2Array(29.5256, 31.7939, 211.463, 57.5821, 180.738, 167.948, -9.03688, 143.955)
 
 [node name="EvidenceMonitor" type="Area2D" parent="."]
 scale = Vector2(0.999988, 1.02811)
 script = ExtResource("11_164do")
 
 [node name="Sprite2D" type="Sprite2D" parent="EvidenceMonitor"]
-position = Vector2(395.659, 272.637)
+position = Vector2(405.005, 284.989)
 scale = Vector2(1.24893, 0.967364)
 texture = ExtResource("11_mfr2o")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="EvidenceMonitor"]
-position = Vector2(361.004, 245.11)
+position = Vector2(376.004, 256.782)
 scale = Vector2(1.02181, 0.976255)
 polygon = PackedVector2Array(-116.001, -73.9221, 166.002, -53.4962, 185.002, 108.938, 64, 117, -94.0011, 121.582)
 
@@ -100,14 +104,14 @@ scale = Vector2(0.999988, 1.02811)
 script = ExtResource("11_ipp3i")
 
 [node name="Sprite2D" type="Sprite2D" parent="EvidenceCajon"]
-position = Vector2(838.01, 519.4)
-scale = Vector2(1.24893, 0.967364)
+position = Vector2(881.011, 552.611)
+scale = Vector2(1.24893, 0.938431)
 texture = ExtResource("14_3f8tb")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="EvidenceCajon"]
-position = Vector2(649.008, 456.177)
+position = Vector2(688.008, 487.302)
 scale = Vector2(1.02181, 0.976255)
-polygon = PackedVector2Array(183.011, 37.86, 216.285, 36.8636, 227.051, 45.8305, 232.923, 73.7273, 135.056, 102.621, 135.056, 48.8194)
+polygon = PackedVector2Array(183.011, 37.86, 216.285, 36.8636, 233.901, 46.8268, 240.752, 76.7163, 135.056, 102.621, 135.056, 48.8194)
 
 [node name="EvidenciaMenu" type="PopupMenu" parent="."]
 size = Vector2i(200, 90)
@@ -167,32 +171,33 @@ script = ExtResource("3_164do")
 
 [node name="Panel" type="Panel" parent="UI/HelpPanel"]
 layout_mode = 0
-offset_left = -337.0
-offset_top = -173.913
-offset_right = 508.0
-offset_bottom = 269.087
-scale = Vector2(0.729399, 1.05648)
+offset_left = -302.0
+offset_top = -206.522
+offset_right = 543.0
+offset_bottom = 236.478
+scale = Vector2(0.729399, 1.1021)
 theme_override_styles/panel = SubResource("StyleBoxFlat_ipp3i")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/HelpPanel"]
 layout_mode = 0
-offset_left = -318.0
-offset_top = -148.913
-offset_right = -232.0
-offset_bottom = -90.913
+offset_left = -286.0
+offset_top = -196.739
+offset_right = -200.0
+offset_bottom = -138.739
 scale = Vector2(1.04327, 1.10952)
 
 [node name="Label" type="Label" parent="UI/HelpPanel/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_lb7k3")
 
 [node name="Timer" type="Timer" parent="UI/HelpPanel/VBoxContainer"]
 
 [node name="ContinueButton" type="Button" parent="UI/HelpPanel"]
 layout_mode = 2
-offset_left = -55.0
-offset_top = 227.174
-offset_right = 31.0
-offset_bottom = 258.174
+offset_left = -44.0
+offset_top = 221.739
+offset_right = 42.0
+offset_bottom = 252.739
 scale = Vector2(1.28769, 1.43016)
 text = "Continuar"
 

@@ -10,4 +10,4 @@ func _on_StartButton_pressed():
 		var intro_scene = preload("res://Scenes/CaseIntroScene.tscn")
 		get_tree().change_scene_to_packed(intro_scene)
 	else:
-		name_input.placeholder_text = "❗ Ingresa tu nombre antes de comenzar"
+		name_input.placeholder_text = "Ingresa tu nombre"

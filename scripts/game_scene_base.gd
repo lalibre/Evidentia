@@ -25,10 +25,12 @@ func _ready():
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$UI/HelpPanel.show_message("🧪 Escena del crimen
 
-Te encuentras en un entorno con posibles evidencias digitales.
+Te encuentras en un entorno con posibles evidencias digitales. 
+¡Has llegado antes que el equipo pericial forense! Así que hay
+algo que debes reportar a ellos.  
 
-🔍 Haz clic sobre los dispositivos para inspeccionarlos.
-Cada dispositivo puede requerir una acción distinta según su estado.
+🔍 Para inspeccionar: Haz clic sobre los dispositivos o evidencias
+Cada uno puede requerir una acción distinta según su estado actual.
 
 ✔ Las decisiones correctas suman puntos.
 ✖ Las acciones incorrectas restan puntos.
