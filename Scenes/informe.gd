@@ -26,14 +26,16 @@ func evaluar(puntos: float) -> String:
 	var errores_criticos = Game_Manager.errores_criticos
 
 	if errores_criticos > 0:
-		return "Análisis deficiente. Evidencia inadmisible en juicio."
+		return "Análisis deficiente.\nEvidencia inadmisible en juicio."
 	else:
+		if puntos == 0:
+			return "No realizó análisis"
 		if puntos == 10:
 			return "Excelente análisis forense."
-		elif puntos >= 7:
-			return "Desempeño aceptable, aunque hubo errores."
+		elif puntos >= 8:
+			return "Desempeño aceptable,\naunque hubo errores."
 		else:
-			return "Análisis regular. La evidencia pudo verse comprometida."
+			return "Análisis regular.\nLa evidencia pudo verse comprometida."
 
 
 func _on_pressed() -> void:

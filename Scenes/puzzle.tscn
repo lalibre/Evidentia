@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://1vhc14w60yhx"]
 
 [ext_resource type="PackedScene" uid="uid://b20t03833yaga" path="res://Scenes/texture_rect.tscn" id="1_8od7v"]
-[ext_resource type="Script" uid="uid://i7n4kelr4lr3" path="res://Scenes/puzzle.gd" id="1_16bgh"]
+[ext_resource type="Script" path="res://Scenes/puzzle.gd" id="1_16bgh"]
 [ext_resource type="Texture2D" uid="uid://ul81rmmcdmbm" path="res://assets/Parte 1.png" id="3_35xla"]
 [ext_resource type="Texture2D" uid="uid://boaacdgi6kcdp" path="res://assets/Parte 2.png" id="4_i3aeo"]
 [ext_resource type="Texture2D" uid="uid://cep61pqbbk5te" path="res://assets/Parte 3.png" id="5_5wyu1"]

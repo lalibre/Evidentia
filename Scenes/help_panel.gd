@@ -59,5 +59,15 @@ func _on_Timer_timeout():
 		_display_message(next[0], next[1])
 
 
-func _on_continue_button_pressed() -> void:
+func _on_continue_button_pressed():
+
+	timer.stop()
+
+	var fade_out = create_tween()
+	fade_out.tween_property(self, "modulate:a", 0.0, 0.3)
+	await fade_out.finished
+
 	hide()
+	is_showing = false
+
+	emit_signal("message_finished")

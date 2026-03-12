@@ -11,7 +11,8 @@ func _ready():
 	$UI/HelpPanel.show_message("🧭 Bienvenido al simulador forense digital 'Evidentia'.
 	🖱 Para moverte, mantén presionado el clic izquierdo y arrastra.
 	🚪 Haz clic en una puerta para ingresar a una escena.
-	📊 Cuando consideres que has terminado, pulsa el botón 'Finalizar' para evaluar tu 	desempeño.
+	📊 Cuando consideres que has terminado, pulsa el botón 'Finalizar'
+		para evaluar tu desempeño.
 
 ⚠ Recuerda: cada acción cuenta.")
 
@@ -19,7 +20,7 @@ func _ready():
 	_show_mouse_after_delay()
 
 func _show_mouse_after_delay() -> void:
-	await get_tree().create_timer(8.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	can_interact = true	
 	

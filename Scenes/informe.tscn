@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cra7n8iqv3y18"]
+[gd_scene load_steps=9 format=3 uid="uid://cra7n8iqv3y18"]
 
 [ext_resource type="Script" uid="uid://by7chjt2khgj1" path="res://Scenes/informe.gd" id="1_7047q"]
 [ext_resource type="FontFile" uid="uid://c5p12f8qeg1vc" path="res://assets/fonts/NotoColorEmoji-Regular.ttf" id="2_fnl05"]
-[ext_resource type="FontFile" uid="uid://daem6pjn6eil8" path="res://assets/fonts/Xolonium-Regular.ttf" id="2_ins5d"]
-[ext_resource type="Script" uid="uid://dlhtfjqj0tu58" path="res://Scenes/salir.gd" id="3_fnl05"]
+[ext_resource type="Script" path="res://Scenes/salir.gd" id="3_fnl05"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fop2m"]
 bg_color = Color(0.172549, 0.188235, 0.2, 0.945098)
@@ -155,16 +154,14 @@ text = "0"
 [node name="Evaluacion" type="RichTextLabel" parent="Panel"]
 custom_minimum_size = Vector2(20, 10)
 layout_mode = 0
-offset_left = 3.68666
-offset_top = 17.2695
-offset_right = 123.687
-offset_bottom = 57.2695
-scale = Vector2(0.242916, 0.318212)
-theme_override_fonts/normal_font = ExtResource("2_ins5d")
-theme_override_font_sizes/normal_font_size = 10
+offset_left = 8.0
+offset_top = 17.0
+offset_right = 133.0
+offset_bottom = 57.0
+scale = Vector2(0.13387, 0.116048)
 bbcode_enabled = true
+fit_content = true
 scroll_following = true
-autowrap_mode = 2
 tab_size = 12
 shortcut_keys_enabled = false
 
@@ -175,7 +172,7 @@ offset_left = 4.63805
 offset_top = 21.4141
 offset_right = 44.638
 offset_bottom = 61.4141
-scale = Vector2(0.150937, 0.122787)
+scale = Vector2(0.120997, 0.0903753)
 theme_override_fonts/normal_font = SubResource("FontFile_ins5d")
 theme_override_font_sizes/normal_font_size = 12
 text = "hola"

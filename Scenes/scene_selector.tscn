@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://3e1c61xhoay8"]
+[gd_scene load_steps=24 format=3 uid="uid://3e1c61xhoay8"]
 
 [ext_resource type="Script" uid="uid://c58d58otptrx5" path="res://scripts/scene_selector_3d.gd" id="1_1gt5h"]
 [ext_resource type="Script" uid="uid://bxdwdea21ly1r" path="res://Scenes/help_panel.gd" id="2_6mr2h"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" uid="uid://da6820pklws6u" path="res://scripts/area_3d_puerta1.gd" id="4_5fcfc"]
 [ext_resource type="Script" uid="uid://cqutsyxpb3aeg" path="res://scripts/area_3d_puerta2.gd" id="5_5j1qc"]
 [ext_resource type="Texture2D" uid="uid://d73kgwg4dwi1" path="res://assets/e08e7209-6272-4627-b353-63350996b700.png" id="6_k56gt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mr2h"]
+bg_color = Color(0.95, 1, 0.95, 0.141176)
 
 [sub_resource type="FontVariation" id="FontVariation_5j1qc"]
 fallbacks = Array[Font]([ExtResource("3_5fcfc")])
@@ -39,7 +42,7 @@ size = Vector3(1.40332, 16.746, 7.2666)
 albedo_color = Color(0.453232, 0.453232, 0.453232, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsk3o"]
-albedo_color = Color(0.454902, 0.454902, 0.454902, 1)
+albedo_color = Color(0.32, 0.32, 0.32, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jka67"]
 albedo_texture = ExtResource("6_k56gt")
@@ -54,23 +57,41 @@ script = ExtResource("1_1gt5h")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="HelpPanel" type="ColorRect" parent="UI"]
-offset_left = 68.0
+offset_left = 364.0
 offset_top = 62.0
-offset_right = 492.0
+offset_right = 788.0
 offset_bottom = 155.0
 color = Color(1, 1, 1, 0)
 script = ExtResource("2_6mr2h")
 
+[node name="Panel" type="Panel" parent="UI/HelpPanel"]
+offset_right = 845.0
+offset_bottom = 443.0
+scale = Vector2(0.65231, 0.565853)
+theme_override_styles/panel = SubResource("StyleBoxFlat_6mr2h")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/HelpPanel"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 24.0
+offset_top = 23.0
+offset_right = 64.0
+offset_bottom = 63.0
 
 [node name="Label" type="Label" parent="UI/HelpPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_5j1qc")
 
 [node name="Timer" type="Timer" parent="UI/HelpPanel/VBoxContainer"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI/HelpPanel"]
+
+[node name="ContinueButton" type="Button" parent="UI/HelpPanel"]
+offset_left = 424.0
+offset_top = 191.0
+offset_right = 510.0
+offset_bottom = 222.0
+scale = Vector2(1.11643, 1.21616)
+text = "Continuar"
 
 [node name="CameraRig" type="Node3D" parent="."]
 script = ExtResource("2_lm1wi")
@@ -80,7 +101,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 16)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.459704, 0.888072, 0, -0.888072, -0.459704, -0.600525, 23.4444, 2.35065)
-light_color = Color(0.262932, 0.262932, 0.262932, 1)
+light_color = Color(0.38, 0.38, 0.38, 1)
 shadow_enabled = true
 
 [node name="Pasillo" type="MeshInstance3D" parent="."]
@@ -145,5 +166,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_jka67")
 environment = SubResource("Environment_a202f")
 
 [connection signal="message_finished" from="UI/HelpPanel" to="." method="_on_help_panel_message_finished"]
+[connection signal="pressed" from="UI/HelpPanel/ContinueButton" to="UI/HelpPanel" method="_on_continue_button_pressed"]
 [connection signal="input_event" from="Puerta1/Area3D" to="Puerta1/Area3D" method="input_event"]
 [connection signal="input_event" from="Puerta2/Area3D" to="." method="input_event"]

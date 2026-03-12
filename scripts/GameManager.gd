@@ -14,14 +14,6 @@ var score_label: Label = null
 var log_panel: RichTextLabel = null
 var bitacora_texto := ""
 
-
-enum EstadoEvidencia {
-	ENCENDIDO,
-	APAGADO,
-	DESCONECTADO,
-	RECOLECTADO
-}
-
 func _ready():
 	var scene_root = get_tree().get_current_scene()
 	print("scene_root:", scene_root.name)
