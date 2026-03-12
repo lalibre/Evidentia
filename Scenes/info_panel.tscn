@@ -6,7 +6,7 @@
 [sub_resource type="Theme" id="Theme_bn1oq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7ur6"]
-bg_color = Color(0.105882, 0.129412, 0.14902, 0.87451)
+bg_color = Color(0.1065, 0.130425, 0.15, 0.74902)
 
 [sub_resource type="FontVariation" id="FontVariation_c4tww"]
 fallbacks = Array[Font]([ExtResource("1_ciw3w")])
@@ -35,12 +35,12 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 1105.43
+offset_left = 1052.43
 offset_top = 28.096
-offset_right = 1372.43
+offset_right = 1319.43
 offset_bottom = 259.096
 grow_horizontal = 0
-scale = Vector2(0.941835, 0.943158)
+scale = Vector2(1.03755, 1.0975)
 theme = SubResource("Theme_bn1oq")
 theme_override_styles/panel = SubResource("StyleBoxFlat_k7ur6")
 

@@ -42,6 +42,6 @@ pulsa el botón 'Finalizar' para cerrar la escena y ver tu puntuación.")
 	_show_mouse_after_delay()
 
 func _show_mouse_after_delay() -> void:
-	await get_tree().create_timer(8.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	can_interact = true	

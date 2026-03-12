@@ -3,7 +3,7 @@ extends EvidenciaBase
 func _ready():
 	input_pickable = true
 	tipo = "cajon"
-	estado = "reportado"
+	estado_actual = Estado.REPORTADO
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -3,118 +3,130 @@ class_name EvidenciaBase
 
 signal estado_cambiado(nuevo_estado)
 
+# 1. Definición estandarizada de estados
+enum Estado {
+	ENCENDIDO,
+	APAGADO,
+	DESCONECTADO,
+	ADQUISICION_REALIZADA,
+	RECOLECTADO,
+	REPORTADO,
+	EVIDENCIADO
+}
+
 @export var tipo : String = ""
-@export var estado : String = ""
+# 2. Variable de estado usando el Enum
+@export var estado_actual : Estado = Estado.ENCENDIDO
+
 @export var caracteristicas : Dictionary = {
 	"pierde_datos_al_apagar": true,
 	"es_extraible": false
 }
-# Precargar la escena del diálogo
+
+@export var sprite_por_estado : Dictionary = {}
+@onready var sprite = $Sprite2D
+
 @onready var cpu_dialog_scene = preload("res://Scenes/CpuMenuDialog.tscn")
 var cpu_dialog_instance: Control
 
 func _ready():
 	input_pickable = true
 
+# 3. Función central para cambiar estados
+func cambiar_estado(nuevo_estado: Estado):
+	estado_actual = nuevo_estado
+	emit_signal("estado_cambiado", estado_actual)
+	print("Estado de ", tipo, " cambiado a: ", Estado.keys()[nuevo_estado])
 
-func _input_event(viewport, event, shape_idx):
+func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
-		#if estado == "recolectado":
-		#	mostrar_mensaje("Esta evidencia ya fue recolectada. No se puede realizar más acciones.")
-		#return
-		
-		# Validar si está desconectada (para abrir puzzle de recolectar)
-		if estado == "desconectado":
-			abrir_dialogo_recolectar()
+		var menu = get_tree().get_current_scene().get_node("EvidenciaMenu")
+		if menu:
+			# Convertimos el enum a String solo para la UI si es necesario, 
+			# o pasamos el entero directamente
+			menu.mostrar_menu(self, get_global_mouse_position(), estado_actual)
+			print("¡Hiciste clic en:", tipo, "!")
 		else:
-			# Abrir el menú de acciones normal
-			var menu = get_tree().get_current_scene().get_node("EvidenciaMenu")
-			if menu:
-				menu.mostrar_menu(self, get_global_mouse_position(), estado)
-				print("¡Hiciste clic en:", tipo, "!")
-			else:
-				print("EvidenciaMenu no encontrado")
+			print("EvidenciaMenu no encontrado")
 
-func mostrar_mensaje(texto: String):
-	var dialog = AcceptDialog.new()
-	get_tree().current_scene.add_child(dialog)
-	dialog.dialog_text = texto
-	dialog.popup_centered()
+# --- Métodos de Diálogo ---
 
-# Función que abre un diálogo o puzzle de recolectar
-func abrir_dialogo_recolectar():
-	# Precargar la escena del puzzle de recolectar
-	var puzzle_scene = preload("res://Scenes/options.tscn")
-	var puzzle_instance = puzzle_scene.instantiate()
-
-	# Añadir al nodo raíz de la escena actual
-	get_tree().current_scene.add_child(puzzle_instance)
-
-	# Opcional: centrar el diálogo en la pantalla
-	#if puzzle_instance is WindowDialog:
-	#	puzzle_instance.popup_centered()
 func abrir_dialogo_cpu():
 	cpu_dialog_instance = cpu_dialog_scene.instantiate()
 	get_tree().current_scene.add_child(cpu_dialog_instance)
-	#cpu_dialog_instance.mostrar(self, get_global_mouse_position())
 
 func abrir_dialogo_clave():
 	var clave_scene = preload("res://Scenes/CpuClaveDialog.tscn")
 	var clave_instance = clave_scene.instantiate()
 	get_tree().current_scene.add_child(clave_instance)
-
-	# Conecta la señal para saber si fue validada
 	clave_instance.connect("clave_correcta", Callable(self, "_on_clave_correcta"))
 
 func _on_clave_correcta():
 	abrir_dialogo_cpu()
-	estado = "adquisicion_realizada"
-	Game_Manager.registrar_en_bitacora("El usuario ingresó la clave correctamente para adquirir en vivo.")
-	Game_Manager.registrar_en_bitacora("Se hizo adquisición de %s encendida." % tipo)
+	cambiar_estado(Estado.ADQUISICION_REALIZADA)
+	Game_Manager.registrar_en_bitacora("Clave correcta para adquisición en vivo de %s." % tipo)
 	Game_Manager.registrar_acierto()
 
+# --- Lógica de la Máquina de Estados ---
+
 func aplicar_accion(accion: String):
-	print("Esta es la accion: %s" %accion)
+	print("Acción recibida: %s" % accion)
+	
 	match accion.to_lower():
 		"apagar":
-			if estado == "encendido":
-				if caracteristicas.get("pierde_datos_al_apagar", false):
-					Game_Manager.registrar_en_bitacora("Se apagó %s y se perdieron datos." % tipo)
-					Game_Manager.registrar_fallo()
-			else:
-				Game_Manager.registrar_en_bitacora("Se apagó %s sin pérdida de datos." % tipo)
-				Game_Manager.registrar_accion("Se apagó %s sin pérdida de datos." % tipo)
-				Game_Manager.registrar_acierto()
-			estado = "apagado"				
+			_manejar_apagar()
 		"desconectar":
-			if estado == "apagado":
-				Game_Manager.registrar_acierto()				
-				Game_Manager.registrar_en_bitacora("Se desconectó %s correctamente." % tipo)
-				estado = "desconectado"
-			else:
-				Game_Manager.registrar_en_bitacora("Error: Se intentó desconectar %s encendida." % tipo)	
-				Game_Manager.registrar_fallo()		
+			_manejar_desconectar()
 		"adquisición":
-			if estado == "encendido":
-				if tipo == "CPU":
-					 # Abrir el diálogo de CPU para seleccionar las sub-acciones
-					abrir_dialogo_clave()
-				else: 
-					Game_Manager.registrar_en_bitacora("El %s esta encendido.  Se procede a tomar una fotografía de pantalla." % tipo)
-					estado = "adquisicion_realizada"	
-			else:
-				Game_Manager.registrar_fallo()
+			_manejar_adquisicion()
 		"recolectar":
-			if estado == "evidenciado":
-				Game_Manager.registrar_fallo()
-				Game_Manager.registrar_en_bitacora("Se recolectó %s antes de ser reportado a la policia forense" % tipo)
-			else:
-				Game_Manager.registrar_acierto()	
-			Game_Manager.registrar_en_bitacora("Recolectando  %s" % tipo)
-			Game_Manager.registrar_evidencia_recolectada()
-			estado = "recolectado"
+			_manejar_recolectar()
 		"reportar":
-			Game_Manager.registrar_en_bitacora("Reportando al policia forense la evidencia %s" % tipo)
-			estado = "reportado"
-			Game_Manager.registrar_acierto()
-	emit_signal("estado_cambiado", estado)
+			_manejar_reportar()
+
+# Métodos privados de lógica para mantener limpio el match
+func _manejar_apagar():
+	print(estado_actual)
+	if estado_actual == Estado.ENCENDIDO:
+		if caracteristicas.get("pierde_datos_al_apagar", false):
+			Game_Manager.registrar_en_bitacora("Se apagó %s y se perdieron datos." % tipo)
+			Game_Manager.registrar_fallo()
+	else:	
+		Game_Manager.registrar_en_bitacora("Se apagó %s sin pérdida de datos." % tipo)
+		Game_Manager.registrar_acierto()
+	cambiar_estado(Estado.APAGADO)
+
+func _manejar_desconectar():
+	if estado_actual == Estado.APAGADO:
+		Game_Manager.registrar_acierto()
+		Game_Manager.registrar_en_bitacora("Se desconectó %s correctamente." % tipo)
+		cambiar_estado(Estado.DESCONECTADO)
+	else:
+		Game_Manager.registrar_en_bitacora("Error: Intento de desconectar %s sin apagar." % tipo)
+		Game_Manager.registrar_fallo()
+
+func _manejar_adquisicion():
+	if estado_actual == Estado.ENCENDIDO:
+		if tipo == "CPU":
+			abrir_dialogo_clave()
+		else:
+			Game_Manager.registrar_en_bitacora("Adquisición en vivo (foto) de %s realizada." % tipo)
+			cambiar_estado(Estado.ADQUISICION_REALIZADA)
+	else:
+		Game_Manager.registrar_fallo()
+
+func _manejar_recolectar():
+	if estado_actual == Estado.EVIDENCIADO:
+		Game_Manager.registrar_fallo()
+		Game_Manager.registrar_en_bitacora("Se recolectó %s sin reporte previo." % tipo)
+	else:
+		Game_Manager.registrar_en_bitacora("La evidencia %s ha sido recolectada oportunamente." % tipo)		
+		Game_Manager.registrar_acierto()
+	
+	Game_Manager.registrar_evidencia_recolectada()
+	cambiar_estado(Estado.RECOLECTADO)
+
+func _manejar_reportar():
+	Game_Manager.registrar_en_bitacora("Reportando evidencia %s a policía forense." % tipo)
+	Game_Manager.registrar_acierto()
+	cambiar_estado(Estado.REPORTADO)
