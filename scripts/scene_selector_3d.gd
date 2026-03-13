@@ -3,7 +3,6 @@ extends Node3D
 var can_interact := false
 	
 func _ready():
-
 	# Ocultar mouse inmediatamente
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 

@@ -23,9 +23,6 @@ enum Estado {
 	"es_extraible": false
 }
 
-@export var sprite_por_estado : Dictionary = {}
-@onready var sprite = $Sprite2D
-
 @onready var cpu_dialog_scene = preload("res://Scenes/CpuMenuDialog.tscn")
 var cpu_dialog_instance: Control
 
@@ -90,6 +87,7 @@ func _manejar_apagar():
 	if estado_actual == Estado.ENCENDIDO:
 		if caracteristicas.get("pierde_datos_al_apagar", false):
 			Game_Manager.registrar_en_bitacora("Se apagó %s y se perdieron datos." % tipo)
+			Game_Manager.errores_criticos =+ 1
 			Game_Manager.registrar_fallo()
 	else:	
 		Game_Manager.registrar_en_bitacora("Se apagó %s sin pérdida de datos." % tipo)

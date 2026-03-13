@@ -8,6 +8,14 @@ extends Control
 #@onready var evaluacion_lbl = $Infore/LabelEvaluacion
 
 func _ready():
+	aciertos.text = ""
+	fallos.text = ""
+	score.text = ""
+	evaluacion.text = ""
+	texto.text = ""
+	_actualizar_resultado()
+	
+func _actualizar_resultado():
 	var total_aciertos = Game_Manager.aciertos
 	var total_fallos = Game_Manager.fallos
 	var evidencias = Game_Manager.registrar_evidencia_recolectada
@@ -17,10 +25,12 @@ func _ready():
 	aciertos.text =  str(total_aciertos)
 	fallos.text = str(total_fallos)
 	
-	var puntuacion = round((total_aciertos / float(total_acciones_posibles)) * 10)
+	var puntuacion: float = 0.0
+	if total_acciones_posibles > 0:
+		puntuacion = round((total_aciertos / float(total_acciones_posibles)) * 10)
+
+	score.text = str(puntuacion)		
 	evaluacion.text = evaluar(puntuacion)
-	print(puntuacion)
-	score.text = str(puntuacion)
 
 func evaluar(puntos: float) -> String:
 	var errores_criticos = Game_Manager.errores_criticos

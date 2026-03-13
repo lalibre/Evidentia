@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://xgxxf0tl8wcl"]
+[gd_scene load_steps=23 format=3 uid="uid://xgxxf0tl8wcl"]
 
 [ext_resource type="Script" uid="uid://cbof3f5n81jqy" path="res://scripts/game_scene_base.gd" id="1_phlmm"]
 [ext_resource type="Texture2D" uid="uid://c0d4mlsh27rnm" path="res://assets/Escena On_2.png" id="2_phlmm"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bxdwdea21ly1r" path="res://Scenes/help_panel.gd" id="3_m7jco"]
 [ext_resource type="Texture2D" uid="uid://d1o1lhap5korv" path="res://assets/cpu_on.png" id="4_phlmm"]
 [ext_resource type="Script" uid="uid://rg24lk57ek1e" path="res://scripts/evidencias/evidence_cajon.gd" id="5_m7jco"]
+[ext_resource type="Texture2D" uid="uid://b2xoigiui7i40" path="res://assets/CPUoff_scene_ON.png" id="5_ooc82"]
 [ext_resource type="Texture2D" uid="uid://bxmtj42yiko3k" path="res://assets/CAJON_ON.png" id="6_cwtea"]
 [ext_resource type="Script" uid="uid://b5dwyqnu5wau5" path="res://scripts/evidencias/evidence_post_it.gd" id="7_2yrbb"]
 [ext_resource type="Texture2D" uid="uid://bgpm4dhp4qrhn" path="res://assets/POSTIT ON.png" id="8_gvk18"]
@@ -14,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cm68dp5pnpy0e" path="res://assets/MONITOR_ON.png" id="11_cwtea"]
 [ext_resource type="PackedScene" uid="uid://b6jp532ass17w" path="res://Scenes/options.tscn" id="11_e76gl"]
 [ext_resource type="Script" uid="uid://cg4ygt8ilhktu" path="res://scripts/evidencias/evidence_monitor_on.gd" id="12_j4xcu"]
+[ext_resource type="Texture2D" uid="uid://b77efhbo8og1f" path="res://assets/Monitor_off_scene_ON.png.png" id="12_ooc82"]
 [ext_resource type="FontFile" uid="uid://c5p12f8qeg1vc" path="res://assets/fonts/NotoColorEmoji-Regular.ttf" id="15_2yrbb"]
 [ext_resource type="AudioStream" uid="uid://b4twrggnb3532" path="res://typewriter.mp3" id="16_j4xcu"]
 
@@ -45,6 +47,8 @@ texture = ExtResource("2_phlmm")
 
 [node name="EvidenceCPU" type="Area2D" parent="."]
 script = ExtResource("3_gvk18")
+sprite_encendido = ExtResource("4_phlmm")
+sprite_apagado = ExtResource("5_ooc82")
 
 [node name="Sprite2D" type="Sprite2D" parent="EvidenceCPU"]
 position = Vector2(312, 320)
@@ -81,6 +85,8 @@ polygon = PackedVector2Array(-35, 65, 15, 56, 22, 84, 29, 99, -24, 111, -32, 85)
 
 [node name="EvidenceMonitor" type="Area2D" parent="."]
 script = ExtResource("12_j4xcu")
+sprite_encendido = ExtResource("11_cwtea")
+sprite_apagado = ExtResource("12_ooc82")
 
 [node name="Sprite2D" type="Sprite2D" parent="EvidenceMonitor"]
 position = Vector2(429, 283)

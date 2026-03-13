@@ -2,7 +2,7 @@ extends Node
 class_name GameManager
 
 var evidencias: Array = []
-var acciones := 0
+var acciones = 0
 var evidencias_recolectadas := 0
 var aciertos := 0
 var fallos := 0
@@ -19,7 +19,6 @@ func _ready():
 	print("scene_root:", scene_root.name)
 	#score_label = scene_root.get_node_or_null("UIX/InfoPanel/VBoxContainer/ScoreLabel")
 	#log_panel = scene_root.get_node_or_null("UIX/InfoPanel/VBoxContainer/ScrollContainer/LogPanel")
-	
 	#print("score_label:", score_label)
 	#print("log_panel:", log_panel)
 	
@@ -54,6 +53,9 @@ func sumar_acciones(valor: int):
 	else:
 		print("ScoreLabel es null")
 
+func limpiar_acciones():
+	acciones = 0
+
 func registrar_accion(texto: String):
 	if log_panel:
 		log_panel.append_text("🕵️ " + texto + "\n")
@@ -82,6 +84,7 @@ func guardar_bitacora_en_archivo():
 		return
 
 	var ruta = "user://bitacora_forense.txt"
+	print(ruta)
 	var archivo = FileAccess.open(ruta, FileAccess.WRITE)
 	if archivo:
 		archivo.store_string(bitacora_texto)
