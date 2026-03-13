@@ -108,6 +108,7 @@ func _manejar_adquisicion():
 		if tipo == "CPU":
 			abrir_dialogo_clave()
 		else:
+			Game_Manager.registrar_acierto()
 			Game_Manager.registrar_en_bitacora("Adquisición en vivo (foto) de %s realizada." % tipo)
 			cambiar_estado(Estado.ADQUISICION_REALIZADA)
 	else:

@@ -75,7 +75,7 @@ func _show_end_message(end_msg: String, accion: String, exito: bool):
 	status_label.text = end_msg
 	completed_actions += 1
 	if completed_actions >= total_actions:
-		Game_Manager.aciertos += 3
+		# Game_Manager.aciertos += 3
 		_all_actions_completed()
 
 func _all_actions_completed():

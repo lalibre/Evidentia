@@ -9,6 +9,8 @@ var fallos := 0
 var errores_criticos := 0
 var total_acciones_posibles := 0
 var puntuacion := 0
+var computerOnActiva := false
+var computerOffActiva := false
 
 var score_label: Label = null
 var log_panel: RichTextLabel = null
@@ -55,7 +57,14 @@ func sumar_acciones(valor: int):
 
 func limpiar_acciones():
 	acciones = 0
-
+	aciertos = 0
+	puntuacion = 0
+	fallos = 0
+	errores_criticos = 0
+	evidencias_recolectadas = 0
+	computerOffActiva = false
+	computerOnActiva = false
+	
 func registrar_accion(texto: String):
 	if log_panel:
 		log_panel.append_text("🕵️ " + texto + "\n")

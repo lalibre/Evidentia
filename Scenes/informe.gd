@@ -22,6 +22,7 @@ func _actualizar_resultado():
 	var total_acciones = Game_Manager.acciones
 	var total_acciones_posibles = Game_Manager.total_acciones_posibles
 	
+	print(total_acciones_posibles)
 	aciertos.text =  str(total_aciertos)
 	fallos.text = str(total_fallos)
 	
@@ -36,7 +37,7 @@ func evaluar(puntos: float) -> String:
 	var errores_criticos = Game_Manager.errores_criticos
 
 	if errores_criticos > 0:
-		return "Análisis deficiente.\nEvidencia inadmisible en juicio."
+		return "Análisis erróneo.\nEvidencia inadmisible en juicio."
 	else:
 		if puntos == 0:
 			return "No realizó análisis"

@@ -9,9 +9,6 @@ func _ready():
 
 func _on_boton_salir_pressed():
 	Game_Manager.cambiar_a_scene_selector()
-
-func _on_ayuda_pressed():
-	print("Mostrar ayuda...") # aquí puedes abrir un Popup con tips
 	
 func _on_guardar_pressed():
 	if Game_Manager:

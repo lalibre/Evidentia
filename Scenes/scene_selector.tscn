@@ -65,6 +65,7 @@ color = Color(1, 1, 1, 0)
 script = ExtResource("2_6mr2h")
 
 [node name="Panel" type="Panel" parent="UI/HelpPanel"]
+layout_mode = 0
 offset_right = 845.0
 offset_bottom = 443.0
 scale = Vector2(0.65231, 0.565853)
@@ -86,6 +87,7 @@ theme_override_fonts/font = SubResource("FontVariation_5j1qc")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UI/HelpPanel"]
 
 [node name="ContinueButton" type="Button" parent="UI/HelpPanel"]
+layout_mode = 0
 offset_left = 424.0
 offset_top = 191.0
 offset_right = 510.0

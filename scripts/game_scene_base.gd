@@ -13,6 +13,7 @@ func _ready():
 	Game_Manager.score_label = info_panel_instance.get_node("InfoPanel/VBoxContainer/ScoreLabel")
 	Game_Manager.log_panel = info_panel_instance.get_node("InfoPanel/VBoxContainer/ScrollContainer/LogPanel")
 	Game_Manager.limpiar_acciones()
+	Game_Manager.computerOnActiva = true
 	# Verificar si realmente encontró los nodos
 	print("Lo que encontró de nodos")
 	print("score_label:", Game_Manager.score_label)
